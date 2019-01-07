@@ -30,7 +30,7 @@ namespace tvmanager
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            textBox2.Text = "HELLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOO";
+            textBox2.Text = "HELLLLLLLLLLLLLLLOOOOOOOOO";
 
         }
         
