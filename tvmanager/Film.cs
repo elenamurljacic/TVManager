@@ -13,7 +13,8 @@ namespace tvmanager
     }
     class Film: ITVSadrzaj
     {
-        //implementacija sučelja
+        //implementacija sučelja ITVSadrzaj
+        //promjena
         private string ime = "";
         public string Ime
         {
