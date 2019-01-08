@@ -38,12 +38,12 @@ namespace tvmanager
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            Film f = new Film();
+            /*Film f = new Film();
             f.Ime = "sdbckbjs";
             A a = new A();
             a.s = f;
 
-            textBox2.Text = a.s.Ime;
+            textBox2.Text = a.s.Ime;*/
 
             listView1.Columns.Add("Sat",-2,HorizontalAlignment.Left);
             listView1.Columns.Add("Naslov", -2, HorizontalAlignment.Left);

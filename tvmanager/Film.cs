@@ -13,6 +13,17 @@ namespace tvmanager
     }
     class Film: ITVSadrzaj
     {
+        public Film(string ime, string opis, string zanr, int duljina, int prioritet, int dobnaskupina, string redatelj, string gglumac, string prikazivanje)
+        {
+            Ime = ime;
+            Opis = opis;
+            Duljina = duljina;
+            Prioritet = prioritet;
+            DobnaSkupina = dobnaskupina;
+            Redatelj = redatelj;
+            GlavniGlumac = gglumac;
+            Prikazivanje = prikazivanje;
+        }
         //implementacija sučelja ITVSadrzaj
         //promjena
         private string ime = "";
@@ -56,6 +67,7 @@ namespace tvmanager
         //public bool Animirani;
         public string Redatelj;
         public string GlavniGlumac;
+        public string Prikazivanje;
         public override string ToString()
         {
             return Ime + ", zanr: " + Zanr + ". Kratak opis: " + Opis + " Trajanje: " + Duljina + " min. " + "Prioritet: "
