@@ -128,10 +128,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="TVSadrzaj.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TVSadrzaj_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>TVSadrzaj.mdf</DependentUpon>
     </Content>
   </ItemGroup>
