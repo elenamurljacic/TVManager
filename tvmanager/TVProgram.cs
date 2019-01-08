@@ -14,7 +14,7 @@ namespace tvmanager
 
         Monitor monitor = new Monitor();
 
-        List<ITVSadrzaj> pon, uto, sri, cet, pet, sub, ned;
+        Dictionary<string,ITVSadrzaj> pon, uto, sri, cet, pet, sub, ned;
 
         public TVProgram()
         {
@@ -24,6 +24,18 @@ namespace tvmanager
             connectionString = ConfigurationManager.ConnectionStrings["tvmanager.Properties.Settings.TVSadrzajConnectionString"].ConnectionString;
             
            
+        }
+
+        private List<Dictionary<string,ITVSadrzaj>> Raspored(string dan)//dan se ubacuje u obliku npr pon = '_+%'
+        {
+            List<Film> f = DohvatiIzBazeFilmove(dan);
+            List<Serija> s = DohvatiIzBazeSerije(dan);
+            List<LivePrijenos> l = DohvatiIzBazeLivePrijenose(dan);
+            List<DSPK> d = DohvatiIzBazeDSPK(dan);
+            List<Reklama> r = DohvatiIzBazeReklame();
+
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,6 +63,8 @@ namespace tvmanager
             UnosPrograma();
 
         }
+
+
 
         private List<Film> DohvatiIzBazeFilmove(string dan)
         {
@@ -122,7 +136,7 @@ namespace tvmanager
             return dsp;
         }
 
-        private List<Reklama> DohvatiIzBazeReklame(string dan)
+        private List<Reklama> DohvatiIzBazeReklame()
         {
             List<Reklama> rek = new List<Reklama>();
             using (connection = new SqlConnection(connectionString))
@@ -179,15 +193,6 @@ namespace tvmanager
 
         private void UnosPrograma()
         {
-            /*using (connection = new SqlConnection(connectionString))
-            using(SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Film", connection))
-            {
-                DataTable filmTable = new DataTable();
-                adapter.Fill(filmTable);
-
-                listView1.DisplayMember = "Naziv";
-            }*/
-
             DSPK Dnevnik = new DSPK("Dnevnik", "Informativna emisija", "svijet", 60, 1, 8, "dnevnik", "Goran Milic", "Petar Pereza", "-XXXXXXX");
             DSPK Vijesti = new DSPK("Vijesti", "Informativna emisija", "Split", 60, 2, 8, "dnevnik", "Goran Milic", "Petar Pereza", "-XXXXXXX");
 
