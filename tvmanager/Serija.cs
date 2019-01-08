@@ -8,6 +8,22 @@ namespace tvmanager
 {
     class Serija: ITVSadrzaj
     {
+        public Serija(string ime, string opis, string zanr,
+            int duljina, int prioritet, int dobnaSkupina,
+            string redatelj, string sezona, int epizode, string prikazivanje)
+        {
+            Ime = ime;
+            Opis = opis;
+            Zanr = zanr;
+            Duljina = duljina;
+            Prioritet = prioritet;
+            DobnaSkupina = dobnaSkupina;
+            Redatelj = redatelj;
+            Sezona = sezona;
+            Epizode = epizode;
+            Prikazivanje = prikazivanje;
+
+        }
         //implementacija sučelja
         private string ime = "";
         public string Ime
@@ -50,6 +66,7 @@ namespace tvmanager
         public string Redatelj;
         public string Sezona;
         public int Epizode;
+        public string Prikazivanje;
 
         public override string ToString()
         {

@@ -8,6 +8,19 @@ namespace tvmanager
 {
     class Reklama: ITVSadrzaj
     {
+        public Reklama(string ime, string opis, string zanr,
+            int duljina, int prioritet, int dobnaSkupina,
+            int cijena)
+        {
+            Ime = ime;
+            Opis = opis;
+            Zanr = zanr;
+            Duljina = duljina;
+            Prioritet = prioritet;
+            DobnaSkupina = dobnaSkupina;
+            Cijena = cijena;
+        }
+
         //implementacija sučelja
         private string ime = "";
         public string Ime

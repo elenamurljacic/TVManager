@@ -73,7 +73,6 @@ namespace tvmanager
                 listView1.DisplayMember = "Naziv";
             }*/
             
-            
         }
     }
 }

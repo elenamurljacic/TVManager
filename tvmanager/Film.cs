@@ -55,12 +55,11 @@ namespace tvmanager
         //ostatak implementacije klase Film
         //public bool Animirani;
         public string Redatelj;
-        public string Reziser;
         public string GlavniGlumac;
         public override string ToString()
         {
             return Ime + ", zanr: " + Zanr + ". Kratak opis: " + Opis + " Trajanje: " + Duljina + " min. " + "Prioritet: "
-                   + Prioritet + ", dobna skupina " + DobnaSkupina + ". Redatelj: " + Redatelj + ", reziser: " + Reziser + ", glavni glumac: "
+                   + Prioritet + ", dobna skupina " + DobnaSkupina + ". Redatelj: " + Redatelj + ", glavni glumac: "
                    + GlavniGlumac + ".";
         }
     }

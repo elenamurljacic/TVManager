@@ -8,6 +8,22 @@ namespace tvmanager
 {
     class DSPK: ITVSadrzaj
     {
+        public DSPK(string ime, string opis, string zanr,
+            int duljina, int prioritet, int dobnaSkupina,
+            string tip, string urednik, string voditelj, string prikazivanje)
+        {
+            Ime = ime;
+            Opis = opis;
+            Zanr = zanr;
+            Duljina = duljina;
+            Prioritet = prioritet;
+            DobnaSkupina = dobnaSkupina;
+            Tip = tip;
+            Urednik = urednik;
+            Voditelj = voditelj;
+            Prikazivanje = prikazivanje;
+        }
+
         //implementacija sučelja
         private string ime = "";
         public string Ime
@@ -50,6 +66,7 @@ namespace tvmanager
         public string Tip; //dnevnik, sport, prognoza, kviz
         public string Urednik;
         public string Voditelj;
+        public string Prikazivanje;
 
         public override string ToString()
         {
