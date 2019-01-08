@@ -8,6 +8,16 @@ namespace tvmanager
 {
     class LivePrijenos: ITVSadrzaj
     {
+        public LivePrijenos(string ime, string opis, string zanr, int duljina, int prioritet, int dobnaskupina,string tip, string prikazivanje)
+        {
+            Ime = ime;
+            Opis = opis;
+            Duljina = duljina;
+            Prioritet = prioritet;
+            DobnaSkupina = dobnaskupina;
+            Tip = tip;
+            Prikazivanje = prikazivanje;
+        }
         //implementacija sučelja
         private string ime = "";
         public string Ime
@@ -49,6 +59,7 @@ namespace tvmanager
         //ostatak implementacije klase LivePrijenos
         //utakmica, koncert
         public string Tip;
+        public string Prikazivanje;
         public override string ToString()
         {
             return Ime + ", zanr: " + Zanr + ". Kratak opis: " + Opis + " Trajanje: " + Duljina + " min. " + "Prioritet: "
