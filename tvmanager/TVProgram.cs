@@ -26,7 +26,7 @@ namespace tvmanager
            
         }
 
-        private List<Dictionary<string,ITVSadrzaj>> Raspored(string dan)//dan se ubacuje u obliku npr pon = '_+%'
+        private Dictionary<string,ITVSadrzaj> Raspored(string dan)//dan se ubacuje u obliku npr pon = '_+%'
         {
             List<Film> f = DohvatiIzBazeFilmove(dan);
             List<Serija> s = DohvatiIzBazeSerije(dan);
@@ -34,6 +34,13 @@ namespace tvmanager
             List<DSPK> d = DohvatiIzBazeDSPK(dan);
             List<Reklama> r = DohvatiIzBazeReklame();
 
+            Dictionary<string, ITVSadrzaj> dict = new Dictionary<string, ITVSadrzaj>();
+            foreach (LivePrijenos liv in l)
+                if (liv.Ime == "Vatrica")
+                    dict.Add("00:00", liv);
+
+
+            
 
 
         }
