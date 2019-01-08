@@ -57,6 +57,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel panel1;
     }
 }

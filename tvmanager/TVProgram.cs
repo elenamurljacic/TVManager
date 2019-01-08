@@ -148,7 +148,9 @@ namespace tvmanager
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
-                connection.Open();
+                connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TVSadrzaj.mdf;Integrated Security=True;";
+
+               
                 command.Parameters.AddWithValue("@ime", f.Ime);
                 command.Parameters.AddWithValue("@opis", f.Opis);
                 command.Parameters.AddWithValue("@zanr", f.Zanr);
@@ -159,10 +161,12 @@ namespace tvmanager
                 command.Parameters.AddWithValue("@gglumac", f.GlavniGlumac);
                 command.Parameters.AddWithValue("@prikazivanje", f.Prikazivanje);
 
-                command.ExecuteScalar();
+                
                 try
                 {
+                    connection.Open();
                     command.ExecuteNonQuery();
+                    command.ExecuteScalar();
                 }
                 catch (Exception ex)
                 {
