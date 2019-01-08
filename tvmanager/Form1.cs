@@ -82,6 +82,7 @@ namespace tvmanager
             DSPK InMagazin = new DSPK("InMagazin", "Lifestyle magazin", "Svijet", 30, 4, 8, "show", "Renata Končić", "Mia Kovačić", "-XXXXXXX");
             DSPK Potjera = new DSPK("Potjera", "Kviz", "Utrka pitanja", 90, 4, 8, "show", "Renata Končić", "Mia Kovačić", "-XXXXXXX");
             DSPK DrOz = new DSPK("DrOz", "talk show", "Zdravlje.", 60, 4, 8, "talk show", "Dr Oz", "Dr Oz", "-XXXXX--");
+            DSPK DobroJutro = new DSPK("Dobro jutro Hrvatska", "jutarnja emisija", "aktualno", 120, 2, 0, "talk show", "Ana Milic", "Karmela Vukov", "-XXXXX--");
 
             Film film1 = new Film("Bumbleblee", "Transformeri", "akcija", 90, 3, 0, "A.K.", "", "R-----XX");
             Film film2 = new Film("Sam u kući 1", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "R-----XX");
@@ -119,8 +120,6 @@ namespace tvmanager
             Reklama reklama5 = new Reklama("Lidl", "trgovina", "prehrana", 3, 4, 0, 130);
             Reklama reklama6 = new Reklama("Tommy", "trgovina", "prehrana", 2, 4, 0, 90);
             Reklama reklama7 = new Reklama("TopShop", "kupovina", "razno", 5, 4, 0, 200);
-            Reklama reklama8 = new Reklama("TopShop", "kupovina", "razno", 5, 4, 0, 200);
-
         }
     }
 }
