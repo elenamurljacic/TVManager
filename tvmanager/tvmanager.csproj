@@ -64,11 +64,11 @@
   <ItemGroup>
     <Compile Include="DSPK.cs" />
     <Compile Include="Film.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="TVProgram.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="TVProgram.Designer.cs">
+      <DependentUpon>TVProgram.cs</DependentUpon>
     </Compile>
     <Compile Include="LivePrijenos.cs" />
     <Compile Include="Monitor.cs">
@@ -87,14 +87,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TVSadrzajDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Unos programa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Unos programa.Designer.cs">
-      <DependentUpon>Unos programa.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="TVProgram.resx">
+      <DependentUpon>TVProgram.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitor.resx">
       <DependentUpon>Monitor.cs</DependentUpon>
