@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace tvmanager
 {
@@ -15,7 +16,7 @@ namespace tvmanager
             InitializeComponent();
             monitor.Show();
 
-            //connectionString = ConfigurationManager.ConnectionStrings["tvmanager.Properties.Settings.TVSadrzajConnectionString"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["tvmanager.Properties.Settings.TVSadrzajConnectionString"].ConnectionString;
 
         }
 
@@ -38,10 +39,32 @@ namespace tvmanager
             for (int i = 0; i < lvTvProgram.Columns.Count; i++)
                 lvTvProgram.Columns[i].Width = -2;
 
+            UnosPrograma();
+
         }
 
       
-        
+        private void UnosFilm(Film f)
+        {
+            string query = "INSERT INTO Film VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @redatelj, @gglumac, @prikazivanje)";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@ime", f.Ime);
+                command.Parameters.AddWithValue("@opis", f.Opis);
+                command.Parameters.AddWithValue("@zanr", f.Zanr);
+                command.Parameters.AddWithValue("@duljina", f.Duljina);
+                command.Parameters.AddWithValue("@prioritet", f.Prioritet);
+                command.Parameters.AddWithValue("@dobnaskupina", f.DobnaSkupina);
+                command.Parameters.AddWithValue("@redatelj", f.Redatelj);
+                command.Parameters.AddWithValue("@gglumac", f.GlavniGlumac);
+                command.Parameters.AddWithValue("@prikazivanje", f.Prikazivanje);
+
+                command.ExecuteScalar();
+
+            }
+        }
 
 
         private void UnosPrograma()
@@ -79,6 +102,7 @@ namespace tvmanager
             Film film11 = new Film("Teksaški masakr motornom pilom", "Strah.", "horor", 90, 3, 18, "K.E.", "P.O.", "-XXXXX--");
             Film film12 = new Film("SuperMan1", "Strah.", "akcija", 90, 3, 12, "K.E.", "P.O.", "-XXXXX--");
             Film film13 = new Film("Harry Potter i kamen mudraca", "Čarobnjaci.", "sf", 90, 3, 18, "K.E.", "P.O.", "-XXXXX--");
+            UnosFilm(film1);
 
             Film animirani1 = new Film("Pokemoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "Ash", "R-------");
             Film animirani2 = new Film("Teletabisi", "Djeca.", "animirani", 60, 3, 0, "R.E", "Po", "-XXXXX--");
