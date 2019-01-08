@@ -61,10 +61,9 @@ namespace tvmanager
         {
             get { return dobnaSkupina; }
             set { dobnaSkupina = value; }
-        }
+        } 
 
         //ostatak implementacije klase Film
-        //public bool Animirani;
         public string Redatelj;
         public string GlavniGlumac;
         public string Prikazivanje;
