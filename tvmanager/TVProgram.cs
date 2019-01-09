@@ -127,6 +127,124 @@ namespace tvmanager
             }
             return ser;
         }
+
+        private void tsslPon_Click(object sender, EventArgs e)  //toolStripStatusLabel
+        {
+            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
+            Dictionary<string, ITVSadrzaj> pon = list[0];
+
+            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+
+            foreach(KeyValuePair<string, ITVSadrzaj> sadrzaj in pon)
+            {
+                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
+                newItem.SubItems.Add(sadrzaj.Value.Ime);
+            }
+
+            /*ListViewItem new_item = lvTvProgram.Items.Add("12:30");
+            new_item.SubItems.Add("Regionalni Dnevnik");
+
+            for (int i = 0; i < lvTvProgram.Columns.Count; i++)
+                lvTvProgram.Columns[i].Width = -2;
+
+            Film d = DohvatiIzBazeFilmove("Bumbleblee");
+
+            ListViewItem listitem = new ListViewItem(d.Ime);
+            lvTvProgram.Items.Add(listitem);
+            listitem.SubItems.Add(d.Duljina.ToString());*/
+        }
+
+        private void tsslUto_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
+            Dictionary<string, ITVSadrzaj> uto = list[1];
+
+            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+
+            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in uto)
+            {
+                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
+                newItem.SubItems.Add(sadrzaj.Value.Ime);
+            }
+        }
+
+        private void tsslSri_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
+            Dictionary<string, ITVSadrzaj> sri = list[2];
+
+            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+
+            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in sri)
+            {
+                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
+                newItem.SubItems.Add(sadrzaj.Value.Ime);
+            }
+        }
+
+        private void tsslCet_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
+            Dictionary<string, ITVSadrzaj> cet = list[3];
+
+            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+
+            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in cet)
+            {
+                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
+                newItem.SubItems.Add(sadrzaj.Value.Ime);
+            }
+        }
+
+        private void tsslPet_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
+            Dictionary<string, ITVSadrzaj> pet = list[4];
+
+            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+
+            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in pon)
+            {
+                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
+                newItem.SubItems.Add(sadrzaj.Value.Ime);
+            }
+        }
+
+        private void tsslSub_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
+            Dictionary<string, ITVSadrzaj> sub = list[5];
+
+            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+
+            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in sub)
+            {
+                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
+                newItem.SubItems.Add(sadrzaj.Value.Ime);
+            }
+        }
+
+        private void tsslNed_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
+            Dictionary<string, ITVSadrzaj> ned = list[6];
+
+            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+
+            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in ned)
+            {
+                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
+                newItem.SubItems.Add(sadrzaj.Value.Ime);
+            }
+        }
+
         private LivePrijenos DohvatiIzBazeLivePrijenose(string ime)
         {
             LivePrijenos liv = null;

@@ -28,15 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TVProgram));
             this.lvTvProgram = new System.Windows.Forms.ListView();
             this.txbOpis = new System.Windows.Forms.TextBox();
             this.btnCenzura = new System.Windows.Forms.Button();
             this.btnIzvanrednaSituacija = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.statusStripDani = new System.Windows.Forms.StatusStrip();
+            this.tsslPon = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslUto = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslSri = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslCet = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslPet = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslSub = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslNed = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStripDani.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvTvProgram
@@ -88,14 +94,6 @@
             this.btnIzvanrednaSituacija.Text = "Izvanredna situacija";
             this.btnIzvanrednaSituacija.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(31, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(135, 24);
-            this.comboBox1.TabIndex = 5;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -105,11 +103,73 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Kratki opis";
             // 
-            // contextMenuStrip1
+            // statusStripDani
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.statusStripDani.Dock = System.Windows.Forms.DockStyle.Top;
+            this.statusStripDani.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusStripDani.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStripDani.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslPon,
+            this.tsslUto,
+            this.tsslSri,
+            this.tsslCet,
+            this.tsslPet,
+            this.tsslSub,
+            this.tsslNed});
+            this.statusStripDani.Location = new System.Drawing.Point(0, 0);
+            this.statusStripDani.Name = "statusStripDani";
+            this.statusStripDani.Size = new System.Drawing.Size(694, 28);
+            this.statusStripDani.TabIndex = 7;
+            this.statusStripDani.Text = "statusStripDani";
+            // 
+            // tsslPon
+            // 
+            this.tsslPon.Name = "tsslPon";
+            this.tsslPon.Size = new System.Drawing.Size(40, 23);
+            this.tsslPon.Text = "Pon";
+            this.tsslPon.Click += new System.EventHandler(this.tsslPon_Click);
+            // 
+            // tsslUto
+            // 
+            this.tsslUto.Name = "tsslUto";
+            this.tsslUto.Size = new System.Drawing.Size(36, 23);
+            this.tsslUto.Text = "Uto";
+            this.tsslUto.Click += new System.EventHandler(this.tsslUto_Click);
+            // 
+            // tsslSri
+            // 
+            this.tsslSri.Name = "tsslSri";
+            this.tsslSri.Size = new System.Drawing.Size(30, 23);
+            this.tsslSri.Text = "Sri";
+            this.tsslSri.Click += new System.EventHandler(this.tsslSri_Click);
+            // 
+            // tsslCet
+            // 
+            this.tsslCet.Name = "tsslCet";
+            this.tsslCet.Size = new System.Drawing.Size(35, 23);
+            this.tsslCet.Text = "Cet";
+            this.tsslCet.Click += new System.EventHandler(this.tsslCet_Click);
+            // 
+            // tsslPet
+            // 
+            this.tsslPet.Name = "tsslPet";
+            this.tsslPet.Size = new System.Drawing.Size(34, 23);
+            this.tsslPet.Text = "Pet";
+            this.tsslPet.Click += new System.EventHandler(this.tsslPet_Click);
+            // 
+            // tsslSub
+            // 
+            this.tsslSub.Name = "tsslSub";
+            this.tsslSub.Size = new System.Drawing.Size(40, 23);
+            this.tsslSub.Text = "Sub";
+            this.tsslSub.Click += new System.EventHandler(this.tsslSub_Click);
+            // 
+            // tsslNed
+            // 
+            this.tsslNed.Name = "tsslNed";
+            this.tsslNed.Size = new System.Drawing.Size(40, 23);
+            this.tsslNed.Text = "Ned";
+            this.tsslNed.Click += new System.EventHandler(this.tsslNed_Click);
             // 
             // TVProgram
             // 
@@ -117,8 +177,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(694, 502);
+            this.Controls.Add(this.statusStripDani);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnIzvanrednaSituacija);
             this.Controls.Add(this.btnCenzura);
             this.Controls.Add(this.txbOpis);
@@ -127,6 +187,8 @@
             this.Name = "TVProgram";
             this.Text = "Monitor program";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.statusStripDani.ResumeLayout(false);
+            this.statusStripDani.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,9 +200,15 @@
         private System.Windows.Forms.TextBox txbOpis;
         private System.Windows.Forms.Button btnCenzura;
         private System.Windows.Forms.Button btnIzvanrednaSituacija;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.StatusStrip statusStripDani;
+        private System.Windows.Forms.ToolStripStatusLabel tsslPon;
+        private System.Windows.Forms.ToolStripStatusLabel tsslUto;
+        private System.Windows.Forms.ToolStripStatusLabel tsslSri;
+        private System.Windows.Forms.ToolStripStatusLabel tsslCet;
+        private System.Windows.Forms.ToolStripStatusLabel tsslPet;
+        private System.Windows.Forms.ToolStripStatusLabel tsslSub;
+        private System.Windows.Forms.ToolStripStatusLabel tsslNed;
     }
 }
 
