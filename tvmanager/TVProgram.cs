@@ -47,10 +47,35 @@ namespace tvmanager
             DSPK spo = DohvatiIzBazeDSPK("Sport"); pon.Add("19:15", spo);
             DSPK inm = DohvatiIzBazeDSPK("IN Magazin"); pon.Add("19:30", inm);
             Film sup = DohvatiIzBazeFilmove("SuperMan1"); pon.Add("20:00", sup);
-            Film hp = DohvatiIzBazeFilmove("Harry Potter1"); pon.Add("22:00", hp);
+            Film hp = DohvatiIzBazeFilmove("Harry Potter i Kamen Mudraca"); pon.Add("22:00", hp);
 
             Dictionary<string, ITVSadrzaj> uto = new Dictionary<string, ITVSadrzaj>(pon);
+            uto.Remove("08:00"); uto.Remove("09:00"); uto.Remove("20:00"); uto.Remove("22:00");
+            Serija pce = DohvatiIzBazeSerije("Pcelica Maja"); uto.Add("08:00",pce);
+            Serija tra = DohvatiIzBazeSerije("Traktor Tom"); uto.Add("09:00", tra);
+            Film the = DohvatiIzBazeFilmove("The Help"); uto.Add("20:00", the);
+            Film brz = DohvatiIzBazeFilmove("Brzi i zestoki"); uto.Add("22:00", brz);
 
+            Dictionary<string, ITVSadrzaj> sri = new Dictionary<string, ITVSadrzaj>(pon);
+            sri.Remove("20:00"); sri.Remove("22:00");
+            Film sk5 = DohvatiIzBazeFilmove("Sam u Kuci 5"); sri.Add("20:00", sk5);
+            Film ss = DohvatiIzBazeFilmove("Slagalica strave"); sri.Add("22:00", ss);
+
+            Dictionary<string, ITVSadrzaj> cet = new Dictionary<string, ITVSadrzaj>(uto);
+            cet.Remove("20:00"); cet.Remove("22:00");
+            Film sk4 = DohvatiIzBazeFilmove("Sam u Kuci 4"); cet.Add("20:00", sk4);
+            Film kru = DohvatiIzBazeFilmove("Krug"); cet.Add("22:00", kru);
+
+            Dictionary<string, ITVSadrzaj> pet = new Dictionary<string, ITVSadrzaj>(pon);
+            pet.Remove("20:00"); pet.Remove("22:00");
+            Film sk3 = DohvatiIzBazeFilmove("Sam u Kuci 3"); pet.Add("20:00", sk3);
+            Film tek = DohvatiIzBazeFilmove("Teksaski masakr motornom pilom"); pet.Add("22:00", tek);
+
+            Dictionary<string, ITVSadrzaj> sub = new Dictionary<string, ITVSadrzaj>(pon);
+            sub.Remove("08:00"); sub.Remove("09:00"); sub.Remove("10:00"); sub.Remove("11:00"); sub.Remove("20:00"); sub.Remove("22:00");
+            Serija zek = DohvatiIzBazeSerije("Zekoslav Mrkva"); sub.Add("08:00", zek); sub.Add("09:00", zek); sub.Add("10:00", zek); sub.Add("11:00", zek);
+            //Film the = DohvatiIzBazeFilmove("The Help"); sub.Add("20:00", the);
+            //Film brz = DohvatiIzBazeFilmove("Brzi i zestoki"); sub.Add("22:00", brz);
 
             List<Dictionary<string, ITVSadrzaj>> list = new List<Dictionary<string, ITVSadrzaj>>();
             list.Add(pon);
