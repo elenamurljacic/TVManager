@@ -5,14 +5,15 @@ using System.Configuration;
 using System.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 
 namespace tvmanager
 {
     public partial class TVProgram : Form
     {
-        SqlConnection connection;   
+        SqlConnection connection;
 
-        string connectionString;   
+        string connectionString;
 
         Monitor monitor = new Monitor();
 
@@ -27,10 +28,10 @@ namespace tvmanager
             InitializeComponent();
 
             monitor.Show();
-      
+
             connectionString = ConfigurationManager.ConnectionStrings["tvmanager.Properties.Settings.TVSadrzajConnectionString"].ConnectionString;
-            
-           
+
+
         }
 
         private void Raspored(string dan)
@@ -47,7 +48,7 @@ namespace tvmanager
             Serija cob = DohvatiIzBazeSerije("Kobra"); pon.Add("13:15", cob);
             Serija dad = DohvatiIzBazeSerije("Dadilja"); pon.Add("14:15", dad);
             DSPK droz = DohvatiIzBazeDSPK("DrOz"); pon.Add("15:00", droz);
-            //reklama
+            Reklama tps = DohvatiIzBazeReklamu("TopShop");
             DSPK pot = DohvatiIzBazeDSPK("Potjera"); pon.Add("16:30", pot);
             DSPK dne = DohvatiIzBazeDSPK("Dnevnik"); pon.Add("18:00", dne);
             pon.Add("19:00", pro);
@@ -58,7 +59,7 @@ namespace tvmanager
 
             Dictionary<string, ITVSadrzaj> uto = new Dictionary<string, ITVSadrzaj>(pon);
             uto.Remove("08:00"); uto.Remove("09:00"); uto.Remove("20:00"); uto.Remove("22:00");
-            Serija pce = DohvatiIzBazeSerije("Bob graditelj"); uto.Add("08:00",pce);
+            Serija pce = DohvatiIzBazeSerije("Bob graditelj"); uto.Add("08:00", pce);
             Serija tra = DohvatiIzBazeSerije("Traktor Tom"); uto.Add("09:00", tra);
             Film the = DohvatiIzBazeFilmove("The Help"); uto.Add("20:00", the);
             Film brz = DohvatiIzBazeFilmove("Brzi i žestoki"); uto.Add("22:00", brz);
@@ -133,31 +134,34 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(droz.Ime);
                 //reklama
-                ListViewItem listitem12 = new ListViewItem("16:30");
+                ListViewItem listitem12 = new ListViewItem("16:00");
                 lvTvProgram.Items.Add(listitem12);
-                listitem12.SubItems.Add(pot.Ime);
-                ListViewItem listitem13 = new ListViewItem("18:00");
+                listitem12.SubItems.Add(tps.Ime);
+                ListViewItem listitem13 = new ListViewItem("16:30");
                 lvTvProgram.Items.Add(listitem13);
-                listitem13.SubItems.Add(dne.Ime);
-                ListViewItem listitem14 = new ListViewItem("19:00");
+                listitem13.SubItems.Add(pot.Ime);
+                ListViewItem listitem14 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem14);
-                listitem14.SubItems.Add(pro.Ime);
-                ListViewItem listitem15 = new ListViewItem("19:15");
+                listitem14.SubItems.Add(dne.Ime);
+                ListViewItem listitem15 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem15);
-                listitem15.SubItems.Add(spo.Ime);
-                ListViewItem listitem16 = new ListViewItem("19:30");
+                listitem15.SubItems.Add(pro.Ime);
+                ListViewItem listitem16 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem16);
-                listitem16.SubItems.Add(inm.Ime);
-                ListViewItem listitem17 = new ListViewItem("20:00");
+                listitem16.SubItems.Add(spo.Ime);
+                ListViewItem listitem17 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem17);
-                listitem17.SubItems.Add(sup.Ime);
-                ListViewItem listitem18 = new ListViewItem("22:00");
+                listitem17.SubItems.Add(inm.Ime);
+                ListViewItem listitem18 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem18);
-                listitem18.SubItems.Add(hp.Ime);
+                listitem18.SubItems.Add(sup.Ime);
+                ListViewItem listitem19 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem19);
+                listitem19.SubItems.Add(hp.Ime);
 
             }
 
-            if(dan == "Uto")
+            if (dan == "Uto")
             {
                 BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
@@ -194,30 +198,33 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(droz.Ime);
                 //reklama
-                ListViewItem listitem12 = new ListViewItem("16:30");
+                ListViewItem listitem12 = new ListViewItem("16:00");
                 lvTvProgram.Items.Add(listitem12);
-                listitem12.SubItems.Add(pot.Ime);
-                ListViewItem listitem13 = new ListViewItem("18:00");
+                listitem12.SubItems.Add(tps.Ime);
+                ListViewItem listitem13 = new ListViewItem("16:30");
                 lvTvProgram.Items.Add(listitem13);
-                listitem13.SubItems.Add(dne.Ime);
-                ListViewItem listitem14 = new ListViewItem("19:00");
+                listitem13.SubItems.Add(pot.Ime);
+                ListViewItem listitem14 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem14);
-                listitem14.SubItems.Add(pro.Ime);
-                ListViewItem listitem15 = new ListViewItem("19:15");
+                listitem14.SubItems.Add(dne.Ime);
+                ListViewItem listitem15 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem15);
-                listitem15.SubItems.Add(spo.Ime);
-                ListViewItem listitem16 = new ListViewItem("19:30");
+                listitem15.SubItems.Add(pro.Ime);
+                ListViewItem listitem16 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem16);
-                listitem16.SubItems.Add(inm.Ime);
-                ListViewItem listitem17 = new ListViewItem("20:00");
+                listitem16.SubItems.Add(spo.Ime);
+                ListViewItem listitem17 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem17);
-                listitem17.SubItems.Add(the.Ime);
-                ListViewItem listitem18 = new ListViewItem("22:00");
+                listitem17.SubItems.Add(inm.Ime);
+                ListViewItem listitem18 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem18);
-                listitem18.SubItems.Add(brz.Ime);
+                listitem18.SubItems.Add(the.Ime);
+                ListViewItem listitem19 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem19);
+                listitem19.SubItems.Add(brz.Ime);
             }
 
-            if(dan == "Sri")
+            if (dan == "Sri")
             {
                 BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
@@ -254,30 +261,33 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(droz.Ime);
                 //reklama
-                ListViewItem listitem12 = new ListViewItem("16:30");
+                ListViewItem listitem12 = new ListViewItem("16:00");
                 lvTvProgram.Items.Add(listitem12);
-                listitem12.SubItems.Add(pot.Ime);
-                ListViewItem listitem13 = new ListViewItem("18:00");
+                listitem12.SubItems.Add(tps.Ime);
+                ListViewItem listitem13 = new ListViewItem("16:30");
                 lvTvProgram.Items.Add(listitem13);
-                listitem13.SubItems.Add(dne.Ime);
-                ListViewItem listitem14 = new ListViewItem("19:00");
+                listitem13.SubItems.Add(pot.Ime);
+                ListViewItem listitem14 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem14);
-                listitem14.SubItems.Add(pro.Ime);
-                ListViewItem listitem15 = new ListViewItem("19:15");
+                listitem14.SubItems.Add(dne.Ime);
+                ListViewItem listitem15 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem15);
-                listitem15.SubItems.Add(spo.Ime);
-                ListViewItem listitem16 = new ListViewItem("19:30");
+                listitem15.SubItems.Add(pro.Ime);
+                ListViewItem listitem16 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem16);
-                listitem16.SubItems.Add(inm.Ime);
-                ListViewItem listitem17 = new ListViewItem("20:00");
+                listitem16.SubItems.Add(spo.Ime);
+                ListViewItem listitem17 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem17);
-                listitem17.SubItems.Add(ig1.Ime);
-                ListViewItem listitem18 = new ListViewItem("22:00");
+                listitem17.SubItems.Add(inm.Ime);
+                ListViewItem listitem18 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem18);
-                listitem18.SubItems.Add(brz.Ime);
+                listitem18.SubItems.Add(ig1.Ime);
+                ListViewItem listitem19 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem19);
+                listitem19.SubItems.Add(brz.Ime);
             }
 
-            if(dan == "Cet")
+            if (dan == "Cet")
             {
                 BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
@@ -314,30 +324,33 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(droz.Ime);
                 //reklama
-                ListViewItem listitem12 = new ListViewItem("16:30");
+                ListViewItem listitem12 = new ListViewItem("16:00");
                 lvTvProgram.Items.Add(listitem12);
-                listitem12.SubItems.Add(pot.Ime);
-                ListViewItem listitem13 = new ListViewItem("18:00");
+                listitem12.SubItems.Add(tps.Ime);
+                ListViewItem listitem13 = new ListViewItem("16:30");
                 lvTvProgram.Items.Add(listitem13);
-                listitem13.SubItems.Add(dne.Ime);
-                ListViewItem listitem14 = new ListViewItem("19:00");
+                listitem13.SubItems.Add(pot.Ime);
+                ListViewItem listitem14 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem14);
-                listitem14.SubItems.Add(pro.Ime);
-                ListViewItem listitem15 = new ListViewItem("19:15");
+                listitem14.SubItems.Add(dne.Ime);
+                ListViewItem listitem15 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem15);
-                listitem15.SubItems.Add(spo.Ime);
-                ListViewItem listitem16 = new ListViewItem("19:30");
+                listitem15.SubItems.Add(pro.Ime);
+                ListViewItem listitem16 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem16);
-                listitem16.SubItems.Add(inm.Ime);
-                ListViewItem listitem17 = new ListViewItem("20:00");
+                listitem16.SubItems.Add(spo.Ime);
+                ListViewItem listitem17 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem17);
-                listitem17.SubItems.Add(ig2.Ime);
-                ListViewItem listitem18 = new ListViewItem("22:00");
+                listitem17.SubItems.Add(inm.Ime);
+                ListViewItem listitem18 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem18);
-                listitem18.SubItems.Add(kru.Ime);
+                listitem18.SubItems.Add(ig2.Ime);
+                ListViewItem listitem19 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem19);
+                listitem19.SubItems.Add(kru.Ime);
             }
 
-            if(dan == "Pet")
+            if (dan == "Pet")
             {
                 BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
@@ -374,30 +387,33 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(droz.Ime);
                 //reklama
-                ListViewItem listitem12 = new ListViewItem("16:30");
+                ListViewItem listitem12 = new ListViewItem("16:00");
                 lvTvProgram.Items.Add(listitem12);
-                listitem12.SubItems.Add(pot.Ime);
-                ListViewItem listitem13 = new ListViewItem("18:00");
+                listitem12.SubItems.Add(tps.Ime);
+                ListViewItem listitem13 = new ListViewItem("16:30");
                 lvTvProgram.Items.Add(listitem13);
-                listitem13.SubItems.Add(dne.Ime);
-                ListViewItem listitem14 = new ListViewItem("19:00");
+                listitem13.SubItems.Add(pot.Ime);
+                ListViewItem listitem14 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem14);
-                listitem14.SubItems.Add(pro.Ime);
-                ListViewItem listitem15 = new ListViewItem("19:15");
+                listitem14.SubItems.Add(dne.Ime);
+                ListViewItem listitem15 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem15);
-                listitem15.SubItems.Add(spo.Ime);
-                ListViewItem listitem16 = new ListViewItem("19:30");
+                listitem15.SubItems.Add(pro.Ime);
+                ListViewItem listitem16 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem16);
-                listitem16.SubItems.Add(inm.Ime);
-                ListViewItem listitem17 = new ListViewItem("20:00");
+                listitem16.SubItems.Add(spo.Ime);
+                ListViewItem listitem17 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem17);
-                listitem17.SubItems.Add(ig3.Ime);
-                ListViewItem listitem18 = new ListViewItem("22:00");
+                listitem17.SubItems.Add(inm.Ime);
+                ListViewItem listitem18 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem18);
-                listitem18.SubItems.Add(tek.Ime);
+                listitem18.SubItems.Add(ig3.Ime);
+                ListViewItem listitem19 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem19);
+                listitem19.SubItems.Add(tek.Ime);
             }
 
-            if(dan == "Sub")
+            if (dan == "Sub")
             {
                 BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
@@ -431,6 +447,9 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(kon.Ime);
                 //reklama
+                ListViewItem listitem12 = new ListViewItem("16:00");
+                lvTvProgram.Items.Add(listitem12);
+                listitem12.SubItems.Add(tps.Ime);
                 ListViewItem listitem13 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem13);
                 listitem13.SubItems.Add(dne.Ime);
@@ -451,7 +470,7 @@ namespace tvmanager
                 listitem18.SubItems.Add(bum.Ime);
             }
 
-            if(dan == "Ned")
+            if (dan == "Ned")
             {
                 BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
@@ -485,6 +504,9 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(kon.Ime);
                 //reklama
+                ListViewItem listitem12 = new ListViewItem("16:00");
+                lvTvProgram.Items.Add(listitem12);
+                listitem12.SubItems.Add(tps.Ime);
                 ListViewItem listitem13 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem13);
                 listitem13.SubItems.Add(dne.Ime);
@@ -510,47 +532,61 @@ namespace tvmanager
         private void BrisiListView()
         {
             lvTvProgram.Clear();
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Sat", -1, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -1, HorizontalAlignment.Left);
 
-            for (int i = 0; i < lvTvProgram.Columns.Count; i++)
-                lvTvProgram.Columns[i].Width = -2;
+            lvTvProgram.Columns[0].Width = 50;
+            lvTvProgram.Columns[1].Width = -2;
         }
 
         #region Odabir dana
         private void tsslPon_Click(object sender, EventArgs e)
         {
             Raspored("Pon");
+            lvTvProgram.FocusedItem = lvTvProgram.Items[0];
+            lvTvProgram.Items[0].Selected = true;
         }
 
         private void tsslUto_Click(object sender, EventArgs e)
         {
             Raspored("Uto");
+            lvTvProgram.FocusedItem = lvTvProgram.Items[0];
+            lvTvProgram.Items[0].Selected = true;
         }
 
         private void tsslSri_Click(object sender, EventArgs e)
         {
             Raspored("Sri");
+            lvTvProgram.FocusedItem = lvTvProgram.Items[0];
+            lvTvProgram.Items[0].Selected = true;
         }
 
         private void tsslCet_Click(object sender, EventArgs e)
         {
             Raspored("Cet");
+            lvTvProgram.FocusedItem = lvTvProgram.Items[0];
+            lvTvProgram.Items[0].Selected = true;
         }
 
         private void tsslPet_Click(object sender, EventArgs e)
         {
             Raspored("Pet");
+            lvTvProgram.FocusedItem = lvTvProgram.Items[0];
+            lvTvProgram.Items[0].Selected = true;
         }
 
         private void tsslSub_Click(object sender, EventArgs e)
         {
             Raspored("Sub");
+            lvTvProgram.FocusedItem = lvTvProgram.Items[0];
+            lvTvProgram.Items[0].Selected = true;
         }
 
         private void tsslNed_Click(object sender, EventArgs e)
         {
             Raspored("Ned");
+            lvTvProgram.FocusedItem = lvTvProgram.Items[0];
+            lvTvProgram.Items[0].Selected = true;
         }
 
         #endregion
@@ -560,8 +596,8 @@ namespace tvmanager
         private void UnosFilm(Film f)
         {
             string query = "IF NOT EXISTS (Select Ime From Film where Ime = @Ime) INSERT INTO Film VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @redatelj, @gglumac, @prikazivanje) ";
-               
-           using (connection = new SqlConnection(connectionString))
+
+            using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
 
@@ -696,7 +732,7 @@ namespace tvmanager
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ooops0"+f.Ime);
+                    MessageBox.Show(ex.Message, "Ooops0" + f.Ime);
                 }
                 finally { connection.Close(); }
 
@@ -740,18 +776,18 @@ namespace tvmanager
         private void UnosPrograma()
         {
             DSPK Dnevnik = new DSPK("Dnevnik", "Informativna emisija", "svijet", 60, 1, 8, "dnevnik", "Goran Milic", "Petar Pereza", "-XXXXXXX"); UnosDSPK(Dnevnik);
-            DSPK Vijesti = new DSPK("Vijesti", "Informativna emisija", "Split", 60, 2, 8, "dnevnik", "Goran Milic", "Petar Pereza", "-XXXXXXX");UnosDSPK(Vijesti);
+            DSPK Vijesti = new DSPK("Vijesti", "Informativna emisija", "Split", 60, 2, 8, "dnevnik", "Goran Milic", "Petar Pereza", "-XXXXXXX"); UnosDSPK(Vijesti);
 
-            DSPK Prognoza = new DSPK("Prognoza", "Informativna emisija", "Hrvatska", 15, 2, 8, "vrijeme", "Goran Milic", "Petar Pereza", "-XXXXXXX");UnosDSPK(Prognoza);
-            DSPK Sport = new DSPK("Sport", "Informativna emisija", "Svijet", 15, 2, 8, "sport", "Goran Milic", "Petar Pereza", "-XXXXXXX");UnosDSPK(Sport);
+            DSPK Prognoza = new DSPK("Prognoza", "Informativna emisija", "Hrvatska", 15, 2, 8, "vrijeme", "Goran Milic", "Petar Pereza", "-XXXXXXX"); UnosDSPK(Prognoza);
+            DSPK Sport = new DSPK("Sport", "Informativna emisija", "Svijet", 15, 2, 8, "sport", "Goran Milic", "Petar Pereza", "-XXXXXXX"); UnosDSPK(Sport);
 
-            DSPK InMagazin = new DSPK("InMagazin", "Lifestyle magazin", "Svijet", 30, 4, 8, "show", "Renata Končić", "Mia Kovačić", "-XXXXXXX");UnosDSPK(InMagazin);
-            DSPK Potjera = new DSPK("Potjera", "Kviz", "Utrka pitanja", 90, 4, 8, "show", "Renata Končić", "Mia Kovačić", "-XXXXXXX");UnosDSPK(Potjera);
-            DSPK DrOz = new DSPK("DrOz", "talk show", "Zdravlje.", 60, 4, 8, "talk show", "Dr Oz", "Dr Oz", "-XXXXX--");UnosDSPK(DrOz);
-            DSPK DobroJutro = new DSPK("Dobro jutro Hrvatska", "jutarnja emisija", "aktualno", 120, 2, 0, "talk show", "Ana Milic", "Karmela Vukov", "-XXXXX--");UnosDSPK(DobroJutro);
+            DSPK InMagazin = new DSPK("InMagazin", "Lifestyle magazin", "Svijet", 30, 4, 8, "show", "Renata Končić", "Mia Kovačić", "-XXXXXXX"); UnosDSPK(InMagazin);
+            DSPK Potjera = new DSPK("Potjera", "Kviz", "Utrka pitanja", 90, 4, 8, "show", "Renata Končić", "Mia Kovačić", "-XXXXXXX"); UnosDSPK(Potjera);
+            DSPK DrOz = new DSPK("DrOz", "talk show", "Zdravlje.", 60, 4, 8, "talk show", "Dr Oz", "Dr Oz", "-XXXXX--"); UnosDSPK(DrOz);
+            DSPK DobroJutro = new DSPK("Dobro jutro Hrvatska", "jutarnja emisija", "aktualno", 120, 2, 0, "talk show", "Ana Milic", "Karmela Vukov", "-XXXXX--"); UnosDSPK(DobroJutro);
 
-            Film film1 = new Film("Bumbleblee", "Transformeri", "akcija", 90, 3, 0, "A.K.", "", "------XX");UnosFilm(film1);
-            Film film2 = new Film("Sam u kući 1", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "------XX");UnosFilm(film2);
+            Film film1 = new Film("Bumbleblee", "Transformeri", "akcija", 90, 3, 0, "A.K.", "", "------XX"); UnosFilm(film1);
+            Film film2 = new Film("Sam u kući 1", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "------XX"); UnosFilm(film2);
             Film film3 = new Film("Sam u kući 2", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "--------"); UnosFilm(film3);
             Film film4 = new Film("Sam u kući 3", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "------XX"); UnosFilm(film4);
             Film film5 = new Film("Sam u kući 4", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "------XX"); UnosFilm(film5);
@@ -769,11 +805,11 @@ namespace tvmanager
             Film film17 = new Film("Igre gladi 4", "Borba za opstanak.", "sf", 90, 3, 15, "K.E.", "P.O.", "-XXXXXX-"); UnosFilm(film17);
 
 
-            Serija animirani1 = new Serija("Pokemoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "--------");UnosSerija(animirani1);
-            Serija animirani2 = new Serija("Teletabisi", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani2);
-            Serija animirani3 = new Serija("Pcelica Maja", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "--------"); UnosSerija(animirani3);
-            Serija animirani4 = new Serija("Traktor Tom", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani4);
-            Serija animirani5 = new Serija("Zekoslav Mrkva", "Zeko.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani5);
+            Serija animirani1 = new Serija("Pokemoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani1);
+            Serija animirani2 = new Serija("Teletabisi", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "-XXXXX--"); UnosSerija(animirani2);
+            Serija animirani3 = new Serija("Pcelica Maja", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani3);
+            Serija animirani4 = new Serija("Traktor Tom", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "-XXXXX--"); UnosSerija(animirani4);
+            Serija animirani5 = new Serija("Zekoslav Mrkva", "Zeko.", "animirani", 60, 3, 0, "R.E", "1", 1, "-XXXXX--"); UnosSerija(animirani5);
             Serija animirani6 = new Serija("Digimoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani6);
             Serija animirani7 = new Serija("Bob graditelj", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani7);
 
@@ -786,7 +822,7 @@ namespace tvmanager
             LivePrijenos liveprijenos2 = new LivePrijenos("Koncert", "live koncert", "glazba", 120, 2, 0, "live prijenos", "------X-"); UnosLivePrijenos(liveprijenos2);
             LivePrijenos liveprijenos3 = new LivePrijenos("Utakmica", "Hrvatska-Spanjolska", "sport", 120, 2, 0, "live prijenos", "-------X"); UnosLivePrijenos(liveprijenos3);
             LivePrijenos liveprijenos4 = new LivePrijenos("vatrica", "Prekid programa", "", 360, 2, 0, "live prijenos", "-------X"); UnosLivePrijenos(liveprijenos4);
-            Reklama reklama1 = new Reklama("Lenor", "omeksivac", "odjeca", 1, 4, 0, 45);UnosReklama(reklama1);
+            Reklama reklama1 = new Reklama("Lenor", "omeksivac", "odjeca", 1, 4, 0, 45); UnosReklama(reklama1);
             Reklama reklama2 = new Reklama("Orbit", "zvaka", "prehrana", 2, 4, 0, 80); UnosReklama(reklama2);
             Reklama reklama3 = new Reklama("Karlovacko", "pivo", "prehrana", 3, 4, 0, 105); UnosReklama(reklama3);
             Reklama reklama4 = new Reklama("Ozujsko", "pivo", "prehrana", 1, 4, 0, 70); UnosReklama(reklama4);
@@ -915,7 +951,26 @@ namespace tvmanager
             }
             return rek;
         }
+
+        private Reklama DohvatiIzBazeReklamu(string ime)
+        {
+            Reklama rek = null;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Reklama WHERE Ime LIKE '" + ime + "'", connection))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    rek = new Reklama(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], (int)dr["Cijena"]);
+                }
+            }
+            return rek;
+        }
         #endregion
+
 
         #region Dohvacanje za cenzuriranje; shuffle
 
@@ -1000,12 +1055,12 @@ namespace tvmanager
             int randomIndex = 0;
             while (inputList.Count > 0)
             {
-                randomIndex = r.Next(0, inputList.Count); 
-                randomList.Add(inputList[randomIndex]); 
-                inputList.RemoveAt(randomIndex); 
+                randomIndex = r.Next(0, inputList.Count);
+                randomList.Add(inputList[randomIndex]);
+                inputList.RemoveAt(randomIndex);
             }
 
-            return randomList; 
+            return randomList;
         }
         private List<LivePrijenos> ShuffleList(List<LivePrijenos> inputList)
         {
@@ -1015,18 +1070,18 @@ namespace tvmanager
             int randomIndex = 0;
             while (inputList.Count > 0)
             {
-                randomIndex = r.Next(0, inputList.Count); 
-                randomList.Add(inputList[randomIndex]); 
-                inputList.RemoveAt(randomIndex); 
+                randomIndex = r.Next(0, inputList.Count);
+                randomList.Add(inputList[randomIndex]);
+                inputList.RemoveAt(randomIndex);
             }
 
-            return randomList; 
+            return randomList;
         }
         #endregion
 
         private void btnCenzura_Click(object sender, EventArgs e)
-        {            
-            if (lvTvProgram.SelectedItems.Count > 0)  
+        {
+            if (lvTvProgram.SelectedItems.Count > 0)
             {
                 txbOpis.Text = "hej";
                 string cenzuriraj = lvTvProgram.SelectedItems[0].Name;
@@ -1069,9 +1124,9 @@ namespace tvmanager
                 if (result1 == DialogResult.Yes)
                 {
                     List<string> nazivi = new List<string>();
-                    foreach(ListViewItem lv in lvTvProgram.Items)
+                    foreach (ListViewItem lv in lvTvProgram.Items)
                         nazivi.Add(lv.SubItems[1].Text);
-                    
+
                     int trajanjeCenzure = 0;
                     if (trajanje == 90 || trajanje == 120)
                     {
@@ -1124,6 +1179,137 @@ namespace tvmanager
                         }
                     }
                 }
+            }
+        }
+
+        private void lvTvProgram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvTvProgram.SelectedItems.Count == 0)
+                return;
+            int var2 = lvTvProgram.Items.IndexOf(lvTvProgram.SelectedItems[0]);
+
+            string ime = lvTvProgram.Items[var2].SubItems[1].Text;
+            ITVSadrzaj itv;
+            itv = DohvatiIzBazeFilmove(ime);
+            if (itv != null)
+                txbOpis.Text = itv.ToString();
+            itv = DohvatiIzBazeSerije(ime);
+            if (itv != null)
+                txbOpis.Text = itv.ToString();
+            itv = DohvatiIzBazeDSPK(ime);
+            if (itv != null)
+                txbOpis.Text = itv.ToString();
+            itv = DohvatiIzBazeLivePrijenose(ime);
+            if (itv != null)
+                txbOpis.Text = itv.ToString();
+            itv = DohvatiIzBazeReklamu(ime);
+            if (itv != null)
+                txbOpis.Text = itv.ToString();
+
+            Image image = Image.FromFile(@"..\..\slike\" + ime + ".jpg");
+
+
+            monitor.pictureBox1.Image = image;
+
+
+
+
+        }
+
+        private void btnIzvanrednaSituacija_Click(object sender, EventArgs e)
+        {
+            if (lvTvProgram.Items.Count < 1)
+            {
+                MessageBox.Show("Odaberite dan za izvanrednu situaciju");
+            }
+            else
+            {
+                IzvanRednaSituacija izv = new IzvanRednaSituacija();
+                izv.Show();
+                string ime = izv.textBox1.Text;
+                string duljinaTrajanja = izv.textBox2.Text;
+                List<string[]> novaLista = new List<string[]>();
+
+                //Prioritet ne smijemo dirat
+
+                //i brojimo reklame
+
+
+                for (int i = 0; i < lvTvProgram.Items.Count; i++)
+                {
+                    string[] program = new string[3];
+                    try
+                    {
+                        DSPK d = DohvatiIzBazeDSPK(lvTvProgram.Items[i].SubItems[1].Text);
+
+                        if (d != null)
+                        {
+                            program[0] = d.Ime;
+                            program[1] = "" + d.Duljina;
+                            program[2] = "" + d.Prioritet;
+                        }
+                    }
+                    catch { }
+                    try
+                    {
+                        Film d = DohvatiIzBazeFilmove(lvTvProgram.Items[i].SubItems[1].Text);
+                        if (d != null)
+                        {
+                            program[0] = d.Ime;
+                            program[1] = "" + d.Duljina;
+                            program[2] = "" + d.Prioritet;
+                        }
+                    }
+                    catch { }
+                    try
+                    {
+                        Serija d = DohvatiIzBazeSerije(lvTvProgram.Items[i].SubItems[1].Text);
+                        if (d != null)
+                        {
+                            program[0] = d.Ime;
+                            program[1] = "" + d.Duljina;
+                            program[2] = "" + d.Prioritet;
+                        }
+
+                    }
+                    catch { }
+                    try
+                    {
+                        Reklama d = DohvatiIzBazeReklamu(lvTvProgram.Items[i].SubItems[1].Text);
+                        if (d != null)
+                        {
+                            program[0] = d.Ime;
+                            program[1] = "" + d.Duljina;
+                            program[2] = "" + d.Prioritet;
+                        }
+                    }
+                    catch { }
+                    try
+                    {
+                        LivePrijenos d = DohvatiIzBazeLivePrijenose(lvTvProgram.Items[i].SubItems[1].Text);
+                        if (d != null)
+                        {
+                            program[0] = d.Ime;
+                            program[1] = "" + d.Duljina;
+                            program[2] = "" + d.Prioritet;
+                        }
+                    }
+                    catch { }
+                    novaLista.Add(program);
+                }
+
+
+
+
+                for (int i = 0; i < novaLista.Count; i++)
+                {
+                    if (int.Parse(novaLista[i][2]) > 2)//Ne moze birat ako su prioriteti 1 i 2 i 3!
+                    {
+                        ListViewItem listitem1 = new ListViewItem(novaLista[i][0]);
+                        izv.listView1.Items.Add(listitem1);
+                    }
+                }
+
             }
         }
     }
