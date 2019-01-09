@@ -64,6 +64,12 @@
   <ItemGroup>
     <Compile Include="DSPK.cs" />
     <Compile Include="Film.cs" />
+    <Compile Include="IzvanRednaSituacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzvanRednaSituacija.Designer.cs">
+      <DependentUpon>IzvanRednaSituacija.cs</DependentUpon>
+    </Compile>
     <Compile Include="TVProgram.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TVSadrzajDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="IzvanRednaSituacija.resx">
+      <DependentUpon>IzvanRednaSituacija.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TVProgram.resx">
       <DependentUpon>TVProgram.cs</DependentUpon>
     </EmbeddedResource>

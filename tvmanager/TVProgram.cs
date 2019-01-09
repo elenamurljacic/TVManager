@@ -14,7 +14,7 @@ namespace tvmanager
         string connectionString;   
 
         Monitor monitor = new Monitor();
-
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -889,6 +889,64 @@ namespace tvmanager
 
         private void lvTvProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnIzvanrednaSituacija_Click(object sender, EventArgs e)
+        {
+            if (lvTvProgram.Items.Count < 1)
+            {
+                MessageBox.Show("Odaberite dan za izvanrednu situaciju");
+            }
+            else
+            {
+                IzvanRednaSituacija izv = new IzvanRednaSituacija();
+                izv.Show();
+                string ime = izv.textBox1.Text;
+                string duljinaTrajanja = izv.textBox2.Text;
+                List<string[]> novaLista = new List<string[]>();
+
+                //Prioritet ne smijemo dirat
+
+                //i brojimo reklame
+
+                
+                for (int i=0;i< lvTvProgram.Items.Count; i++)
+                {
+                    string[] program = new string[3];
+                    try
+                    {
+                        DSPK d = DohvatiIzBazeDSPK(lvTvProgram.Items[i].SubItems[1].Text);
+                        program[0] = d.Ime;
+                        program[1] = "" + d.Duljina;
+                        program[2] = "" + d.Prioritet;
+                    }
+                    catch{ }
+                    try
+                    {
+                        Film d = DohvatiIzBazeFilmove(lvTvProgram.Items[i].SubItems[1].Text);
+                        program[0] = d.Ime;
+                        program[1] = "" + d.Duljina;
+                        program[2] = "" + d.Prioritet;
+                    }
+                    catch { }
+                    try
+                    {
+                        Serija d = DohvatiIzBazeSerije(lvTvProgram.Items[i].SubItems[1].Text);
+                        program[0] = d.Ime;
+                        program[1] = "" + d.Duljina;
+                        program[2] = "" + d.Prioritet;
+                    
+                    }
+                    catch { }
+                    try
+                    {
+                        //Reklama d = DohvatiIzBazeReklame(lvTvProgram.Items[i].SubItems[1].Text);
+                    }
+                }
+
+                
+            }
 
         }
     }

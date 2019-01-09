@@ -93,6 +93,7 @@
             this.btnIzvanrednaSituacija.TabIndex = 4;
             this.btnIzvanrednaSituacija.Text = "Izvanredna situacija";
             this.btnIzvanrednaSituacija.UseVisualStyleBackColor = false;
+            this.btnIzvanrednaSituacija.Click += new System.EventHandler(this.btnIzvanrednaSituacija_Click);
             // 
             // label1
             // 
