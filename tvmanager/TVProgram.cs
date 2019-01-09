@@ -117,7 +117,7 @@ namespace tvmanager
         {
             Film flm = null;
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Film WHERE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Film WHERE Ime LIKE '" + ime + "'", connection)) 
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -135,7 +135,7 @@ namespace tvmanager
         {
             Serija ser = null;
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Serija WHERE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Serija WHERE Ime LIKE '" + ime + "'", connection)) 
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -153,7 +153,7 @@ namespace tvmanager
         {
             LivePrijenos liv = null;
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM LivePrijenos WHERE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM LivePrijenos WHERE Ime LIKE '" + ime + "'", connection)) 
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -171,7 +171,7 @@ namespace tvmanager
         {
             DSPK dsp = null;
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM DSPK WHERE Prikazivanje LIKE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM DSPK WHERE Prikazivanje LIKE Ime LIKE '" + ime + "'", connection)) 
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -189,7 +189,7 @@ namespace tvmanager
         {
             List<Reklama> rek = new List<Reklama>();
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Reklama", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Reklama", connection)) 
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -205,8 +205,9 @@ namespace tvmanager
 
         private void UnosFilm(Film f)
         {
-            string query = "INSERT INTO Film(Ime,Opis,Zanr,Duljina,Prioritet,DobnaSkupina,Redatelj,GlavniGlumac,Prikazivanje) VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @redatelj, @gglumac, @prikazivanje)";
-            using (connection = new SqlConnection(connectionString))
+            string query = "IF NOT EXISTS (Select Ime From Film where Ime = @Ime) INSERT INTO Film VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @redatelj, @gglumac, @prikazivanje) ";
+               
+           using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
 
@@ -241,7 +242,7 @@ namespace tvmanager
 
         private void UnosSerija(Serija f)
         {
-            string query = "INSERT INTO Serija VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @redatelj, @sezona, @epizode, @prikazivanje)";
+            string query = "IF NOT EXISTS (Select Ime From Serija where Ime = @Ime) insert into Serija(Ime,Opis,Zanr,Duljina,Prioritet,DobnaSkupina,Redatelj,Sezona,Epizode,Prikazivanje) values(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @redatelj, @sezona, @epizode, @prikazivanje)";
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -278,7 +279,7 @@ namespace tvmanager
 
         private void UnosLivePrijenos(LivePrijenos f)
         {
-            string query = "INSERT INTO LivePrijenos VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @tip, @prikazivanje)";
+            string query = "IF NOT EXISTS (Select Ime From LivePrijenos where Ime = @Ime) INSERT INTO LivePrijenos VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @tip, @prikazivanje)";
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -313,7 +314,7 @@ namespace tvmanager
 
         private void UnosDSPK(DSPK f)
         {
-            string query = "INSERT INTO DSPK VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @tip, @urednik, @voditelj, @prikazivanje)";
+            string query = "IF NOT EXISTS (Select Ime From DSPK where Ime = @Ime) INSERT INTO DSPK VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @tip, @urednik, @voditelj, @prikazivanje)";
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -350,7 +351,7 @@ namespace tvmanager
 
         private void UnosReklama(Reklama f)
         {
-            string query = "INSERT INTO Reklama VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @cijena)";
+            string query = "IF NOT EXISTS (Select Ime From Reklama where Ime = @Ime) INSERT INTO Reklama VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @cijena)";
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
