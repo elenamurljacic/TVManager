@@ -47,11 +47,11 @@
             // 
             // lvTvProgram
             // 
-            this.lvTvProgram.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lvTvProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lvTvProgram.FullRowSelect = true;
             this.lvTvProgram.Location = new System.Drawing.Point(21, 58);
             this.lvTvProgram.Name = "lvTvProgram";
-            this.lvTvProgram.Size = new System.Drawing.Size(264, 415);
+            this.lvTvProgram.Size = new System.Drawing.Size(315, 415);
             this.lvTvProgram.TabIndex = 0;
             this.lvTvProgram.UseCompatibleStateImageBehavior = false;
             this.lvTvProgram.View = System.Windows.Forms.View.Details;
@@ -71,7 +71,7 @@
             this.btnCenzura.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCenzura.FlatAppearance.BorderSize = 0;
             this.btnCenzura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCenzura.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnCenzura.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnCenzura.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCenzura.Location = new System.Drawing.Point(425, 301);
             this.btnCenzura.Name = "btnCenzura";
@@ -85,7 +85,7 @@
             this.btnIzvanrednaSituacija.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnIzvanrednaSituacija.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnIzvanrednaSituacija.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnIzvanrednaSituacija.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnIzvanrednaSituacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnIzvanrednaSituacija.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnIzvanrednaSituacija.Location = new System.Drawing.Point(425, 396);
             this.btnIzvanrednaSituacija.Name = "btnIzvanrednaSituacija";
@@ -107,7 +107,7 @@
             // statusStripDani
             // 
             this.statusStripDani.Dock = System.Windows.Forms.DockStyle.Top;
-            this.statusStripDani.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusStripDani.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStripDani.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStripDani.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslPon,
@@ -119,56 +119,56 @@
             this.tsslNed});
             this.statusStripDani.Location = new System.Drawing.Point(0, 0);
             this.statusStripDani.Name = "statusStripDani";
-            this.statusStripDani.Size = new System.Drawing.Size(694, 28);
+            this.statusStripDani.Size = new System.Drawing.Size(694, 29);
             this.statusStripDani.TabIndex = 7;
             this.statusStripDani.Text = "statusStripDani";
             // 
             // tsslPon
             // 
             this.tsslPon.Name = "tsslPon";
-            this.tsslPon.Size = new System.Drawing.Size(40, 23);
+            this.tsslPon.Size = new System.Drawing.Size(47, 24);
             this.tsslPon.Text = "Pon";
             this.tsslPon.Click += new System.EventHandler(this.tsslPon_Click);
             // 
             // tsslUto
             // 
             this.tsslUto.Name = "tsslUto";
-            this.tsslUto.Size = new System.Drawing.Size(36, 23);
+            this.tsslUto.Size = new System.Drawing.Size(41, 24);
             this.tsslUto.Text = "Uto";
             this.tsslUto.Click += new System.EventHandler(this.tsslUto_Click);
             // 
             // tsslSri
             // 
             this.tsslSri.Name = "tsslSri";
-            this.tsslSri.Size = new System.Drawing.Size(30, 23);
+            this.tsslSri.Size = new System.Drawing.Size(35, 24);
             this.tsslSri.Text = "Sri";
             this.tsslSri.Click += new System.EventHandler(this.tsslSri_Click);
             // 
             // tsslCet
             // 
             this.tsslCet.Name = "tsslCet";
-            this.tsslCet.Size = new System.Drawing.Size(35, 23);
+            this.tsslCet.Size = new System.Drawing.Size(41, 24);
             this.tsslCet.Text = "Cet";
             this.tsslCet.Click += new System.EventHandler(this.tsslCet_Click);
             // 
             // tsslPet
             // 
             this.tsslPet.Name = "tsslPet";
-            this.tsslPet.Size = new System.Drawing.Size(34, 23);
+            this.tsslPet.Size = new System.Drawing.Size(40, 24);
             this.tsslPet.Text = "Pet";
             this.tsslPet.Click += new System.EventHandler(this.tsslPet_Click);
             // 
             // tsslSub
             // 
             this.tsslSub.Name = "tsslSub";
-            this.tsslSub.Size = new System.Drawing.Size(40, 23);
+            this.tsslSub.Size = new System.Drawing.Size(47, 24);
             this.tsslSub.Text = "Sub";
             this.tsslSub.Click += new System.EventHandler(this.tsslSub_Click);
             // 
             // tsslNed
             // 
             this.tsslNed.Name = "tsslNed";
-            this.tsslNed.Size = new System.Drawing.Size(40, 23);
+            this.tsslNed.Size = new System.Drawing.Size(49, 24);
             this.tsslNed.Text = "Ned";
             this.tsslNed.Click += new System.EventHandler(this.tsslNed_Click);
             // 
