@@ -16,7 +16,6 @@ namespace tvmanager
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             bool omoguciUnos1 = true;
@@ -24,7 +23,7 @@ namespace tvmanager
             bool omoguciUnos3 = true;
             if (textBox1.Text == "") {label3.Text = "Molimo unesite naziv"; omoguciUnos1 = false; }
             if (textBox2.Text == "") { label4.Text = "Molimo unesite trajanje";omoguciUnos2 = false; }
-                
+            
             try {
 
                 int.Parse(textBox2.Text);
@@ -35,8 +34,10 @@ namespace tvmanager
                 textBox2.Text = "";
                 omoguciUnos3 = false;
             }
-            if(omoguciUnos1&&omoguciUnos2&&omoguciUnos3)
+            if (omoguciUnos1 && omoguciUnos2 && omoguciUnos3)
+            {
                 this.Visible = false;
+            }
         }
     }
 }

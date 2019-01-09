@@ -36,6 +36,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -103,12 +104,21 @@
             this.label4.Size = new System.Drawing.Size(0, 17);
             this.label4.TabIndex = 6;
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(381, 12);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(295, 335);
+            this.listView1.TabIndex = 7;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // IzvanRednaSituacija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(411, 362);
+            this.ClientSize = new System.Drawing.Size(736, 387);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
@@ -133,5 +143,6 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.ListView listView1;
     }
 }

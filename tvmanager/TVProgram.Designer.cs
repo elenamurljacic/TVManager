@@ -185,7 +185,9 @@
             this.Controls.Add(this.txbOpis);
             this.Controls.Add(this.lvTvProgram);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = new System.Drawing.Point(50, 50);
             this.Name = "TVProgram";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Monitor program";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStripDani.ResumeLayout(false);
