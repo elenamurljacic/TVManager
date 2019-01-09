@@ -64,6 +64,12 @@
   <ItemGroup>
     <Compile Include="DSPK.cs" />
     <Compile Include="Film.cs" />
+    <Compile Include="IzvanRednaSituacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzvanRednaSituacija.Designer.cs">
+      <DependentUpon>IzvanRednaSituacija.cs</DependentUpon>
+    </Compile>
     <Compile Include="TVProgram.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TVSadrzajDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="IzvanRednaSituacija.resx">
+      <DependentUpon>IzvanRednaSituacija.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TVProgram.resx">
       <DependentUpon>TVProgram.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +110,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -127,6 +137,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="slike\Izrezak.PNG" />
     <Content Include="TVSadrzaj.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -50,6 +50,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "Monitor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Monitor";
             this.Load += new System.EventHandler(this.Monitor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
