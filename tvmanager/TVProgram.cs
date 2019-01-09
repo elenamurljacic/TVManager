@@ -28,6 +28,16 @@ namespace tvmanager
            
         }
 
+        private void brisiListView()
+        {
+            lvTvProgram.Clear();
+            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
+            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
+
+            for (int i = 0; i < lvTvProgram.Columns.Count; i++)
+                lvTvProgram.Columns[i].Width = -2;
+        }
+
         private void Raspored(string dan)//dan se ubacuje u obliku npr pon = '_+%'
         {
             Dictionary<string, ITVSadrzaj> pon = new Dictionary<string, ITVSadrzaj>();
@@ -47,7 +57,7 @@ namespace tvmanager
             DSPK dne = DohvatiIzBazeDSPK("Dnevnik"); pon.Add("18:00", dne);
             pon.Add("19:00", pro);
             DSPK spo = DohvatiIzBazeDSPK("Sport"); pon.Add("19:15", spo);
-            DSPK inm = DohvatiIzBazeDSPK("IN Magazin"); pon.Add("19:30", inm);
+            DSPK inm = DohvatiIzBazeDSPK("InMagazin"); pon.Add("19:30", inm);
             Film sup = DohvatiIzBazeFilmove("SuperMan1"); pon.Add("20:00", sup);
             Film hp = DohvatiIzBazeFilmove("Harry Potter i kamen mudraca"); pon.Add("22:00", hp);
 
@@ -95,31 +105,444 @@ namespace tvmanager
                 /*ListViewItem listitem = new ListViewItem(d.Ime);
                 lvTvProgram.Items.Add(listitem);
                 listitem.SubItems.Add(d.Duljina.ToString());*/
-                ListViewItem listitem = new ListViewItem("00:00");
-                lvTvProgram.Items.Add(listitem);
-                listitem.SubItems.Add(vatrica.Ime);
-                pon.Add("06:00", dbh);
-                ListViewItem listitem = new ListViewItem("06:00");
-                lvTvProgram.Items.Add(listitem);
-                listitem.SubItems.Add(dbh.Ime);
-                pon.Add("08:00", tel);
-                pon.Add("09:00", pok);
-                pon.Add("10:00", osv);
-                pon.Add("11:00", ist);
-                pon.Add("12:00", vij);
-                pon.Add("13:00", pro);
-                pon.Add("13:15", cob);
-                pon.Add("14:15", dad);
-                pon.Add("15:00", droz);
+                brisiListView();
+                ListViewItem listitem1 = new ListViewItem("00:00");
+                lvTvProgram.Items.Add(listitem1);
+                listitem1.SubItems.Add(vatrica.Ime);
+                ListViewItem listitem2 = new ListViewItem("06:00");
+                lvTvProgram.Items.Add(listitem2);
+                listitem2.SubItems.Add(dbh.Ime);
+                ListViewItem listitem3 = new ListViewItem("08:00");
+                lvTvProgram.Items.Add(listitem3);
+                listitem3.SubItems.Add(tel.Ime);
+                ListViewItem listitem4 = new ListViewItem("09:00");
+                lvTvProgram.Items.Add(listitem4);
+                listitem4.SubItems.Add(pok.Ime);
+                ListViewItem listitem5 = new ListViewItem("10:00");
+                lvTvProgram.Items.Add(listitem5);
+                listitem5.SubItems.Add(osv.Ime);
+                ListViewItem listitem6 = new ListViewItem("11:00");
+                lvTvProgram.Items.Add(listitem6);
+                listitem6.SubItems.Add(ist.Ime);
+                ListViewItem listitem7 = new ListViewItem("12:00");
+                lvTvProgram.Items.Add(listitem7);
+                listitem7.SubItems.Add(vij.Ime);
+                ListViewItem listitem8 = new ListViewItem("13:00");
+                lvTvProgram.Items.Add(listitem8);
+                listitem8.SubItems.Add(pro.Ime);
+                ListViewItem listitem9 = new ListViewItem("13:15");
+                lvTvProgram.Items.Add(listitem9);
+                listitem9.SubItems.Add(cob.Ime);
+                ListViewItem listitem10 = new ListViewItem("14:15");
+                lvTvProgram.Items.Add(listitem10);
+                listitem10.SubItems.Add(dad.Ime);
+                ListViewItem listitem11 = new ListViewItem("15:00");
+                lvTvProgram.Items.Add(listitem11);
+                listitem11.SubItems.Add(droz.Ime);
                 //reklama
-                pon.Add("16:30", pot);
-                pon.Add("18:00", dne);
-                pon.Add("19:00", pro);
-                pon.Add("19:15", spo);
-                pon.Add("19:30", inm);
-                pon.Add("20:00", sup);
-                pon.Add("22:00", hp);
+                ListViewItem listitem12 = new ListViewItem("16:30");
+                lvTvProgram.Items.Add(listitem12);
+                listitem12.SubItems.Add(pot.Ime);
+                ListViewItem listitem13 = new ListViewItem("18:00");
+                lvTvProgram.Items.Add(listitem13);
+                listitem13.SubItems.Add(dne.Ime);
+                ListViewItem listitem14 = new ListViewItem("19:00");
+                lvTvProgram.Items.Add(listitem14);
+                listitem14.SubItems.Add(pro.Ime);
 
+                ListViewItem listitem15 = new ListViewItem("19:15");
+                lvTvProgram.Items.Add(listitem15);
+                listitem15.SubItems.Add(spo.Ime);
+                
+                ListViewItem listitem16 = new ListViewItem("19:30");
+                lvTvProgram.Items.Add(listitem16);
+                listitem16.SubItems.Add(inm.Ime);
+                
+                ListViewItem listitem17 = new ListViewItem("20:00");
+                lvTvProgram.Items.Add(listitem17);
+                listitem17.SubItems.Add(sup.Ime);
+                ListViewItem listitem18 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem18);
+                listitem18.SubItems.Add(hp.Ime);
+
+            }
+
+            if(dan == "Uto")
+            {
+                /*ListViewItem listitem = new ListViewItem(d.Ime);
+                lvTvProgram.Items.Add(listitem);
+                listitem.SubItems.Add(d.Duljina.ToString());*/
+                brisiListView();
+                ListViewItem listitem1 = new ListViewItem("00:00");
+                lvTvProgram.Items.Add(listitem1);
+                listitem1.SubItems.Add(vatrica.Ime);
+                ListViewItem listitem2 = new ListViewItem("06:00");
+                lvTvProgram.Items.Add(listitem2);
+                listitem2.SubItems.Add(dbh.Ime);
+                ListViewItem listitem3 = new ListViewItem("08:00");
+                lvTvProgram.Items.Add(listitem3);
+                listitem3.SubItems.Add(pce.Ime);
+                ListViewItem listitem4 = new ListViewItem("09:00");
+                lvTvProgram.Items.Add(listitem4);
+                listitem4.SubItems.Add(tra.Ime);
+                ListViewItem listitem5 = new ListViewItem("10:00");
+                lvTvProgram.Items.Add(listitem5);
+                listitem5.SubItems.Add(osv.Ime);
+                ListViewItem listitem6 = new ListViewItem("11:00");
+                lvTvProgram.Items.Add(listitem6);
+                listitem6.SubItems.Add(ist.Ime);
+                ListViewItem listitem7 = new ListViewItem("12:00");
+                lvTvProgram.Items.Add(listitem7);
+                listitem7.SubItems.Add(vij.Ime);
+                ListViewItem listitem8 = new ListViewItem("13:00");
+                lvTvProgram.Items.Add(listitem8);
+                listitem8.SubItems.Add(pro.Ime);
+                ListViewItem listitem9 = new ListViewItem("13:15");
+                lvTvProgram.Items.Add(listitem9);
+                listitem9.SubItems.Add(cob.Ime);
+                ListViewItem listitem10 = new ListViewItem("14:15");
+                lvTvProgram.Items.Add(listitem10);
+                listitem10.SubItems.Add(dad.Ime);
+                ListViewItem listitem11 = new ListViewItem("15:00");
+                lvTvProgram.Items.Add(listitem11);
+                listitem11.SubItems.Add(droz.Ime);
+                //reklama
+                ListViewItem listitem12 = new ListViewItem("16:30");
+                lvTvProgram.Items.Add(listitem12);
+                listitem12.SubItems.Add(pot.Ime);
+                ListViewItem listitem13 = new ListViewItem("18:00");
+                lvTvProgram.Items.Add(listitem13);
+                listitem13.SubItems.Add(dne.Ime);
+                ListViewItem listitem14 = new ListViewItem("19:00");
+                lvTvProgram.Items.Add(listitem14);
+                listitem14.SubItems.Add(pro.Ime);
+
+                ListViewItem listitem15 = new ListViewItem("19:15");
+                lvTvProgram.Items.Add(listitem15);
+                listitem15.SubItems.Add(spo.Ime);
+
+                ListViewItem listitem16 = new ListViewItem("19:30");
+                lvTvProgram.Items.Add(listitem16);
+                listitem16.SubItems.Add(inm.Ime);
+
+                ListViewItem listitem17 = new ListViewItem("20:00");
+                lvTvProgram.Items.Add(listitem17);
+                listitem17.SubItems.Add(the.Ime);
+                ListViewItem listitem18 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem18);
+                listitem18.SubItems.Add(brz.Ime);
+            }
+
+            if(dan == "Sri")
+            {
+                /*ListViewItem listitem = new ListViewItem(d.Ime);
+                lvTvProgram.Items.Add(listitem);
+                listitem.SubItems.Add(d.Duljina.ToString());*/
+                brisiListView();
+                ListViewItem listitem1 = new ListViewItem("00:00");
+                lvTvProgram.Items.Add(listitem1);
+                listitem1.SubItems.Add(vatrica.Ime);
+                ListViewItem listitem2 = new ListViewItem("06:00");
+                lvTvProgram.Items.Add(listitem2);
+                listitem2.SubItems.Add(dbh.Ime);
+                ListViewItem listitem3 = new ListViewItem("08:00");
+                lvTvProgram.Items.Add(listitem3);
+                listitem3.SubItems.Add(tel.Ime);
+                ListViewItem listitem4 = new ListViewItem("09:00");
+                lvTvProgram.Items.Add(listitem4);
+                listitem4.SubItems.Add(pok.Ime);
+                ListViewItem listitem5 = new ListViewItem("10:00");
+                lvTvProgram.Items.Add(listitem5);
+                listitem5.SubItems.Add(osv.Ime);
+                ListViewItem listitem6 = new ListViewItem("11:00");
+                lvTvProgram.Items.Add(listitem6);
+                listitem6.SubItems.Add(ist.Ime);
+                ListViewItem listitem7 = new ListViewItem("12:00");
+                lvTvProgram.Items.Add(listitem7);
+                listitem7.SubItems.Add(vij.Ime);
+                ListViewItem listitem8 = new ListViewItem("13:00");
+                lvTvProgram.Items.Add(listitem8);
+                listitem8.SubItems.Add(pro.Ime);
+                ListViewItem listitem9 = new ListViewItem("13:15");
+                lvTvProgram.Items.Add(listitem9);
+                listitem9.SubItems.Add(cob.Ime);
+                ListViewItem listitem10 = new ListViewItem("14:15");
+                lvTvProgram.Items.Add(listitem10);
+                listitem10.SubItems.Add(dad.Ime);
+                ListViewItem listitem11 = new ListViewItem("15:00");
+                lvTvProgram.Items.Add(listitem11);
+                listitem11.SubItems.Add(droz.Ime);
+                //reklama
+                ListViewItem listitem12 = new ListViewItem("16:30");
+                lvTvProgram.Items.Add(listitem12);
+                listitem12.SubItems.Add(pot.Ime);
+                ListViewItem listitem13 = new ListViewItem("18:00");
+                lvTvProgram.Items.Add(listitem13);
+                listitem13.SubItems.Add(dne.Ime);
+                ListViewItem listitem14 = new ListViewItem("19:00");
+                lvTvProgram.Items.Add(listitem14);
+                listitem14.SubItems.Add(pro.Ime);
+
+                ListViewItem listitem15 = new ListViewItem("19:15");
+                lvTvProgram.Items.Add(listitem15);
+                listitem15.SubItems.Add(spo.Ime);
+
+                ListViewItem listitem16 = new ListViewItem("19:30");
+                lvTvProgram.Items.Add(listitem16);
+                listitem16.SubItems.Add(inm.Ime);
+
+                ListViewItem listitem17 = new ListViewItem("20:00");
+                lvTvProgram.Items.Add(listitem17);
+                listitem17.SubItems.Add(ig1.Ime);
+                ListViewItem listitem18 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem18);
+                listitem18.SubItems.Add(brz.Ime);
+            }
+
+            if(dan == "Cet")
+            {
+                brisiListView();
+                ListViewItem listitem1 = new ListViewItem("00:00");
+                lvTvProgram.Items.Add(listitem1);
+                listitem1.SubItems.Add(vatrica.Ime);
+                ListViewItem listitem2 = new ListViewItem("06:00");
+                lvTvProgram.Items.Add(listitem2);
+                listitem2.SubItems.Add(dbh.Ime);
+                ListViewItem listitem3 = new ListViewItem("08:00");
+                lvTvProgram.Items.Add(listitem3);
+                listitem3.SubItems.Add(pce.Ime);
+                ListViewItem listitem4 = new ListViewItem("09:00");
+                lvTvProgram.Items.Add(listitem4);
+                listitem4.SubItems.Add(tra.Ime);
+                ListViewItem listitem5 = new ListViewItem("10:00");
+                lvTvProgram.Items.Add(listitem5);
+                listitem5.SubItems.Add(osv.Ime);
+                ListViewItem listitem6 = new ListViewItem("11:00");
+                lvTvProgram.Items.Add(listitem6);
+                listitem6.SubItems.Add(ist.Ime);
+                ListViewItem listitem7 = new ListViewItem("12:00");
+                lvTvProgram.Items.Add(listitem7);
+                listitem7.SubItems.Add(vij.Ime);
+                ListViewItem listitem8 = new ListViewItem("13:00");
+                lvTvProgram.Items.Add(listitem8);
+                listitem8.SubItems.Add(pro.Ime);
+                ListViewItem listitem9 = new ListViewItem("13:15");
+                lvTvProgram.Items.Add(listitem9);
+                listitem9.SubItems.Add(cob.Ime);
+                ListViewItem listitem10 = new ListViewItem("14:15");
+                lvTvProgram.Items.Add(listitem10);
+                listitem10.SubItems.Add(dad.Ime);
+                ListViewItem listitem11 = new ListViewItem("15:00");
+                lvTvProgram.Items.Add(listitem11);
+                listitem11.SubItems.Add(droz.Ime);
+                //reklama
+                ListViewItem listitem12 = new ListViewItem("16:30");
+                lvTvProgram.Items.Add(listitem12);
+                listitem12.SubItems.Add(pot.Ime);
+                ListViewItem listitem13 = new ListViewItem("18:00");
+                lvTvProgram.Items.Add(listitem13);
+                listitem13.SubItems.Add(dne.Ime);
+                ListViewItem listitem14 = new ListViewItem("19:00");
+                lvTvProgram.Items.Add(listitem14);
+                listitem14.SubItems.Add(pro.Ime);
+
+                ListViewItem listitem15 = new ListViewItem("19:15");
+                lvTvProgram.Items.Add(listitem15);
+                listitem15.SubItems.Add(spo.Ime);
+
+                ListViewItem listitem16 = new ListViewItem("19:30");
+                lvTvProgram.Items.Add(listitem16);
+                listitem16.SubItems.Add(inm.Ime);
+
+                ListViewItem listitem17 = new ListViewItem("20:00");
+                lvTvProgram.Items.Add(listitem17);
+                listitem17.SubItems.Add(ig2.Ime);
+                ListViewItem listitem18 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem18);
+                listitem18.SubItems.Add(kru.Ime);
+            }
+
+            if(dan == "Pet")
+            {
+                brisiListView();
+                ListViewItem listitem1 = new ListViewItem("00:00");
+                lvTvProgram.Items.Add(listitem1);
+                listitem1.SubItems.Add(vatrica.Ime);
+                ListViewItem listitem2 = new ListViewItem("06:00");
+                lvTvProgram.Items.Add(listitem2);
+                listitem2.SubItems.Add(dbh.Ime);
+                ListViewItem listitem3 = new ListViewItem("08:00");
+                lvTvProgram.Items.Add(listitem3);
+                listitem3.SubItems.Add(tel.Ime);
+                ListViewItem listitem4 = new ListViewItem("09:00");
+                lvTvProgram.Items.Add(listitem4);
+                listitem4.SubItems.Add(pok.Ime);
+                ListViewItem listitem5 = new ListViewItem("10:00");
+                lvTvProgram.Items.Add(listitem5);
+                listitem5.SubItems.Add(osv.Ime);
+                ListViewItem listitem6 = new ListViewItem("11:00");
+                lvTvProgram.Items.Add(listitem6);
+                listitem6.SubItems.Add(ist.Ime);
+                ListViewItem listitem7 = new ListViewItem("12:00");
+                lvTvProgram.Items.Add(listitem7);
+                listitem7.SubItems.Add(vij.Ime);
+                ListViewItem listitem8 = new ListViewItem("13:00");
+                lvTvProgram.Items.Add(listitem8);
+                listitem8.SubItems.Add(pro.Ime);
+                ListViewItem listitem9 = new ListViewItem("13:15");
+                lvTvProgram.Items.Add(listitem9);
+                listitem9.SubItems.Add(cob.Ime);
+                ListViewItem listitem10 = new ListViewItem("14:15");
+                lvTvProgram.Items.Add(listitem10);
+                listitem10.SubItems.Add(dad.Ime);
+                ListViewItem listitem11 = new ListViewItem("15:00");
+                lvTvProgram.Items.Add(listitem11);
+                listitem11.SubItems.Add(droz.Ime);
+                //reklama
+                ListViewItem listitem12 = new ListViewItem("16:30");
+                lvTvProgram.Items.Add(listitem12);
+                listitem12.SubItems.Add(pot.Ime);
+                ListViewItem listitem13 = new ListViewItem("18:00");
+                lvTvProgram.Items.Add(listitem13);
+                listitem13.SubItems.Add(dne.Ime);
+                ListViewItem listitem14 = new ListViewItem("19:00");
+                lvTvProgram.Items.Add(listitem14);
+                listitem14.SubItems.Add(pro.Ime);
+
+                ListViewItem listitem15 = new ListViewItem("19:15");
+                lvTvProgram.Items.Add(listitem15);
+                listitem15.SubItems.Add(spo.Ime);
+
+                ListViewItem listitem16 = new ListViewItem("19:30");
+                lvTvProgram.Items.Add(listitem16);
+                listitem16.SubItems.Add(inm.Ime);
+
+                ListViewItem listitem17 = new ListViewItem("20:00");
+                lvTvProgram.Items.Add(listitem17);
+                listitem17.SubItems.Add(ig3.Ime);
+                ListViewItem listitem18 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem18);
+                listitem18.SubItems.Add(tek.Ime);
+            }
+
+            if(dan == "Sub")
+            {
+                brisiListView();
+                ListViewItem listitem1 = new ListViewItem("00:00");
+                lvTvProgram.Items.Add(listitem1);
+                listitem1.SubItems.Add(vatrica.Ime);
+                ListViewItem listitem2 = new ListViewItem("06:00");
+                lvTvProgram.Items.Add(listitem2);
+                listitem2.SubItems.Add(dbh.Ime);
+                ListViewItem listitem3 = new ListViewItem("08:00");
+                lvTvProgram.Items.Add(listitem3);
+                listitem3.SubItems.Add(zek.Ime);
+                ListViewItem listitem4 = new ListViewItem("09:00");
+                lvTvProgram.Items.Add(listitem4);
+                listitem4.SubItems.Add(zek.Ime);
+                ListViewItem listitem5 = new ListViewItem("10:00");
+                lvTvProgram.Items.Add(listitem5);
+                listitem5.SubItems.Add(zek.Ime);
+                ListViewItem listitem6 = new ListViewItem("11:00");
+                lvTvProgram.Items.Add(listitem6);
+                listitem6.SubItems.Add(zek.Ime);
+                ListViewItem listitem7 = new ListViewItem("12:00");
+                lvTvProgram.Items.Add(listitem7);
+                listitem7.SubItems.Add(vij.Ime);
+                ListViewItem listitem8 = new ListViewItem("13:00");
+                lvTvProgram.Items.Add(listitem8);
+                listitem8.SubItems.Add(pro.Ime);
+                ListViewItem listitem9 = new ListViewItem("13:15");
+                lvTvProgram.Items.Add(listitem9);
+                listitem9.SubItems.Add(uta.Ime);
+                
+                ListViewItem listitem11 = new ListViewItem("15:30");
+                lvTvProgram.Items.Add(listitem11);
+                listitem11.SubItems.Add(kon.Ime);
+                //reklama
+                
+                ListViewItem listitem13 = new ListViewItem("18:00");
+                lvTvProgram.Items.Add(listitem13);
+                listitem13.SubItems.Add(dne.Ime);
+
+                ListViewItem listitem14 = new ListViewItem("19:00");
+                lvTvProgram.Items.Add(listitem14);
+                listitem14.SubItems.Add(pro.Ime);
+
+                ListViewItem listitem15 = new ListViewItem("19:15");
+                lvTvProgram.Items.Add(listitem15);
+                listitem15.SubItems.Add(spo.Ime);
+
+                ListViewItem listitem16 = new ListViewItem("19:30");
+                lvTvProgram.Items.Add(listitem16);
+                listitem16.SubItems.Add(inm.Ime);
+
+                ListViewItem listitem17 = new ListViewItem("20:00");
+                lvTvProgram.Items.Add(listitem17);
+                listitem17.SubItems.Add(sk1.Ime);
+                ListViewItem listitem18 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem18);
+                listitem18.SubItems.Add(bum.Ime);
+            }
+
+            if(dan == "Ned")
+            {
+                brisiListView();
+                ListViewItem listitem1 = new ListViewItem("00:00");
+                lvTvProgram.Items.Add(listitem1);
+                listitem1.SubItems.Add(vatrica.Ime);
+                ListViewItem listitem2 = new ListViewItem("06:00");
+                lvTvProgram.Items.Add(listitem2);
+                listitem2.SubItems.Add(dbh.Ime);
+                ListViewItem listitem3 = new ListViewItem("08:00");
+                lvTvProgram.Items.Add(listitem3);
+                listitem3.SubItems.Add(zek.Ime);
+                ListViewItem listitem4 = new ListViewItem("09:00");
+                lvTvProgram.Items.Add(listitem4);
+                listitem4.SubItems.Add(zek.Ime);
+                ListViewItem listitem5 = new ListViewItem("10:00");
+                lvTvProgram.Items.Add(listitem5);
+                listitem5.SubItems.Add(zek.Ime);
+                ListViewItem listitem6 = new ListViewItem("11:00");
+                lvTvProgram.Items.Add(listitem6);
+                listitem6.SubItems.Add(zek.Ime);
+                ListViewItem listitem7 = new ListViewItem("12:00");
+                lvTvProgram.Items.Add(listitem7);
+                listitem7.SubItems.Add(vij.Ime);
+                ListViewItem listitem8 = new ListViewItem("13:00");
+                lvTvProgram.Items.Add(listitem8);
+                listitem8.SubItems.Add(pro.Ime);
+                ListViewItem listitem9 = new ListViewItem("13:15");
+                lvTvProgram.Items.Add(listitem9);
+                listitem9.SubItems.Add(uta.Ime);
+
+                ListViewItem listitem11 = new ListViewItem("15:30");
+                lvTvProgram.Items.Add(listitem11);
+                listitem11.SubItems.Add(kon.Ime);
+                //reklama
+
+                ListViewItem listitem13 = new ListViewItem("18:00");
+                lvTvProgram.Items.Add(listitem13);
+                listitem13.SubItems.Add(dne.Ime);
+
+                ListViewItem listitem14 = new ListViewItem("19:00");
+                lvTvProgram.Items.Add(listitem14);
+                listitem14.SubItems.Add(pro.Ime);
+
+                ListViewItem listitem15 = new ListViewItem("19:15");
+                lvTvProgram.Items.Add(listitem15);
+                listitem15.SubItems.Add(spo.Ime);
+
+                ListViewItem listitem16 = new ListViewItem("19:30");
+                lvTvProgram.Items.Add(listitem16);
+                listitem16.SubItems.Add(inm.Ime);
+
+                ListViewItem listitem17 = new ListViewItem("20:00");
+                lvTvProgram.Items.Add(listitem17);
+                listitem17.SubItems.Add(voi.Ime);
+                ListViewItem listitem18 = new ListViewItem("22:00");
+                lvTvProgram.Items.Add(listitem18);
+                listitem18.SubItems.Add(sk3.Ime);
             }
 
         }
@@ -194,31 +617,32 @@ namespace tvmanager
 
         private void tsslUto_Click(object sender, EventArgs e)
         {
-           
+            Raspored("Uto");
         }
 
         private void tsslSri_Click(object sender, EventArgs e)
         {
-           
+            Raspored("Sri");
         }
 
         private void tsslCet_Click(object sender, EventArgs e)
         {
-           
+            Raspored("Cet");
         }
 
         private void tsslPet_Click(object sender, EventArgs e)
         {
+            Raspored("Pet");
         }
 
         private void tsslSub_Click(object sender, EventArgs e)
         {
-            
+            Raspored("Sub");
         }
 
         private void tsslNed_Click(object sender, EventArgs e)
         {
-           
+            Raspored("Ned");
         }
         private LivePrijenos DohvatiIzBazeLivePrijenose(string ime)
         {
@@ -457,7 +881,7 @@ namespace tvmanager
         private void UnosPrograma()
         {
             DSPK Dnevnik = new DSPK("Dnevnik", "Informativna emisija", "svijet", 60, 1, 8, "dnevnik", "Goran Milic", "Petar Pereza", "-XXXXXXX"); UnosDSPK(Dnevnik);
-            DSPK Vijesti = new DSPK("Vijesti", "Informativna emisija", "Split", 60, 2, 8, "dnevnik", "Goran Milic", "Petar Pereza", "-XXXXXXX");UnosDSPK(Dnevnik);
+            DSPK Vijesti = new DSPK("Vijesti", "Informativna emisija", "Split", 60, 2, 8, "dnevnik", "Goran Milic", "Petar Pereza", "-XXXXXXX");UnosDSPK(Vijesti);
 
             DSPK Prognoza = new DSPK("Prognoza", "Informativna emisija", "Hrvatska", 15, 2, 8, "vrijeme", "Goran Milic", "Petar Pereza", "-XXXXXXX");UnosDSPK(Prognoza);
             DSPK Sport = new DSPK("Sport", "Informativna emisija", "Svijet", 15, 2, 8, "sport", "Goran Milic", "Petar Pereza", "-XXXXXXX");UnosDSPK(Sport);
