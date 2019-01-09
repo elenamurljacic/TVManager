@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace tvmanager
 {
@@ -749,12 +750,12 @@ namespace tvmanager
             DSPK DrOz = new DSPK("DrOz", "talk show", "Zdravlje.", 60, 4, 8, "talk show", "Dr Oz", "Dr Oz", "-XXXXX--");UnosDSPK(DrOz);
             DSPK DobroJutro = new DSPK("Dobro jutro Hrvatska", "jutarnja emisija", "aktualno", 120, 2, 0, "talk show", "Ana Milic", "Karmela Vukov", "-XXXXX--");UnosDSPK(DobroJutro);
 
-            Film film1 = new Film("Bumbleblee", "Transformeri", "akcija", 90, 3, 0, "A.K.", "", "R-----XX");UnosFilm(film1);
-            Film film2 = new Film("Sam u kući 1", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "R-----XX");UnosFilm(film2);
-            Film film3 = new Film("Sam u kući 2", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "R-------"); UnosFilm(film3);
-            Film film4 = new Film("Sam u kući 3", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "R-----XX"); UnosFilm(film4);
-            Film film5 = new Film("Sam u kući 4", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "R-----XX"); UnosFilm(film5);
-            Film film6 = new Film("Sam u kući 5", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "R-------"); UnosFilm(film6);
+            Film film1 = new Film("Bumbleblee", "Transformeri", "akcija", 90, 3, 0, "A.K.", "", "------XX");UnosFilm(film1);
+            Film film2 = new Film("Sam u kući 1", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "------XX");UnosFilm(film2);
+            Film film3 = new Film("Sam u kući 2", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "--------"); UnosFilm(film3);
+            Film film4 = new Film("Sam u kući 3", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "------XX"); UnosFilm(film4);
+            Film film5 = new Film("Sam u kući 4", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "------XX"); UnosFilm(film5);
+            Film film6 = new Film("Sam u kući 5", "Dječak u kući.", "obiteljski", 90, 3, 0, "K.E.", "P.O.", "--------"); UnosFilm(film6);
             Film film7 = new Film("The help", "Istinit događaj.", "drama", 90, 3, 15, "K.E.", "P.O.", "-XXXXX--"); UnosFilm(film7);
             Film film8 = new Film("Brzi i žestoki", "Auti.", "akcija", 90, 3, 15, "K.E.", "P.O.", "-XXXXX--"); UnosFilm(film8);
             Film film9 = new Film("Slagalica strave", "Strah.", "horor", 90, 3, 18, "K.E.", "P.O.", "-XXXXX--"); UnosFilm(film9);
@@ -768,13 +769,13 @@ namespace tvmanager
             Film film17 = new Film("Igre gladi 4", "Borba za opstanak.", "sf", 90, 3, 15, "K.E.", "P.O.", "-XXXXXX-"); UnosFilm(film17);
 
 
-            Serija animirani1 = new Serija("Pokemoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "R-------");UnosSerija(animirani1);
+            Serija animirani1 = new Serija("Pokemoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "--------");UnosSerija(animirani1);
             Serija animirani2 = new Serija("Teletabisi", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani2);
-            Serija animirani3 = new Serija("Pcelica Maja", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "R-------"); UnosSerija(animirani3);
+            Serija animirani3 = new Serija("Pcelica Maja", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "--------"); UnosSerija(animirani3);
             Serija animirani4 = new Serija("Traktor Tom", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani4);
             Serija animirani5 = new Serija("Zekoslav Mrkva", "Zeko.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani5);
-            Serija animirani6 = new Serija("Digimoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani6);
-            Serija animirani7 = new Serija("Bob graditelj", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani7);
+            Serija animirani6 = new Serija("Digimoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani6);
+            Serija animirani7 = new Serija("Bob graditelj", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani7);
 
             Serija serija1 = new Serija("Istanbulska nevjesta", "Turska", "drama", 60, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija1);
             Serija serija2 = new Serija("Kobra", "Njemacka autocesta", "akcija", 60, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija2);
@@ -792,6 +793,35 @@ namespace tvmanager
             Reklama reklama5 = new Reklama("Lidl", "trgovina", "prehrana", 3, 4, 0, 130); UnosReklama(reklama5);
             Reklama reklama6 = new Reklama("Tommy", "trgovina", "prehrana", 2, 4, 0, 90); UnosReklama(reklama6);
             Reklama reklama7 = new Reklama("TopShop", "kupovina", "razno", 5, 4, 0, 200); UnosReklama(reklama7);
+
+            //sadrzaj za cenzuriranje
+            //DSPK VolimHrvatsku = new DSPK("Volim hrvatsku", "talk show", "Zabavna emisija o poznavanju Hrvatske.", 60, 4, 8, "talk show", "Mirko Fodor", "Goran Navojec", "RXXXXX--"); UnosDSPK(VolimHrvatsku);
+            //DSPK MirIDobro = new DSPK("Mir i dobro", "talk show", "Zabavna emisija o poznavanju Hrvatske.", 60, 4, 8, "talk show", "Iva Lerotic", "Mario Raguz", "RXXXXX--"); UnosDSPK(VolimHrvatsku);
+
+            Film film18 = new Film("Snjezno kraljevstvo", "Elsa princeza, posjeduje posebne natprirodne moći.", "obiteljski", 90, 3, 0, "Chris Buck", "P.O.", "R-----XX"); UnosFilm(film18);
+            Film film19 = new Film("Segrt Hlapic", "Elsa princeza, posjeduje posebne natprirodne moći.", "obiteljski", 90, 3, 0, "Silvije Petranovic", "Milje Bilanovic", "R-----XX"); UnosFilm(film19);
+            Film film20 = new Film("Shrek 1", "Oger se zaljubljuje u princezu.", "obiteljski", 60, 3, 0, "Andrew Adamson", "Mike Meyers", "R-----XX"); UnosFilm(film20);
+            Film film21 = new Film("Shrek 2", "Shrek i Fiona u dvorcu.", "obiteljski", 60, 3, 0, "Andrew Adamson", "Mike Meyers", "R-----XX"); UnosFilm(film21);
+            Film film22 = new Film("Shrek 3", "Shrek i Fiona i djeca.", "obiteljski", 60, 3, 0, "Andrew Adamson", "Mike Meyers", "R-----XX"); UnosFilm(film22);
+            Film film23 = new Film("Policijska akademija 1", "Dolazak u akademiju.", "obiteljski", 120, 3, 0, "Hugh Wilson", "Steve Guttenberg", "R-----XX"); UnosFilm(film23);
+            Film film24 = new Film("Policijska akademija 2", "Dolazak u akademiju.", "obiteljski", 120, 3, 0, "Hugh Wilson", "Steve Guttenberg", "R-----XX"); UnosFilm(film24);
+            Film film25 = new Film("Policijska akademija 3", "Dolazak u akademiju.", "obiteljski", 90, 3, 0, "Hugh Wilson", "Steve Guttenberg", "R-----XX"); UnosFilm(film25);
+            Film film26 = new Film("Policijska akademija 4", "Dolazak u akademiju.", "obiteljski", 90, 3, 0, "Hugh Wilson", "Steve Guttenberg", "R-----XX"); UnosFilm(film26);
+
+            Serija animirani8 = new Serija("A je to", "Ceski crtic.", "animirani", 15, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani8);
+            Serija animirani9 = new Serija("Spuzva Bob", "Spuzve pod morem.", "animirani", 15, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani9);
+            Serija animirani10 = new Serija("Pink Panter", "Ruzicasta pantera.", "animirani", 15, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani10);
+            Serija animirani11 = new Serija("Mr Bean", "Luckasti Mr Bean i njegov medo.", "animirani", 15, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani11);
+
+            Serija serija5 = new Serija("Puna kuca", "Svakodnevica jedne obitelji", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija5);
+            Serija serija6 = new Serija("Pod istim krovom", "Svakodnevica dviju susjednih obitelji", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija6);
+            Serija serija7 = new Serija("Naši i vaši", "Hrvatska humoristicna emisija", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija7);
+            Serija serija8 = new Serija("Odmori se, zasluzio si", "Hrvatska humoristicna emisija", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija8);
+
+            LivePrijenos liveprijenos5 = new LivePrijenos("Glazba", "Prekid programa", "", 360, 2, 0, "live prijenos", "R------X"); UnosLivePrijenos(liveprijenos5);
+            LivePrijenos liveprijenos6 = new LivePrijenos("Crtici", "Prekid programa", "", 360, 2, 0, "live prijenos", "R------X"); UnosLivePrijenos(liveprijenos6);
+            LivePrijenos liveprijenos7 = new LivePrijenos("Koncert", "Prekid programa", "", 360, 2, 0, "live prijenos", "R------X"); UnosLivePrijenos(liveprijenos7);
+
         }
         #endregion
 
@@ -887,9 +917,214 @@ namespace tvmanager
         }
         #endregion
 
-        private void lvTvProgram_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        #region Dohvacanje za cenzuriranje; shuffle
 
+        private List<Film> DohvatiIzBazeFilmoveR()
+        {
+            List<Film> filmoviR = new List<Film>();
+            Film flm = null;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Film WHERE Prikazivanje LIKE 'R%'", connection))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    flm = new Film(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["GlavniGlumac"].ToString(), dr["Prikazivanje"].ToString());
+                    filmoviR.Add(flm);
+                }
+            }
+            return filmoviR;
+        }
+
+        private List<Serija> DohvatiIzBazeSerijeR()
+        {
+            List<Serija> serijeR = new List<Serija>();
+            Serija ser = null;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Serija WHERE Prikazivanje LIKE 'R%'", connection))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    ser = new Serija(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["Sezona"].ToString(), (int)dr["Epizode"], dr["Prikazivanje"].ToString());
+                    serijeR.Add(ser);
+                }
+            }
+            return serijeR;
+        }
+        private List<LivePrijenos> DohvatiIzBazeLivePrijenoseR()
+        {
+            List<LivePrijenos> liveR = new List<LivePrijenos>();
+            LivePrijenos liv = null;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM LivePrijenos WHERE Prikazivanje LIKE 'R%'", connection))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    liv = new LivePrijenos(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Prikazivanje"].ToString());
+                    liveR.Add(liv);
+                }
+            }
+            return liveR;
+        }
+        private List<Film> ShuffleList(List<Film> inputList)
+        {
+            List<Film> randomList = new List<Film>();
+
+            Random r = new Random();
+            int randomIndex = 0;
+            while (inputList.Count > 0)
+            {
+                randomIndex = r.Next(0, inputList.Count); //Choose a random object in the list
+                randomList.Add(inputList[randomIndex]); //add it to the new, random list
+                inputList.RemoveAt(randomIndex); //remove to avoid duplicates
+            }
+
+            return randomList; //return the new random list
+        }
+        private List<Serija> ShuffleList(List<Serija> inputList)
+        {
+            List<Serija> randomList = new List<Serija>();
+
+            Random r = new Random();
+            int randomIndex = 0;
+            while (inputList.Count > 0)
+            {
+                randomIndex = r.Next(0, inputList.Count); 
+                randomList.Add(inputList[randomIndex]); 
+                inputList.RemoveAt(randomIndex); 
+            }
+
+            return randomList; 
+        }
+        private List<LivePrijenos> ShuffleList(List<LivePrijenos> inputList)
+        {
+            List<LivePrijenos> randomList = new List<LivePrijenos>();
+
+            Random r = new Random();
+            int randomIndex = 0;
+            while (inputList.Count > 0)
+            {
+                randomIndex = r.Next(0, inputList.Count); 
+                randomList.Add(inputList[randomIndex]); 
+                inputList.RemoveAt(randomIndex); 
+            }
+
+            return randomList; 
+        }
+        #endregion
+
+        private void btnCenzura_Click(object sender, EventArgs e)
+        {            
+            if (lvTvProgram.SelectedItems.Count > 0)  
+            {
+                txbOpis.Text = "hej";
+                string cenzuriraj = lvTvProgram.SelectedItems[0].Name;
+                txbOpis.Text = cenzuriraj;
+                if (lvTvProgram.SelectedItems.Count == 0)
+                    return;
+                int odabrani = lvTvProgram.Items.IndexOf(lvTvProgram.SelectedItems[0]);
+                //txbOpis.Text = odabrani.ToString();
+
+                //txbOpis.Text += lvTvProgram.Items[odabrani].Text;
+                //txbOpis.Text += lvTvProgram.Items[odabrani].SubItems[1].Text;
+
+                string pocetak = lvTvProgram.Items[odabrani].Text;
+                string imeSadrzaja = lvTvProgram.Items[odabrani].SubItems[1].Text;
+
+                int trajanje = 0;
+
+                DSPK dspk = DohvatiIzBazeDSPK(imeSadrzaja);
+                if (dspk == null)
+                {
+                    Film film = DohvatiIzBazeFilmove(imeSadrzaja);
+                    if (film == null)
+                    {
+                        LivePrijenos lp = DohvatiIzBazeLivePrijenose(imeSadrzaja);
+                        if (lp == null)
+                        {
+                            Serija serija = DohvatiIzBazeSerije(imeSadrzaja);
+                            trajanje = serija.Duljina;
+                        }
+                        else trajanje = lp.Duljina;
+                    }
+                    else trajanje = film.Duljina;
+                }
+                else trajanje = dspk.Duljina;
+                //txbOpis.Text += trajanje.ToString();
+
+                DialogResult result1 = MessageBox.Show("Zelite li cenzurirati ovaj TV sadrzaj?", "Upozorenje",
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+                if (result1 == DialogResult.Yes)
+                {
+                    List<string> nazivi = new List<string>();
+                    foreach(ListViewItem lv in lvTvProgram.Items)
+                        nazivi.Add(lv.SubItems[1].Text);
+                    
+                    int trajanjeCenzure = 0;
+                    if (trajanje == 90 || trajanje == 120)
+                    {
+                        List<Film> filmoviR = new List<Film>();
+                        filmoviR = DohvatiIzBazeFilmoveR();
+                        List<Film> filmoviShuffle = ShuffleList(filmoviR);
+                        foreach (Film f in filmoviShuffle)
+                        {
+                            if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))) && f.Prikazivanje[0] == 'R')
+                            {
+                                trajanjeCenzure = f.Duljina;
+                                //txbOpis.Text = "cenzurirat cemo s " + f.Ime + " koji traje " + f.Duljina;
+                                lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                                break;
+                            }
+                        }
+                    }
+                    else if (trajanje == 60 || trajanje == 15)
+                    {
+                        List<Serija> serijeR = new List<Serija>();
+                        serijeR = DohvatiIzBazeSerijeR();
+                        List<Serija> serijeShuffle = ShuffleList(serijeR);
+                        //txbOpis.Text = serijeR.Count.ToString();
+                        foreach (Serija f in serijeShuffle)
+                        {
+                            if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))) && f.Prikazivanje[0] == 'R')
+                            {
+                                trajanjeCenzure = f.Duljina;
+                                //txbOpis.Text = "cenzurirat cemo s " + f.Ime + " koji traje " + f.Duljina;
+                                lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                                break;
+                            }
+                        }
+                    }
+                    else if (trajanje == 360)
+                    {
+                        List<LivePrijenos> liveR = new List<LivePrijenos>();
+                        liveR = DohvatiIzBazeLivePrijenoseR();
+                        List<LivePrijenos> liveShuffle = ShuffleList(liveR);
+                        //txbOpis.Text = liveR.Count.ToString();
+                        foreach (LivePrijenos f in liveShuffle)
+                        {
+                            if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))) && f.Prikazivanje[0] == 'R')
+                            {
+                                trajanjeCenzure = f.Duljina;
+                                //txbOpis.Text = "cenzurirat cemo s " + f.Ime + " koji traje " + f.Duljina;
+                                lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
