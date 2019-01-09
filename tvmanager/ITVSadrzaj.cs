@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tvmanager
 {
-    interface ITVSadrzaj
+   interface ITVSadrzaj
     {
         string Ime { get; set; }
         string Opis { get; set; }

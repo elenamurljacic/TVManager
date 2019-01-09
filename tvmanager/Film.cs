@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace tvmanager
 {
-    class A
-    {
-        public ITVSadrzaj s;
-        
-    }
     class Film: ITVSadrzaj
     {
         public Film(string ime, string opis, string zanr, int duljina, int prioritet, int dobnaskupina, string redatelj, string gglumac, string prikazivanje)

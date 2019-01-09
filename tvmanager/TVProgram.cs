@@ -15,7 +15,11 @@ namespace tvmanager
 
         Monitor monitor = new Monitor();
 
-        Dictionary<string,ITVSadrzaj> pon, uto, sri, cet, pet, sub, ned;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            UnosPrograma();
+        }
 
         public TVProgram()
         {
@@ -28,20 +32,10 @@ namespace tvmanager
            
         }
 
-        private void brisiListView()
-        {
-            lvTvProgram.Clear();
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
-
-            for (int i = 0; i < lvTvProgram.Columns.Count; i++)
-                lvTvProgram.Columns[i].Width = -2;
-        }
-
-        private void Raspored(string dan)//dan se ubacuje u obliku npr pon = '_+%'
+        private void Raspored(string dan)
         {
             Dictionary<string, ITVSadrzaj> pon = new Dictionary<string, ITVSadrzaj>();
-            LivePrijenos vatrica = DohvatiIzBazeLivePrijenose("vatrica"); pon.Add("00:00", vatrica);//umjesto add dodaj ravno u listview
+            LivePrijenos vatrica = DohvatiIzBazeLivePrijenose("vatrica"); pon.Add("00:00", vatrica);
             DSPK dbh = DohvatiIzBazeDSPK("Dobro jutro hrvatska"); pon.Add("06:00", dbh);
             Serija tel = DohvatiIzBazeSerije("Teletabisi"); pon.Add("08:00", tel);
             Serija pok = DohvatiIzBazeSerije("Digimoni"); pon.Add("09:00", pok);
@@ -102,10 +96,8 @@ namespace tvmanager
 
             if (dan == "Pon")
             {
-                /*ListViewItem listitem = new ListViewItem(d.Ime);
-                lvTvProgram.Items.Add(listitem);
-                listitem.SubItems.Add(d.Duljina.ToString());*/
-                brisiListView();
+                BrisiListView();
+
                 ListViewItem listitem1 = new ListViewItem("00:00");
                 lvTvProgram.Items.Add(listitem1);
                 listitem1.SubItems.Add(vatrica.Ime);
@@ -149,15 +141,12 @@ namespace tvmanager
                 ListViewItem listitem14 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem14);
                 listitem14.SubItems.Add(pro.Ime);
-
                 ListViewItem listitem15 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem15);
                 listitem15.SubItems.Add(spo.Ime);
-                
                 ListViewItem listitem16 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem16);
                 listitem16.SubItems.Add(inm.Ime);
-                
                 ListViewItem listitem17 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem17);
                 listitem17.SubItems.Add(sup.Ime);
@@ -169,10 +158,7 @@ namespace tvmanager
 
             if(dan == "Uto")
             {
-                /*ListViewItem listitem = new ListViewItem(d.Ime);
-                lvTvProgram.Items.Add(listitem);
-                listitem.SubItems.Add(d.Duljina.ToString());*/
-                brisiListView();
+                BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
                 lvTvProgram.Items.Add(listitem1);
                 listitem1.SubItems.Add(vatrica.Ime);
@@ -216,15 +202,12 @@ namespace tvmanager
                 ListViewItem listitem14 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem14);
                 listitem14.SubItems.Add(pro.Ime);
-
                 ListViewItem listitem15 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem15);
                 listitem15.SubItems.Add(spo.Ime);
-
                 ListViewItem listitem16 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem16);
                 listitem16.SubItems.Add(inm.Ime);
-
                 ListViewItem listitem17 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem17);
                 listitem17.SubItems.Add(the.Ime);
@@ -235,10 +218,7 @@ namespace tvmanager
 
             if(dan == "Sri")
             {
-                /*ListViewItem listitem = new ListViewItem(d.Ime);
-                lvTvProgram.Items.Add(listitem);
-                listitem.SubItems.Add(d.Duljina.ToString());*/
-                brisiListView();
+                BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
                 lvTvProgram.Items.Add(listitem1);
                 listitem1.SubItems.Add(vatrica.Ime);
@@ -282,15 +262,12 @@ namespace tvmanager
                 ListViewItem listitem14 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem14);
                 listitem14.SubItems.Add(pro.Ime);
-
                 ListViewItem listitem15 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem15);
                 listitem15.SubItems.Add(spo.Ime);
-
                 ListViewItem listitem16 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem16);
                 listitem16.SubItems.Add(inm.Ime);
-
                 ListViewItem listitem17 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem17);
                 listitem17.SubItems.Add(ig1.Ime);
@@ -301,7 +278,7 @@ namespace tvmanager
 
             if(dan == "Cet")
             {
-                brisiListView();
+                BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
                 lvTvProgram.Items.Add(listitem1);
                 listitem1.SubItems.Add(vatrica.Ime);
@@ -345,15 +322,12 @@ namespace tvmanager
                 ListViewItem listitem14 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem14);
                 listitem14.SubItems.Add(pro.Ime);
-
                 ListViewItem listitem15 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem15);
                 listitem15.SubItems.Add(spo.Ime);
-
                 ListViewItem listitem16 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem16);
                 listitem16.SubItems.Add(inm.Ime);
-
                 ListViewItem listitem17 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem17);
                 listitem17.SubItems.Add(ig2.Ime);
@@ -364,7 +338,7 @@ namespace tvmanager
 
             if(dan == "Pet")
             {
-                brisiListView();
+                BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
                 lvTvProgram.Items.Add(listitem1);
                 listitem1.SubItems.Add(vatrica.Ime);
@@ -408,15 +382,12 @@ namespace tvmanager
                 ListViewItem listitem14 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem14);
                 listitem14.SubItems.Add(pro.Ime);
-
                 ListViewItem listitem15 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem15);
                 listitem15.SubItems.Add(spo.Ime);
-
                 ListViewItem listitem16 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem16);
                 listitem16.SubItems.Add(inm.Ime);
-
                 ListViewItem listitem17 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem17);
                 listitem17.SubItems.Add(ig3.Ime);
@@ -427,7 +398,7 @@ namespace tvmanager
 
             if(dan == "Sub")
             {
-                brisiListView();
+                BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
                 lvTvProgram.Items.Add(listitem1);
                 listitem1.SubItems.Add(vatrica.Ime);
@@ -455,28 +426,22 @@ namespace tvmanager
                 ListViewItem listitem9 = new ListViewItem("13:15");
                 lvTvProgram.Items.Add(listitem9);
                 listitem9.SubItems.Add(uta.Ime);
-                
                 ListViewItem listitem11 = new ListViewItem("15:30");
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(kon.Ime);
                 //reklama
-                
                 ListViewItem listitem13 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem13);
                 listitem13.SubItems.Add(dne.Ime);
-
                 ListViewItem listitem14 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem14);
                 listitem14.SubItems.Add(pro.Ime);
-
                 ListViewItem listitem15 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem15);
                 listitem15.SubItems.Add(spo.Ime);
-
                 ListViewItem listitem16 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem16);
                 listitem16.SubItems.Add(inm.Ime);
-
                 ListViewItem listitem17 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem17);
                 listitem17.SubItems.Add(sk1.Ime);
@@ -487,7 +452,7 @@ namespace tvmanager
 
             if(dan == "Ned")
             {
-                brisiListView();
+                BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
                 lvTvProgram.Items.Add(listitem1);
                 listitem1.SubItems.Add(vatrica.Ime);
@@ -515,28 +480,22 @@ namespace tvmanager
                 ListViewItem listitem9 = new ListViewItem("13:15");
                 lvTvProgram.Items.Add(listitem9);
                 listitem9.SubItems.Add(uta.Ime);
-
                 ListViewItem listitem11 = new ListViewItem("15:30");
                 lvTvProgram.Items.Add(listitem11);
                 listitem11.SubItems.Add(kon.Ime);
                 //reklama
-
                 ListViewItem listitem13 = new ListViewItem("18:00");
                 lvTvProgram.Items.Add(listitem13);
                 listitem13.SubItems.Add(dne.Ime);
-
                 ListViewItem listitem14 = new ListViewItem("19:00");
                 lvTvProgram.Items.Add(listitem14);
                 listitem14.SubItems.Add(pro.Ime);
-
                 ListViewItem listitem15 = new ListViewItem("19:15");
                 lvTvProgram.Items.Add(listitem15);
                 listitem15.SubItems.Add(spo.Ime);
-
                 ListViewItem listitem16 = new ListViewItem("19:30");
                 lvTvProgram.Items.Add(listitem16);
                 listitem16.SubItems.Add(inm.Ime);
-
                 ListViewItem listitem17 = new ListViewItem("20:00");
                 lvTvProgram.Items.Add(listitem17);
                 listitem17.SubItems.Add(voi.Ime);
@@ -547,70 +506,18 @@ namespace tvmanager
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void BrisiListView()
         {
-            UnosPrograma();
-
+            lvTvProgram.Clear();
             lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
             lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
 
-            ListViewItem new_item = lvTvProgram.Items.Add("12:30");
-            new_item.SubItems.Add("Regionalni Dnevnik");
-
             for (int i = 0; i < lvTvProgram.Columns.Count; i++)
                 lvTvProgram.Columns[i].Width = -2;
-
-            
-            Film d = DohvatiIzBazeFilmove("Sam u Kuci");
-            
-            
-                ListViewItem listitem = new ListViewItem(d.Ime);
-                lvTvProgram.Items.Add(listitem);
-                listitem.SubItems.Add(d.Duljina.ToString());
-            
-            txbOpis.Text = d.ToString();
-
-            
-
         }
 
-        private Film DohvatiIzBazeFilmove(string ime)
-        {
-            Film flm = null;
-            using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Film WHERE Ime LIKE '" + ime + "'", connection)) 
-            {
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    flm = new Film(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["GlavniGlumac"].ToString(), dr["Prikazivanje"].ToString());
-                }
-            }
-            return flm;
-        }
-
-        private Serija DohvatiIzBazeSerije(string ime)
-        {
-            Serija ser = null;
-            using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Serija WHERE Ime LIKE '" + ime + "'", connection)) 
-            {
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    ser = new Serija(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["Sezona"].ToString(), (int)dr["Epizode"], dr["Prikazivanje"].ToString());
-                }
-            }
-            return ser;
-        }
-
-        private void tsslPon_Click(object sender, EventArgs e)  //toolStripStatusLabel
+        #region Odabir dana
+        private void tsslPon_Click(object sender, EventArgs e)
         {
             Raspored("Pon");
         }
@@ -644,60 +551,11 @@ namespace tvmanager
         {
             Raspored("Ned");
         }
-        private LivePrijenos DohvatiIzBazeLivePrijenose(string ime)
-        {
-            LivePrijenos liv = null;
-            using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM LivePrijenos WHERE Ime LIKE '" + ime + "'", connection)) 
-            {
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
 
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    liv=new LivePrijenos(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Prikazivanje"].ToString());
-                }
-            }
-            return liv;
-        }
+        #endregion
 
-        private DSPK DohvatiIzBazeDSPK(string ime)
-        {
-            DSPK dsp = null;
-            using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM DSPK WHERE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
-            {
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
 
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    dsp = new DSPK(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Urednik"].ToString(), dr["Voditelj"].ToString(), dr["Prikazivanje"].ToString());
-                }
-            }
-            return dsp;
-        }
-
-        private List<Reklama> DohvatiIzBazeReklame()
-        {
-            List<Reklama> rek = new List<Reklama>();
-            using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Reklama", connection)) 
-            {
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    rek.Add(new Reklama(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"],(int)dr["Cijena"]));
-                } 
-            }
-            return rek;
-        }
-
+        #region Unos u bazu
         private void UnosFilm(Film f)
         {
             string query = "IF NOT EXISTS (Select Ime From Film where Ime = @Ime) INSERT INTO Film VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @redatelj, @gglumac, @prikazivanje) ";
@@ -935,6 +793,99 @@ namespace tvmanager
             Reklama reklama6 = new Reklama("Tommy", "trgovina", "prehrana", 2, 4, 0, 90); UnosReklama(reklama6);
             Reklama reklama7 = new Reklama("TopShop", "kupovina", "razno", 5, 4, 0, 200); UnosReklama(reklama7);
         }
+        #endregion
+
+
+        #region Dohvacanje iz baze
+        private Film DohvatiIzBazeFilmove(string ime)
+        {
+            Film flm = null;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Film WHERE Ime LIKE '" + ime + "'", connection))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    flm = new Film(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["GlavniGlumac"].ToString(), dr["Prikazivanje"].ToString());
+                }
+            }
+            return flm;
+        }
+
+        private Serija DohvatiIzBazeSerije(string ime)
+        {
+            Serija ser = null;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Serija WHERE Ime LIKE '" + ime + "'", connection))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    ser = new Serija(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["Sezona"].ToString(), (int)dr["Epizode"], dr["Prikazivanje"].ToString());
+                }
+            }
+            return ser;
+        }
+        private LivePrijenos DohvatiIzBazeLivePrijenose(string ime)
+        {
+            LivePrijenos liv = null;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM LivePrijenos WHERE Ime LIKE '" + ime + "'", connection))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    liv = new LivePrijenos(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Prikazivanje"].ToString());
+                }
+            }
+            return liv;
+        }
+
+        private DSPK DohvatiIzBazeDSPK(string ime)
+        {
+            DSPK dsp = null;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM DSPK WHERE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    dsp = new DSPK(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Urednik"].ToString(), dr["Voditelj"].ToString(), dr["Prikazivanje"].ToString());
+                }
+            }
+            return dsp;
+        }
+
+        private List<Reklama> DohvatiIzBazeReklame()
+        {
+            List<Reklama> rek = new List<Reklama>();
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Reklama", connection))
+            {
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    rek.Add(new Reklama(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], (int)dr["Cijena"]));
+                }
+            }
+            return rek;
+        }
+        #endregion
 
         private void lvTvProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
