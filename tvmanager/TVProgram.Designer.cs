@@ -56,7 +56,7 @@
             this.lvTvProgram.TabIndex = 0;
             this.lvTvProgram.UseCompatibleStateImageBehavior = false;
             this.lvTvProgram.View = System.Windows.Forms.View.Details;
-            //this.lvTvProgram.SelectedIndexChanged += new System.EventHandler(this.lvTvProgram_SelectedIndexChanged);
+            this.lvTvProgram.SelectedIndexChanged += new System.EventHandler(this.lvTvProgram_SelectedIndexChanged);
             // 
             // txbOpis
             // 
