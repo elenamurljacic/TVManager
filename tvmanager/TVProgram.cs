@@ -88,7 +88,8 @@ namespace tvmanager
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            UnosPrograma();
+
             lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
             lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
 
@@ -99,7 +100,7 @@ namespace tvmanager
                 lvTvProgram.Columns[i].Width = -2;
 
             
-            Film d = DohvatiIzBazeFilmove("Bumbleblee");
+            Film d = DohvatiIzBazeFilmove("Sam u Kuci");
             
             
                 ListViewItem listitem = new ListViewItem(d.Ime);
@@ -108,7 +109,7 @@ namespace tvmanager
             
             txbOpis.Text = d.ToString();
 
-            //UnosPrograma();
+            
 
         }
 
@@ -231,7 +232,7 @@ namespace tvmanager
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ooops");
+                    MessageBox.Show(ex.Message, "Ooops" + f.Ime);
                 }
                 finally { connection.Close(); }
 
@@ -268,7 +269,7 @@ namespace tvmanager
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ooops");
+                    MessageBox.Show(ex.Message, "Ooops" + f.Ime);
                 }
                 finally { connection.Close(); }
 
@@ -277,7 +278,7 @@ namespace tvmanager
 
         private void UnosLivePrijenos(LivePrijenos f)
         {
-            string query = "INSERT INTO DSPK VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @tip,@Prikazivanje)";
+            string query = "INSERT INTO LivePrijenos VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @tip, @prikazivanje)";
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -290,7 +291,7 @@ namespace tvmanager
                 command.Parameters.AddWithValue("@duljina", f.Duljina);
                 command.Parameters.AddWithValue("@prioritet", f.Prioritet);
                 command.Parameters.AddWithValue("@dobnaskupina", f.DobnaSkupina);
-                command.Parameters.AddWithValue("@redatelj", f.Tip);
+                command.Parameters.AddWithValue("@tip", f.Tip);
                 command.Parameters.AddWithValue("@prikazivanje", f.Prikazivanje);
 
 
@@ -303,7 +304,7 @@ namespace tvmanager
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ooops");
+                    MessageBox.Show(ex.Message, "Ooops" + f.Ime);
                 }
                 finally { connection.Close(); }
 
@@ -312,7 +313,7 @@ namespace tvmanager
 
         private void UnosDSPK(DSPK f)
         {
-            string query = "INSERT INTO DSPK VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @tip, @Urednik, @Voditelj, @Prikazivanje)";
+            string query = "INSERT INTO DSPK VALUES(@ime, @opis, @zanr, @duljina, @prioritet, @dobnaskupina, @tip, @urednik, @voditelj, @prikazivanje)";
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -325,9 +326,9 @@ namespace tvmanager
                 command.Parameters.AddWithValue("@duljina", f.Duljina);
                 command.Parameters.AddWithValue("@prioritet", f.Prioritet);
                 command.Parameters.AddWithValue("@dobnaskupina", f.DobnaSkupina);
-                command.Parameters.AddWithValue("@redatelj", f.Tip);
-                command.Parameters.AddWithValue("@sezona", f.Urednik);
-                command.Parameters.AddWithValue("@epizode", f.Voditelj);
+                command.Parameters.AddWithValue("@tip", f.Tip);
+                command.Parameters.AddWithValue("@urednik", f.Urednik);
+                command.Parameters.AddWithValue("@voditelj", f.Voditelj);
                 command.Parameters.AddWithValue("@prikazivanje", f.Prikazivanje);
 
 
@@ -340,7 +341,7 @@ namespace tvmanager
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ooops");
+                    MessageBox.Show(ex.Message, "Ooops0"+f.Ime);
                 }
                 finally { connection.Close(); }
 
@@ -362,7 +363,7 @@ namespace tvmanager
                 command.Parameters.AddWithValue("@duljina", f.Duljina);
                 command.Parameters.AddWithValue("@prioritet", f.Prioritet);
                 command.Parameters.AddWithValue("@dobnaskupina", f.DobnaSkupina);
-                command.Parameters.AddWithValue("@redatelj", f.Cijena);
+                command.Parameters.AddWithValue("@cijena", f.Cijena);
 
 
                 try
@@ -374,7 +375,7 @@ namespace tvmanager
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ooops");
+                    MessageBox.Show(ex.Message, "Ooops" + f.Ime);
                 }
                 finally { connection.Close(); }
 
@@ -415,10 +416,10 @@ namespace tvmanager
             Serija animirani4 = new Serija("Traktor Tom", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani4);
             Serija animirani5 = new Serija("Zekoslav Mrkva", "Zeko.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani5);
 
-            Serija serija1 = new Serija("Istanbulska nevjesta", "Turska", "drama", 60, 3, 12, "R.E", "prva", 78, "-XXXXX--"); UnosSerija(serija1);
-            Serija serija2 = new Serija("Kobra", "Njemacka autocesta", "akcija", 60, 3, 12, "R.E", "treca", 94, "-XXXXX--"); UnosSerija(serija2);
-            Serija serija3 = new Serija("Osveta ljubavi", "Turska", "romanticna drama", 60, 3, 12, "R.E", "prva", 124, "-XXXXX--"); UnosSerija(serija3);
-            Serija serija4 = new Serija("Dadilja", "Obitelj i dadilja", "obiteljska", 60, 3, 0, "R.E", "treca", 65, "-XXXXX--"); UnosSerija(serija4);
+            Serija serija1 = new Serija("Istanbulska nevjesta", "Turska", "drama", 60, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija1);
+            Serija serija2 = new Serija("Kobra", "Njemacka autocesta", "akcija", 60, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija2);
+            Serija serija3 = new Serija("Osveta ljubavi", "Turska", "romanticna drama", 60, 3, 12, "R.E", "1", 124, "-XXXXX--"); UnosSerija(serija3);
+            Serija serija4 = new Serija("Dadilja", "Obitelj i dadilja", "obiteljska", 60, 3, 0, "R.E", "1", 65, "-XXXXX--"); UnosSerija(serija4);
 
             LivePrijenos liveprijenos1 = new LivePrijenos("The Voice", "glazbeni show", "natjecanje", 120, 3, 0, "live prijenos", "------XX"); UnosLivePrijenos(liveprijenos1);
             LivePrijenos liveprijenos2 = new LivePrijenos("Koncert", "live koncert", "glazba", 120, 2, 0, "live prijenos", "------X-"); UnosLivePrijenos(liveprijenos2);
