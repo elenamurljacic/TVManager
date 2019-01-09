@@ -1240,7 +1240,11 @@ namespace tvmanager
                 kraj = Convert.ToDateTime("24:00");
             }
 
-            PrikaziNaMonitor(image, pocetak, kraj, duljina);
+
+          
+
+            //PrikaziNaMonitor(image, pocetak, kraj, itv);
+
 
             monitor.pictureBox1.Image = image;
             
@@ -1250,9 +1254,7 @@ namespace tvmanager
         private void btnIzvanrednaSituacija_Click(object sender, EventArgs e)
         {
             if (lvTvProgram.Items.Count < 1)
-            {
                 MessageBox.Show("Odaberite dan za izvanrednu situaciju");
-            }
             else
             {
                 IzvanRednaSituacija izv = new IzvanRednaSituacija();
@@ -1261,72 +1263,54 @@ namespace tvmanager
                 string duljinaTrajanja = izv.textBox2.Text;
                 List<string[]> novaLista = new List<string[]>();
 
-                //Prioritet ne smijemo dirat
-
-                //i brojimo reklame
-
+           
 
                 for (int i = 0; i < lvTvProgram.Items.Count; i++)
                 {
                     string[] program = new string[3];
-                    try
-                    {
-                        DSPK d = DohvatiIzBazeDSPK(lvTvProgram.Items[i].SubItems[1].Text);
+                    
+                    DSPK d = DohvatiIzBazeDSPK(lvTvProgram.Items[i].SubItems[1].Text);
 
-                        if (d != null)
-                        {
-                            program[0] = d.Ime;
-                            program[1] = "" + d.Duljina;
-                            program[2] = "" + d.Prioritet;
-                        }
-                    }
-                    catch { }
-                    try
+                    if (d != null)
                     {
-                        Film d = DohvatiIzBazeFilmove(lvTvProgram.Items[i].SubItems[1].Text);
-                        if (d != null)
-                        {
-                            program[0] = d.Ime;
-                            program[1] = "" + d.Duljina;
-                            program[2] = "" + d.Prioritet;
-                        }
+                        program[0] = d.Ime;
+                        program[1] = "" + d.Duljina;
+                        program[2] = "" + d.Prioritet;
                     }
-                    catch { }
-                    try
+               
+                    Film f = DohvatiIzBazeFilmove(lvTvProgram.Items[i].SubItems[1].Text);
+                    if (f != null)
                     {
-                        Serija d = DohvatiIzBazeSerije(lvTvProgram.Items[i].SubItems[1].Text);
-                        if (d != null)
-                        {
-                            program[0] = d.Ime;
-                            program[1] = "" + d.Duljina;
-                            program[2] = "" + d.Prioritet;
-                        }
+                        program[0] = f.Ime;
+                        program[1] = "" + f.Duljina;
+                        program[2] = "" + f.Prioritet;
+                    }
+                 
+                    Serija s = DohvatiIzBazeSerije(lvTvProgram.Items[i].SubItems[1].Text);
+                    if (s != null)
+                    {
+                        program[0] = s.Ime;
+                        program[1] = "" + s.Duljina;
+                        program[2] = "" + s.Prioritet;
+                    }
 
-                    }
-                    catch { }
-                    try
+                    Reklama r = DohvatiIzBazeReklamu(lvTvProgram.Items[i].SubItems[1].Text);
+                    if (r != null)
                     {
-                        Reklama d = DohvatiIzBazeReklamu(lvTvProgram.Items[i].SubItems[1].Text);
-                        if (d != null)
-                        {
-                            program[0] = d.Ime;
-                            program[1] = "" + d.Duljina;
-                            program[2] = "" + d.Prioritet;
-                        }
+                        program[0] = r.Ime;
+                        program[1] = "" + r.Duljina;
+                        program[2] = "" + r.Prioritet;
                     }
-                    catch { }
-                    try
+                  
+                    LivePrijenos l = DohvatiIzBazeLivePrijenose(lvTvProgram.Items[i].SubItems[1].Text);
+                    if (l != null)
                     {
-                        LivePrijenos d = DohvatiIzBazeLivePrijenose(lvTvProgram.Items[i].SubItems[1].Text);
-                        if (d != null)
-                        {
-                            program[0] = d.Ime;
-                            program[1] = "" + d.Duljina;
-                            program[2] = "" + d.Prioritet;
-                        }
+                        program[0] = l.Ime;
+                        program[1] = "" + l.Duljina;
+                        program[2] = "" + l.Prioritet;
                     }
-                    catch { }
-                    novaLista.Add(program);
+                    
+                novaLista.Add(program);
                 }
 
 
@@ -1343,7 +1327,5 @@ namespace tvmanager
 
             }
         }
-
-        
     }
 }

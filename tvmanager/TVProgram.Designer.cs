@@ -200,8 +200,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lvTvProgram;
         private System.Windows.Forms.TextBox txbOpis;
         private System.Windows.Forms.Button btnCenzura;
         private System.Windows.Forms.Button btnIzvanrednaSituacija;
@@ -214,6 +212,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tsslPet;
         private System.Windows.Forms.ToolStripStatusLabel tsslSub;
         private System.Windows.Forms.ToolStripStatusLabel tsslNed;
+        public System.Windows.Forms.ListView lvTvProgram;
     }
 }
 
