@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -106,18 +107,28 @@
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(381, 12);
+            this.listView1.Location = new System.Drawing.Point(384, 18);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(295, 335);
+            this.listView1.Size = new System.Drawing.Size(340, 335);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(381, 356);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 17);
+            this.label5.TabIndex = 8;
             // 
             // IzvanRednaSituacija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(736, 387);
+            this.ClientSize = new System.Drawing.Size(756, 407);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -144,5 +155,6 @@
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label5;
     }
 }
