@@ -941,7 +941,31 @@ namespace tvmanager
         }
         #endregion
 
+        private void PrikaziNaMonitor(Image image, DateTime poc, DateTime kraj, ITVSadrzaj itv)
+        {
+            List<Reklama> reklame = DohvatiIzBazeReklame();
+            TimeSpan span = kraj.Subtract(poc);
+            int minute = Convert.ToInt32(span.TotalMinutes);
+            int razlika = minute - itv.Duljina; //razliku popunjavam reklamama
+            //napravi listu reklama tako da dodajes minute do razlike redom pa koliko puta ide, reklame idu ovisno o trajanju
+            List<Reklama> konacna = new List<Reklama>();
+            int i = 0;
+            while(razlika>0)
+            {
+                try
+                {
+                    konacna.Add(reklame[i]);
+                }
+                catch
+                {
+                    i = 0;
+                    konacna.Add(reklame[i]);
+                }
+                i++;
+            }
 
+
+        }
         private void lvTvProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvTvProgram.SelectedItems.Count == 0)
@@ -968,8 +992,14 @@ namespace tvmanager
 
             Image image = Image.FromFile(@"..\..\slike\"+ime+".jpg");
 
-            
+            DateTime pocetak = Convert.ToDateTime(lvTvProgram.Items[var2].SubItems[0].Text);
+            DateTime kraj = Convert.ToDateTime(lvTvProgram.Items[var2 + 1].SubItems[0].Text);
+
+            PrikaziNaMonitor(image, pocetak, kraj, itv);
             monitor.pictureBox1.Image = image;
+
+            
+            
 
 
 
