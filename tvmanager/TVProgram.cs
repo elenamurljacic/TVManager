@@ -28,13 +28,13 @@ namespace tvmanager
            
         }
 
-        private List<Dictionary<string,ITVSadrzaj>> Raspored()//dan se ubacuje u obliku npr pon = '_+%'
+        private void Raspored(string dan)//dan se ubacuje u obliku npr pon = '_+%'
         {
             Dictionary<string, ITVSadrzaj> pon = new Dictionary<string, ITVSadrzaj>();
-            LivePrijenos vatrica = DohvatiIzBazeLivePrijenose("Vatrica"); pon.Add("00:00", vatrica);
-            DSPK dbh = DohvatiIzBazeDSPK("Dobro Jutro Hrvatska"); pon.Add("06:00", dbh);
+            LivePrijenos vatrica = DohvatiIzBazeLivePrijenose("vatrica"); pon.Add("00:00", vatrica);//umjesto add dodaj ravno u listview
+            DSPK dbh = DohvatiIzBazeDSPK("Dobro jutro hrvatska"); pon.Add("06:00", dbh);
             Serija tel = DohvatiIzBazeSerije("Teletabisi"); pon.Add("08:00", tel);
-            Serija pok = DohvatiIzBazeSerije("Pokemoni"); pon.Add("09:00", pok);
+            Serija pok = DohvatiIzBazeSerije("Digimoni"); pon.Add("09:00", pok);
             Serija osv = DohvatiIzBazeSerije("Osveta Ljubavi"); pon.Add("10:00", osv);
             Serija ist = DohvatiIzBazeSerije("Istanbulska nevjesta"); pon.Add("11:00", ist);
             DSPK vij = DohvatiIzBazeDSPK("Vijesti"); pon.Add("12:00", vij);
@@ -49,40 +49,78 @@ namespace tvmanager
             DSPK spo = DohvatiIzBazeDSPK("Sport"); pon.Add("19:15", spo);
             DSPK inm = DohvatiIzBazeDSPK("IN Magazin"); pon.Add("19:30", inm);
             Film sup = DohvatiIzBazeFilmove("SuperMan1"); pon.Add("20:00", sup);
-            Film hp = DohvatiIzBazeFilmove("Harry Potter i Kamen Mudraca"); pon.Add("22:00", hp);
+            Film hp = DohvatiIzBazeFilmove("Harry Potter i kamen mudraca"); pon.Add("22:00", hp);
 
             Dictionary<string, ITVSadrzaj> uto = new Dictionary<string, ITVSadrzaj>(pon);
             uto.Remove("08:00"); uto.Remove("09:00"); uto.Remove("20:00"); uto.Remove("22:00");
-            Serija pce = DohvatiIzBazeSerije("Pcelica Maja"); uto.Add("08:00",pce);
+            Serija pce = DohvatiIzBazeSerije("Bob graditelj"); uto.Add("08:00",pce);
             Serija tra = DohvatiIzBazeSerije("Traktor Tom"); uto.Add("09:00", tra);
             Film the = DohvatiIzBazeFilmove("The Help"); uto.Add("20:00", the);
-            Film brz = DohvatiIzBazeFilmove("Brzi i zestoki"); uto.Add("22:00", brz);
+            Film brz = DohvatiIzBazeFilmove("Brzi i žestoki"); uto.Add("22:00", brz);
 
             Dictionary<string, ITVSadrzaj> sri = new Dictionary<string, ITVSadrzaj>(pon);
             sri.Remove("20:00"); sri.Remove("22:00");
-            Film sk5 = DohvatiIzBazeFilmove("Sam u Kuci 5"); sri.Add("20:00", sk5);
+            Film ig1 = DohvatiIzBazeFilmove("Igre gladi 1"); sri.Add("20:00", ig1);
             Film ss = DohvatiIzBazeFilmove("Slagalica strave"); sri.Add("22:00", ss);
 
             Dictionary<string, ITVSadrzaj> cet = new Dictionary<string, ITVSadrzaj>(uto);
             cet.Remove("20:00"); cet.Remove("22:00");
-            Film sk4 = DohvatiIzBazeFilmove("Sam u Kuci 4"); cet.Add("20:00", sk4);
+            Film ig2 = DohvatiIzBazeFilmove("Igre gladi 2"); cet.Add("20:00", ig2);
             Film kru = DohvatiIzBazeFilmove("Krug"); cet.Add("22:00", kru);
 
             Dictionary<string, ITVSadrzaj> pet = new Dictionary<string, ITVSadrzaj>(pon);
             pet.Remove("20:00"); pet.Remove("22:00");
-            Film sk3 = DohvatiIzBazeFilmove("Sam u Kuci 3"); pet.Add("20:00", sk3);
-            Film tek = DohvatiIzBazeFilmove("Teksaski masakr motornom pilom"); pet.Add("22:00", tek);
+            Film ig3 = DohvatiIzBazeFilmove("Igre gladi 3"); pet.Add("20:00", ig3);
+            Film tek = DohvatiIzBazeFilmove("Teksaški masakr motornom pilom"); pet.Add("22:00", tek);
 
             Dictionary<string, ITVSadrzaj> sub = new Dictionary<string, ITVSadrzaj>(pon);
-            sub.Remove("08:00"); sub.Remove("09:00"); sub.Remove("10:00"); sub.Remove("11:00"); sub.Remove("20:00"); sub.Remove("22:00");
+            sub.Remove("08:00"); sub.Remove("09:00"); sub.Remove("10:00"); sub.Remove("11:00"); sub.Remove("13:15"); sub.Remove("14:15"); sub.Remove("15:00"); sub.Remove("16:30"); sub.Remove("20:00"); sub.Remove("22:00");
             Serija zek = DohvatiIzBazeSerije("Zekoslav Mrkva"); sub.Add("08:00", zek); sub.Add("09:00", zek); sub.Add("10:00", zek); sub.Add("11:00", zek);
-            //Film the = DohvatiIzBazeFilmove("The Help"); sub.Add("20:00", the);
-            //Film brz = DohvatiIzBazeFilmove("Brzi i zestoki"); sub.Add("22:00", brz);
+            LivePrijenos uta = DohvatiIzBazeLivePrijenose("Utakmica"); sub.Add("13:15", uta);
+            LivePrijenos kon = DohvatiIzBazeLivePrijenose("Koncert"); sub.Add("15:30", kon);
+            Film sk1 = DohvatiIzBazeFilmove("Sam u kući 1"); sub.Add("20:00", sk1);
+            Film bum = DohvatiIzBazeFilmove("Bumbleblee"); sub.Add("22:00", bum);
+
+            Dictionary<string, ITVSadrzaj> ned = new Dictionary<string, ITVSadrzaj>(sub);
+            ned.Remove("20:00"); ned.Remove("22:00");
+            LivePrijenos voi = DohvatiIzBazeLivePrijenose("The Voice"); ned.Add("20:00", voi);
+            Film sk3 = DohvatiIzBazeFilmove("Sam u kući 3"); ned.Add("22:00", sk3);
 
             List<Dictionary<string, ITVSadrzaj>> list = new List<Dictionary<string, ITVSadrzaj>>();
-            list.Add(pon);
-            return list;
+            list.Add(pon); list.Add(uto); list.Add(sri); list.Add(cet); list.Add(pet); list.Add(sub); list.Add(ned);
 
+
+            if (dan == "Pon")
+            {
+                /*ListViewItem listitem = new ListViewItem(d.Ime);
+                lvTvProgram.Items.Add(listitem);
+                listitem.SubItems.Add(d.Duljina.ToString());*/
+                ListViewItem listitem = new ListViewItem("00:00");
+                lvTvProgram.Items.Add(listitem);
+                listitem.SubItems.Add(vatrica.Ime);
+                pon.Add("06:00", dbh);
+                ListViewItem listitem = new ListViewItem("06:00");
+                lvTvProgram.Items.Add(listitem);
+                listitem.SubItems.Add(dbh.Ime);
+                pon.Add("08:00", tel);
+                pon.Add("09:00", pok);
+                pon.Add("10:00", osv);
+                pon.Add("11:00", ist);
+                pon.Add("12:00", vij);
+                pon.Add("13:00", pro);
+                pon.Add("13:15", cob);
+                pon.Add("14:15", dad);
+                pon.Add("15:00", droz);
+                //reklama
+                pon.Add("16:30", pot);
+                pon.Add("18:00", dne);
+                pon.Add("19:00", pro);
+                pon.Add("19:15", spo);
+                pon.Add("19:30", inm);
+                pon.Add("20:00", sup);
+                pon.Add("22:00", hp);
+
+            }
 
         }
 
@@ -151,128 +189,36 @@ namespace tvmanager
 
         private void tsslPon_Click(object sender, EventArgs e)  //toolStripStatusLabel
         {
-            List<Dictionary<string, ITVSadrzaj>> list = new List<Dictionary<string, ITVSadrzaj>>();
-            list = Raspored();
-            Dictionary<string, ITVSadrzaj> pon = list[0];
-
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
-
-            foreach(KeyValuePair<string, ITVSadrzaj> sadrzaj in pon)
-            {
-                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
-                //ITVSadrzaj noviSadrzaj = sadrzaj.Value as ITVSadrzaj;
-                //LivePrijenos lv = (LivePrijenos) sadrzaj.Value;
-                //ITVSadrzaj i 
-                //newItem.SubItems.Add(sadrzaj.Value.Ime);
-                //string novi = sadrzaj.Value.Ime;
-                txbOpis.Text = sadrzaj.Value.ToString();
-                Type objectType = sadrzaj.Value.GetType();
-
-                txbOpis.Text = objectType.ToString();
-            }
-
-            /*ListViewItem new_item = lvTvProgram.Items.Add("12:30");
-            new_item.SubItems.Add("Regionalni Dnevnik");
-
-            for (int i = 0; i < lvTvProgram.Columns.Count; i++)
-                lvTvProgram.Columns[i].Width = -2;
-
-            Film d = DohvatiIzBazeFilmove("Bumbleblee");
-
-            ListViewItem listitem = new ListViewItem(d.Ime);
-            lvTvProgram.Items.Add(listitem);
-            listitem.SubItems.Add(d.Duljina.ToString());*/
+            Raspored("Pon");
         }
 
         private void tsslUto_Click(object sender, EventArgs e)
         {
-            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
-            Dictionary<string, ITVSadrzaj> uto = list[1];
-
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
-
-            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in uto)
-            {
-                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
-                newItem.SubItems.Add(sadrzaj.Value.Ime);
-            }
+           
         }
 
         private void tsslSri_Click(object sender, EventArgs e)
         {
-            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
-            Dictionary<string, ITVSadrzaj> sri = list[2];
-
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
-
-            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in sri)
-            {
-                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
-                newItem.SubItems.Add(sadrzaj.Value.Ime);
-            }
+           
         }
 
         private void tsslCet_Click(object sender, EventArgs e)
         {
-            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
-            Dictionary<string, ITVSadrzaj> cet = list[3];
-
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
-
-            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in cet)
-            {
-                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
-                newItem.SubItems.Add(sadrzaj.Value.Ime);
-            }
+           
         }
 
         private void tsslPet_Click(object sender, EventArgs e)
         {
-            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
-            Dictionary<string, ITVSadrzaj> pet = list[4];
-
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
-
-            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in pon)
-            {
-                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
-                newItem.SubItems.Add(sadrzaj.Value.Ime);
-            }
         }
 
         private void tsslSub_Click(object sender, EventArgs e)
         {
-            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
-            Dictionary<string, ITVSadrzaj> sub = list[5];
-
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
-
-            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in sub)
-            {
-                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
-                newItem.SubItems.Add(sadrzaj.Value.Ime);
-            }
+            
         }
 
         private void tsslNed_Click(object sender, EventArgs e)
         {
-            List<Dictionary<string, ITVSadrzaj>> list = Raspored();
-            Dictionary<string, ITVSadrzaj> ned = list[6];
-
-            lvTvProgram.Columns.Add("Sat", -2, HorizontalAlignment.Left);
-            lvTvProgram.Columns.Add("Naslov", -2, HorizontalAlignment.Left);
-
-            foreach (KeyValuePair<string, ITVSadrzaj> sadrzaj in ned)
-            {
-                ListViewItem newItem = lvTvProgram.Items.Add(sadrzaj.Key);
-                newItem.SubItems.Add(sadrzaj.Value.Ime);
-            }
+           
         }
         private LivePrijenos DohvatiIzBazeLivePrijenose(string ime)
         {
@@ -534,6 +480,10 @@ namespace tvmanager
             Film film11 = new Film("Teksaški masakr motornom pilom", "Strah.", "horor", 90, 3, 18, "K.E.", "P.O.", "-XXXXX--"); UnosFilm(film11);
             Film film12 = new Film("SuperMan1", "Strah.", "akcija", 90, 3, 12, "K.E.", "P.O.", "-XXXXX--"); UnosFilm(film12);
             Film film13 = new Film("Harry Potter i kamen mudraca", "Čarobnjaci.", "sf", 90, 3, 18, "K.E.", "P.O.", "-XXXXX--"); UnosFilm(film13);
+            Film film14 = new Film("Igre gladi 1", "Borba za opstanak.", "sf", 90, 3, 15, "K.E.", "P.O.", "-XXXXXX-"); UnosFilm(film14);
+            Film film15 = new Film("Igre gladi 2", "Borba za opstanak.", "sf", 90, 3, 15, "K.E.", "P.O.", "-XXXXXX-"); UnosFilm(film15);
+            Film film16 = new Film("Igre gladi 3", "Borba za opstanak.", "sf", 90, 3, 15, "K.E.", "P.O.", "-XXXXXX-"); UnosFilm(film16);
+            Film film17 = new Film("Igre gladi 4", "Borba za opstanak.", "sf", 90, 3, 15, "K.E.", "P.O.", "-XXXXXX-"); UnosFilm(film17);
 
 
             Serija animirani1 = new Serija("Pokemoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "R-------");UnosSerija(animirani1);
@@ -541,6 +491,8 @@ namespace tvmanager
             Serija animirani3 = new Serija("Pcelica Maja", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "R-------"); UnosSerija(animirani3);
             Serija animirani4 = new Serija("Traktor Tom", "Djeca.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani4);
             Serija animirani5 = new Serija("Zekoslav Mrkva", "Zeko.", "animirani", 60, 3, 0, "R.E", "1",1, "-XXXXX--"); UnosSerija(animirani5);
+            Serija animirani6 = new Serija("Digimoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani6);
+            Serija animirani7 = new Serija("Bob graditelj", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani7);
 
             Serija serija1 = new Serija("Istanbulska nevjesta", "Turska", "drama", 60, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija1);
             Serija serija2 = new Serija("Kobra", "Njemacka autocesta", "akcija", 60, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija2);
@@ -550,7 +502,7 @@ namespace tvmanager
             LivePrijenos liveprijenos1 = new LivePrijenos("The Voice", "glazbeni show", "natjecanje", 120, 3, 0, "live prijenos", "------XX"); UnosLivePrijenos(liveprijenos1);
             LivePrijenos liveprijenos2 = new LivePrijenos("Koncert", "live koncert", "glazba", 120, 2, 0, "live prijenos", "------X-"); UnosLivePrijenos(liveprijenos2);
             LivePrijenos liveprijenos3 = new LivePrijenos("Utakmica", "Hrvatska-Spanjolska", "sport", 120, 2, 0, "live prijenos", "-------X"); UnosLivePrijenos(liveprijenos3);
-
+            LivePrijenos liveprijenos4 = new LivePrijenos("vatrica", "Prekid programa", "", 360, 2, 0, "live prijenos", "-------X"); UnosLivePrijenos(liveprijenos4);
             Reklama reklama1 = new Reklama("Lenor", "omeksivac", "odjeca", 1, 4, 0, 45);UnosReklama(reklama1);
             Reklama reklama2 = new Reklama("Orbit", "zvaka", "prehrana", 2, 4, 0, 80); UnosReklama(reklama2);
             Reklama reklama3 = new Reklama("Karlovacko", "pivo", "prehrana", 3, 4, 0, 105); UnosReklama(reklama3);
