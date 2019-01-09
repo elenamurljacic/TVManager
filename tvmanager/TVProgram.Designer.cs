@@ -49,13 +49,14 @@
             // 
             this.lvTvProgram.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lvTvProgram.FullRowSelect = true;
+            this.lvTvProgram.HideSelection = false;
             this.lvTvProgram.Location = new System.Drawing.Point(21, 58);
             this.lvTvProgram.Name = "lvTvProgram";
             this.lvTvProgram.Size = new System.Drawing.Size(264, 415);
             this.lvTvProgram.TabIndex = 0;
             this.lvTvProgram.UseCompatibleStateImageBehavior = false;
             this.lvTvProgram.View = System.Windows.Forms.View.Details;
-            this.lvTvProgram.SelectedIndexChanged += new System.EventHandler(this.lvTvProgram_SelectedIndexChanged);
+            //this.lvTvProgram.SelectedIndexChanged += new System.EventHandler(this.lvTvProgram_SelectedIndexChanged);
             // 
             // txbOpis
             // 
@@ -79,6 +80,7 @@
             this.btnCenzura.TabIndex = 3;
             this.btnCenzura.Text = "Cenzuriraj";
             this.btnCenzura.UseVisualStyleBackColor = false;
+            this.btnCenzura.Click += new System.EventHandler(this.btnCenzura_Click);
             // 
             // btnIzvanrednaSituacija
             // 
