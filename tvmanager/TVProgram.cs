@@ -26,21 +26,41 @@ namespace tvmanager
            
         }
 
-        private Dictionary<string,ITVSadrzaj> Raspored(string dan)//dan se ubacuje u obliku npr pon = '_+%'
+        private List<Dictionary<string,ITVSadrzaj>> Raspored()//dan se ubacuje u obliku npr pon = '_+%'
         {
-            List<Film> f = DohvatiIzBazeFilmove(dan);
-            List<Serija> s = DohvatiIzBazeSerije(dan);
-            List<LivePrijenos> l = DohvatiIzBazeLivePrijenose(dan);
-            List<DSPK> d = DohvatiIzBazeDSPK(dan);
-            List<Reklama> r = DohvatiIzBazeReklame();
+            Dictionary<string, ITVSadrzaj> pon = new Dictionary<string, ITVSadrzaj>();
+            LivePrijenos vatrica = DohvatiIzBazeLivePrijenose("Vatrica"); pon.Add("00:00", vatrica);
+            DSPK dbh = DohvatiIzBazeDSPK("Dobro Jutro Hrvatska"); pon.Add("06:00", dbh);
+            Serija tel = DohvatiIzBazeSerije("Teletabisi"); pon.Add("08:00", tel);
+            Serija pok = DohvatiIzBazeSerije("Pokemoni"); pon.Add("09:00", pok);
+            Serija osv = DohvatiIzBazeSerije("Osveta Ljubavi"); pon.Add("10:00", osv);
+            Serija ist = DohvatiIzBazeSerije("Istanbulska nevjesta"); pon.Add("11:00", ist);
+            DSPK vij = DohvatiIzBazeDSPK("Vijesti"); pon.Add("12:00", vij);
+            DSPK pro = DohvatiIzBazeDSPK("Prognoza"); pon.Add("13:00", pro);
+            Serija cob = DohvatiIzBazeSerije("Kobra"); pon.Add("13:15", cob);
+            Serija dad = DohvatiIzBazeSerije("Dadilja"); pon.Add("14:15", dad);
+            DSPK droz = DohvatiIzBazeDSPK("DrOz"); pon.Add("15:00", droz);
+            //reklama
+            DSPK pot = DohvatiIzBazeDSPK("Potjera"); pon.Add("16:30", pot);
+            DSPK dne = DohvatiIzBazeDSPK("Dnevnik"); pon.Add("18:00", dne);
+            pon.Add("19:00", pro);
+            DSPK spo = DohvatiIzBazeDSPK("Sport"); pon.Add("19:15", spo);
+            DSPK inm = DohvatiIzBazeDSPK("IN Magazin"); pon.Add("19:30", inm);
+            Film sup = DohvatiIzBazeFilmove("SuperMan1"); pon.Add("20:00", sup);
+            Film hp = DohvatiIzBazeFilmove("Harry Potter1"); pon.Add("22:00", hp);
 
-            Dictionary<string, ITVSadrzaj> dict = new Dictionary<string, ITVSadrzaj>();
-            foreach (LivePrijenos liv in l)
-                if (liv.Ime == "Vatrica")
-                    dict.Add("00:00", liv);
+            Dictionary<string, ITVSadrzaj> uto = new Dictionary<string, ITVSadrzaj>(pon);
 
 
-            
+            List<Dictionary<string, ITVSadrzaj>> list = new List<Dictionary<string, ITVSadrzaj>>();
+            list.Add(pon);
+            return list;
+
+
+
+
+
+
 
 
         }
@@ -58,26 +78,26 @@ namespace tvmanager
                 lvTvProgram.Columns[i].Width = -2;
 
             
-            List<Film> d = DohvatiIzBazeFilmove("------++");
-            foreach(Film f in d)
-            {
-                ListViewItem listitem = new ListViewItem(f.Ime);
+            Film d = DohvatiIzBazeFilmove("Bumbleblee");
+            
+            
+                ListViewItem listitem = new ListViewItem(d.Ime);
                 lvTvProgram.Items.Add(listitem);
-                listitem.SubItems.Add(f.Duljina.ToString());
-            }
-            txbOpis.Text = d[0].ToString();
+                listitem.SubItems.Add(d.Duljina.ToString());
+            
+            txbOpis.Text = d.ToString();
 
-            UnosPrograma();
+            //UnosPrograma();
 
         }
 
 
 
-        private List<Film> DohvatiIzBazeFilmove(string dan)
+        private Film DohvatiIzBazeFilmove(string ime)
         {
-            List<Film> flm = new List<Film>();
+            Film flm = null;
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Film WHERE Prikazivanje LIKE '" + dan + "'", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Film WHERE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -85,16 +105,16 @@ namespace tvmanager
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    flm.Add(new Film(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["GlavniGlumac"].ToString(), dr["Prikazivanje"].ToString()));                  
+                    flm = new Film(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["GlavniGlumac"].ToString(), dr["Prikazivanje"].ToString());
                 }
             }
             return flm;
         }
-        private List<Serija> DohvatiIzBazeSerije(string dan)
+        private Serija DohvatiIzBazeSerije(string ime)
         {
-            List<Serija> ser = new List<Serija>();
+            Serija ser = null;
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Serija WHERE Prikazivanje LIKE '" + dan + "'", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Serija WHERE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -102,16 +122,16 @@ namespace tvmanager
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    ser.Add(new Serija(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["Sezona"].ToString(), (int)dr["Epizoda"], dr["Prikazivanje"].ToString()));
+                    ser = new Serija(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Redatelj"].ToString(), dr["Sezona"].ToString(), (int)dr["Epizoda"], dr["Prikazivanje"].ToString());
                 }
             }
             return ser;
         }
-        private List<LivePrijenos> DohvatiIzBazeLivePrijenose(string dan)
+        private LivePrijenos DohvatiIzBazeLivePrijenose(string ime)
         {
-            List<LivePrijenos> liv = new List<LivePrijenos>();
+            LivePrijenos liv = null;
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM LivePrijenos WHERE Prikazivanje LIKE '" + dan + "'", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM LivePrijenos WHERE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -119,17 +139,17 @@ namespace tvmanager
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    liv.Add(new LivePrijenos(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Prikazivanje"].ToString()));
+                    liv=new LivePrijenos(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Prikazivanje"].ToString());
                 }
             }
             return liv;
         }
 
-        private List<DSPK> DohvatiIzBazeDSPK(string dan)
+        private DSPK DohvatiIzBazeDSPK(string ime)
         {
-            List<DSPK> dsp = new List<DSPK>();
+            DSPK dsp = null;
             using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM DSPK WHERE Prikazivanje LIKE '" + dan + "'", connection)) //treba mi LIKE
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM DSPK WHERE Prikazivanje LIKE Ime LIKE '" + ime + "'", connection)) //treba mi LIKE
             {
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -137,7 +157,7 @@ namespace tvmanager
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    dsp.Add(new DSPK(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Urednik"].ToString(), dr["Voditelj"].ToString(), dr["Prikazivanje"].ToString()));
+                    dsp = new DSPK(dr["Ime"].ToString(), dr["Opis"].ToString(), dr["Zanr"].ToString(), (int)dr["Duljina"], (int)dr["Prioritet"], (int)dr["DobnaSkupina"], dr["Tip"].ToString(), dr["Urednik"].ToString(), dr["Voditelj"].ToString(), dr["Prikazivanje"].ToString());
                 }
             }
             return dsp;
@@ -169,9 +189,9 @@ namespace tvmanager
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
-                connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TVSadrzaj.mdf;Integrated Security=True;";
+                
+                command.CommandType = CommandType.Text;
 
-               
                 command.Parameters.AddWithValue("@ime", f.Ime);
                 command.Parameters.AddWithValue("@opis", f.Opis);
                 command.Parameters.AddWithValue("@zanr", f.Zanr);
@@ -188,11 +208,13 @@ namespace tvmanager
                     connection.Open();
                     command.ExecuteNonQuery();
                     command.ExecuteScalar();
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Ooops");
                 }
+                finally { connection.Close(); }
 
             }
         }
