@@ -979,11 +979,22 @@ namespace tvmanager
             int razlika = minute - duljina; //razliku popunjavam reklamama
             //napravi listu reklama tako da dodajes minute do razlike redom pa koliko puta ide, reklame idu ovisno o trajanju
             List<Reklama> konacna = new List<Reklama>();
-            int i = 0;
-            while(razlika>0)
+            int i = 0;/*
+            Reklama reklama1 = new Reklama("Lenor", "omeksivac", "odjeca", 1, 4, 0, 45); UnosReklama(reklama1);
+            Reklama reklama2 = new Reklama("Orbit", "zvaka", "prehrana", 2, 4, 0, 80); UnosReklama(reklama2);
+            Reklama reklama3 = new Reklama("Karlovacko", "pivo", "prehrana", 3, 4, 0, 105); UnosReklama(reklama3);
+            Reklama reklama4 = new Reklama("Ozujsko", "pivo", "prehrana", 1, 4, 0, 70); UnosReklama(reklama4);
+            Reklama reklama5 = new Reklama("Lidl", "trgovina", "prehrana", 3, 4, 0, 130); UnosReklama(reklama5);
+            Reklama reklama6 = new Reklama("Tommy", "trgovina", "prehrana", 2, 4, 0, 90); UnosReklama(reklama6);
+            Reklama reklama7 = new Reklama("TopShop", "kupovina", "razno", 5, 4, 0, 200); UnosReklama(reklama7);*/
+            if (razlika < 5)
             {
-                return;
+                while (razlika % 2 == 0)
+                {
+
+                }
             }
+            
 
 
 
@@ -1206,26 +1217,52 @@ namespace tvmanager
                 return;
             int var2 = lvTvProgram.Items.IndexOf(lvTvProgram.SelectedItems[0]);
 
-            string ime = lvTvProgram.Items[var2].SubItems[1].Text;
-            ITVSadrzaj itv;
-            itv = DohvatiIzBazeFilmove(ime);
-            if (itv != null)
-                txbOpis.Text = itv.ToString();
-            itv = DohvatiIzBazeSerije(ime);
-            if (itv != null)
-                txbOpis.Text = itv.ToString();
-            itv = DohvatiIzBazeDSPK(ime);
-            if (itv != null)
-                txbOpis.Text = itv.ToString();
-            itv = DohvatiIzBazeLivePrijenose(ime);
-            if (itv != null)
-                txbOpis.Text = itv.ToString();
-            itv = DohvatiIzBazeReklamu(ime);
-            if (itv != null)
-                txbOpis.Text = itv.ToString();
+            string[] program = new string[3];
 
-            int duljina = itv.Duljina;
-            Image image = Image.FromFile(@"..\..\slike\" + ime + ".jpg");
+            DSPK d = DohvatiIzBazeDSPK(lvTvProgram.Items[var2].SubItems[1].Text);
+
+            if (d != null)
+            {
+                program[0] = d.Ime;
+                program[1] = "" + d.Duljina;
+                program[2] = "" + d.ToString();
+            }
+
+            Film f = DohvatiIzBazeFilmove(lvTvProgram.Items[var2].SubItems[1].Text);
+            if (f != null)
+            {
+                program[0] = f.Ime;
+                program[1] = "" + f.Duljina;
+                program[2] = "" + f.ToString();
+            }
+
+            Serija s = DohvatiIzBazeSerije(lvTvProgram.Items[var2].SubItems[1].Text);
+            if (s != null)
+            {
+                program[0] = s.Ime;
+                program[1] = "" + s.Duljina;
+                program[2] = "" + s.ToString();
+            }
+
+            Reklama r = DohvatiIzBazeReklamu(lvTvProgram.Items[var2].SubItems[1].Text);
+            if (r != null)
+            {
+                program[0] = r.Ime;
+                program[1] = "" + r.Duljina;
+                program[2] = "" + r.ToString();
+            }
+
+            LivePrijenos l = DohvatiIzBazeLivePrijenose(lvTvProgram.Items[var2].SubItems[1].Text);
+            if (l != null)
+            {
+                program[0] = l.Ime;
+                program[1] = "" + l.Duljina;
+                program[2] = "" + l.ToString();
+            }
+
+            txbOpis.Text = program[2];
+            
+            Image image = Image.FromFile(@"..\..\slike\" + program[0] + ".jpg");
 
 
 
@@ -1237,14 +1274,10 @@ namespace tvmanager
             }
             catch
             {
-                kraj = Convert.ToDateTime("24:00");
+                kraj = Convert.ToDateTime("00:00");
             }
 
-
-          
-
-            //PrikaziNaMonitor(image, pocetak, kraj, itv);
-
+            //PrikaziNaMonitor(image, pocetak, kraj, Convert.ToInt32(program[1]));
 
             monitor.pictureBox1.Image = image;
             
@@ -1261,6 +1294,8 @@ namespace tvmanager
                 izv.Show();
                 string ime = izv.textBox1.Text;
                 string duljinaTrajanja = izv.textBox2.Text;
+
+
                 List<string[]> novaLista = new List<string[]>();
 
            
