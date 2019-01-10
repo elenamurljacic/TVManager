@@ -1284,25 +1284,40 @@ namespace tvmanager
 
         }
 
+
+        void izv_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        }
+
+        public void UpadateListBox(string data1, string data2)
+        {
+            string satNaKojiMjenjamSadrzaj = data1;
+            string sCimMjenjam = data2;
+            for (int i = 0; i < lvTvProgram.Items.Count; i++)
+            {
+                if (lvTvProgram.Items[i].SubItems[0].Text == satNaKojiMjenjamSadrzaj)
+                {
+                    lvTvProgram.Items[i].SubItems[1].Text = sCimMjenjam;
+                }
+            }
+        }
         private void btnIzvanrednaSituacija_Click(object sender, EventArgs e)
         {
             if (lvTvProgram.Items.Count < 1)
                 MessageBox.Show("Odaberite dan za izvanrednu situaciju");
             else
             {
-                IzvanRednaSituacija izv = new IzvanRednaSituacija();
+                IzvanRednaSituacija izv = new IzvanRednaSituacija(this);
+                
                 izv.Show();
                 string ime = izv.textBox1.Text;
-                string duljinaTrajanja = izv.textBox2.Text;
 
 
                 List<string[]> novaLista = new List<string[]>();
 
-           
-
                 for (int i = 0; i < lvTvProgram.Items.Count; i++)
                 {
-                    string[] program = new string[3];
+                    string[] program = new string[4];
                     
                     DSPK d = DohvatiIzBazeDSPK(lvTvProgram.Items[i].SubItems[1].Text);
 
@@ -1311,6 +1326,7 @@ namespace tvmanager
                         program[0] = d.Ime;
                         program[1] = "" + d.Duljina;
                         program[2] = "" + d.Prioritet;
+                        program[3] = lvTvProgram.Items[i].SubItems[0].Text;
                     }
                
                     Film f = DohvatiIzBazeFilmove(lvTvProgram.Items[i].SubItems[1].Text);
@@ -1319,6 +1335,7 @@ namespace tvmanager
                         program[0] = f.Ime;
                         program[1] = "" + f.Duljina;
                         program[2] = "" + f.Prioritet;
+                        program[3] = lvTvProgram.Items[i].SubItems[0].Text;
                     }
                  
                     Serija s = DohvatiIzBazeSerije(lvTvProgram.Items[i].SubItems[1].Text);
@@ -1327,6 +1344,8 @@ namespace tvmanager
                         program[0] = s.Ime;
                         program[1] = "" + s.Duljina;
                         program[2] = "" + s.Prioritet;
+
+                        program[3] = lvTvProgram.Items[i].SubItems[0].Text;
                     }
 
                     Reklama r = DohvatiIzBazeReklamu(lvTvProgram.Items[i].SubItems[1].Text);
@@ -1335,6 +1354,7 @@ namespace tvmanager
                         program[0] = r.Ime;
                         program[1] = "" + r.Duljina;
                         program[2] = "" + r.Prioritet;
+                        program[3] = lvTvProgram.Items[i].SubItems[0].Text;
                     }
                   
                     LivePrijenos l = DohvatiIzBazeLivePrijenose(lvTvProgram.Items[i].SubItems[1].Text);
@@ -1343,23 +1363,21 @@ namespace tvmanager
                         program[0] = l.Ime;
                         program[1] = "" + l.Duljina;
                         program[2] = "" + l.Prioritet;
+                        program[3] = lvTvProgram.Items[i].SubItems[0].Text;
                     }
                     
                 novaLista.Add(program);
                 }
-
-
-
-
+                
                 for (int i = 0; i < novaLista.Count; i++)
                 {
-                    if (int.Parse(novaLista[i][2]) > 2)//Ne moze birat ako su prioriteti 1 i 2 i 3!
+                    if (int.Parse(novaLista[i][2]) > 2)
                     {
-                        ListViewItem listitem1 = new ListViewItem(novaLista[i][0]);
+                        ListViewItem listitem1 = new ListViewItem(novaLista[i][3]+"-"+novaLista[i][0]);
                         izv.listView1.Items.Add(listitem1);
                     }
                 }
-
+                
             }
         }
     }
