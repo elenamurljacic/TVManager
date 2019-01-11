@@ -6,6 +6,8 @@ using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace tvmanager
 {
@@ -813,10 +815,10 @@ namespace tvmanager
             Serija animirani6 = new Serija("Digimoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani6);
             Serija animirani7 = new Serija("Bob graditelj", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani7);
 
-            Serija serija1 = new Serija("Istanbulska nevjesta", "Turska", "drama", 60, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija1);
-            Serija serija2 = new Serija("Kobra", "Njemacka autocesta", "akcija", 60, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija2);
-            Serija serija3 = new Serija("Osveta ljubavi", "Turska", "romanticna drama", 60, 3, 12, "R.E", "1", 124, "-XXXXX--"); UnosSerija(serija3);
-            Serija serija4 = new Serija("Dadilja", "Obitelj i dadilja", "obiteljska", 60, 3, 0, "R.E", "1", 65, "-XXXXX--"); UnosSerija(serija4);
+            Serija serija1 = new Serija("Istanbulska nevjesta", "Turska", "drama", 30, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija1);
+            Serija serija2 = new Serija("Kobra", "Njemacka autocesta", "akcija", 30, 3, 12, "R.E", "1", 1, "-XXXXX--"); UnosSerija(serija2);
+            Serija serija3 = new Serija("Osveta ljubavi", "Turska", "romanticna drama", 30, 3, 12, "R.E", "1", 124, "-XXXXX--"); UnosSerija(serija3);
+            Serija serija4 = new Serija("Dadilja", "Obitelj i dadilja", "obiteljska", 30, 3, 0, "R.E", "1", 65, "-XXXXX--"); UnosSerija(serija4);
 
             LivePrijenos liveprijenos1 = new LivePrijenos("The Voice", "glazbeni show", "natjecanje", 120, 3, 0, "live prijenos", "------XX"); UnosLivePrijenos(liveprijenos1);
             LivePrijenos liveprijenos2 = new LivePrijenos("Koncert", "live koncert", "glazba", 120, 2, 0, "live prijenos", "------X-"); UnosLivePrijenos(liveprijenos2);
@@ -971,33 +973,95 @@ namespace tvmanager
         }
         #endregion
 
-        private void PrikaziNaMonitor(Image image, DateTime poc, DateTime kraj, int duljina)
+        private async void PrikaziNaMonitor(Image image, DateTime poc, DateTime kraj, int duljina)
         {
             List<Reklama> reklame = DohvatiIzBazeReklame();
             TimeSpan span = kraj.Subtract(poc);
             int minute = Convert.ToInt32(span.TotalMinutes);
+            if (kraj == Convert.ToDateTime("23:59")) minute++;
             int razlika = minute - duljina; //razliku popunjavam reklamama
             //napravi listu reklama tako da dodajes minute do razlike redom pa koliko puta ide, reklame idu ovisno o trajanju
-            List<Reklama> konacna = new List<Reklama>();
-            int i = 0;/*
-            Reklama reklama1 = new Reklama("Lenor", "omeksivac", "odjeca", 1, 4, 0, 45); UnosReklama(reklama1);
-            Reklama reklama2 = new Reklama("Orbit", "zvaka", "prehrana", 2, 4, 0, 80); UnosReklama(reklama2);
-            Reklama reklama3 = new Reklama("Karlovacko", "pivo", "prehrana", 3, 4, 0, 105); UnosReklama(reklama3);
-            Reklama reklama4 = new Reklama("Ozujsko", "pivo", "prehrana", 1, 4, 0, 70); UnosReklama(reklama4);
-            Reklama reklama5 = new Reklama("Lidl", "trgovina", "prehrana", 3, 4, 0, 130); UnosReklama(reklama5);
-            Reklama reklama6 = new Reklama("Tommy", "trgovina", "prehrana", 2, 4, 0, 90); UnosReklama(reklama6);
-            Reklama reklama7 = new Reklama("TopShop", "kupovina", "razno", 5, 4, 0, 200); UnosReklama(reklama7);*/
-            if (razlika < 5)
+            List<Reklama> konacna = new List<Reklama>();            
+            if(razlika > 0)
             {
-                while (razlika % 2 == 0)
+                int i = razlika % 5; 
+                int j = razlika / 5; //koliko petica stane unutra
+                if (j > 0)
                 {
-
+                    konacna.Add(reklame[6]);
+                    if (j >= 2)
+                    {
+                        int k = 1;
+                        while (k < j / 2)
+                        {
+                            konacna.Add(reklame[1]);
+                            konacna.Add(reklame[2]);
+                            k++;
+                        }
+                        while (k < j - 1)
+                        {
+                            konacna.Add(reklame[5]);
+                            konacna.Add(reklame[4]);
+                            k++;
+                        }
+                        konacna.Add(reklame[0]);
+                        konacna.Add(reklame[4]);
+                        konacna.Add(reklame[3]);
+                    }
                 }
+                if (i == 1)
+                {
+                    konacna.Add(reklame[0]);
+                }
+                else if (i == 2)
+                {
+                    konacna.Add(reklame[5]);
+                }
+                else if (i == 3)
+                {
+                    konacna.Add(reklame[4]);
+                }
+                else if (i == 4)
+                {
+                    konacna.Add(reklame[1]);
+                    konacna.Add(reklame[5]);
+                }
+
+                int brojReklama = 0;
+                if (duljina <= 30) brojReklama = 1;  //jedne reklame na pocetku
+                else if (duljina <= 45) brojReklama = 2;
+                else if (duljina <= 60) brojReklama = 3;
+                else if (duljina > 60) brojReklama = 4;
+
+                int d = konacna.Count / brojReklama;
+                
+                for (int l=0; l<brojReklama; l++)
+                {
+                    int m = 0;
+                    for(m=0; m<d; m++)
+                    {
+                        Image img = Image.FromFile(@"..\..\slike\" + konacna[m + l].Ime + ".jpg");                       
+                        monitor.pictureBox1.Image = img;
+                        await Task.Delay(2000);
+                    }
+                    
+                    if(l==brojReklama-1)
+                    {
+                        while(m+l<konacna.Count)
+                        {
+                            Image img = Image.FromFile(@"..\..\slike\" + konacna[m+l].Ime + ".jpg");
+                            monitor.pictureBox1.Image = img;
+                            await Task.Delay(2000);
+                            m++;
+                        }
+                    }
+                    monitor.pictureBox1.Image = image;
+                    await Task.Delay(5000);
+                }
+
+
             }
             
-
-
-
         }
 
         #region Dohvacanje za cenzuriranje; shuffle
@@ -1261,11 +1325,17 @@ namespace tvmanager
             }
 
             txbOpis.Text = program[2];
-            
-            Image image = Image.FromFile(@"..\..\slike\" + program[0] + ".jpg");
 
-
-
+            Image image;
+            try
+            {
+                image = Image.FromFile(@"..\..\slike\" + program[0] + ".jpg");
+            }
+            catch
+            {
+                image = Image.FromFile(@"..\..\slike\izvanredna_situacija.jpg");
+            }
+      
             DateTime pocetak = Convert.ToDateTime(lvTvProgram.Items[var2].SubItems[0].Text);
             DateTime kraj = Convert.ToDateTime("00:00");
             try
@@ -1274,10 +1344,10 @@ namespace tvmanager
             }
             catch
             {
-                kraj = Convert.ToDateTime("00:00");
+                kraj = Convert.ToDateTime("23:59");
             }
 
-            //PrikaziNaMonitor(image, pocetak, kraj, Convert.ToInt32(program[1]));
+            PrikaziNaMonitor(image, pocetak, kraj, Convert.ToInt32(program[1]));
 
             monitor.pictureBox1.Image = image;
             
