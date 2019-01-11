@@ -809,7 +809,7 @@ namespace tvmanager
 
             Serija animirani1 = new Serija("Pokemoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani1);
             Serija animirani2 = new Serija("Teletabisi", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "-XXXXX--"); UnosSerija(animirani2);
-            Serija animirani3 = new Serija("Pcelica Maja", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani3);
+            Serija animirani3 = new Serija("Pčelica Maja", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani3);
             Serija animirani4 = new Serija("Traktor Tom", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "-XXXXX--"); UnosSerija(animirani4);
             Serija animirani5 = new Serija("Zekoslav Mrkva", "Zeko.", "animirani", 60, 3, 0, "R.E", "1", 1, "-XXXXX--"); UnosSerija(animirani5);
             Serija animirani6 = new Serija("Digimoni", "Djeca.", "animirani", 60, 3, 0, "R.E", "1", 1, "--------"); UnosSerija(animirani6);
@@ -830,12 +830,9 @@ namespace tvmanager
             Reklama reklama4 = new Reklama("Ozujsko", "pivo", "prehrana", 1, 4, 0, 70); UnosReklama(reklama4);
             Reklama reklama5 = new Reklama("Lidl", "trgovina", "prehrana", 3, 4, 0, 130); UnosReklama(reklama5);
             Reklama reklama6 = new Reklama("Tommy", "trgovina", "prehrana", 2, 4, 0, 90); UnosReklama(reklama6);
-            Reklama reklama7 = new Reklama("TopShop", "kupovina", "razno", 5, 4, 0, 200); UnosReklama(reklama7);
+            Reklama reklama7 = new Reklama("TopShop", "kupovina", "razno", 30, 4, 0, 200); UnosReklama(reklama7);
 
             //sadrzaj za cenzuriranje
-            //DSPK VolimHrvatsku = new DSPK("Volim hrvatsku", "talk show", "Zabavna emisija o poznavanju Hrvatske.", 60, 4, 8, "talk show", "Mirko Fodor", "Goran Navojec", "RXXXXX--"); UnosDSPK(VolimHrvatsku);
-            //DSPK MirIDobro = new DSPK("Mir i dobro", "talk show", "Zabavna emisija o poznavanju Hrvatske.", 60, 4, 8, "talk show", "Iva Lerotic", "Mario Raguz", "RXXXXX--"); UnosDSPK(VolimHrvatsku);
-
             Film film18 = new Film("Snjezno kraljevstvo", "Elsa princeza, posjeduje posebne natprirodne moći.", "obiteljski", 90, 3, 0, "Chris Buck", "P.O.", "R-----XX"); UnosFilm(film18);
             Film film19 = new Film("Segrt Hlapic", "Elsa princeza, posjeduje posebne natprirodne moći.", "obiteljski", 90, 3, 0, "Silvije Petranovic", "Milje Bilanovic", "R-----XX"); UnosFilm(film19);
             Film film20 = new Film("Shrek 1", "Oger se zaljubljuje u princezu.", "obiteljski", 60, 3, 0, "Andrew Adamson", "Mike Meyers", "R-----XX"); UnosFilm(film20);
@@ -849,11 +846,11 @@ namespace tvmanager
             Serija animirani8 = new Serija("A je to", "Ceski crtic.", "animirani", 15, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani8);
             Serija animirani9 = new Serija("Spuzva Bob", "Spuzve pod morem.", "animirani", 15, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani9);
             Serija animirani10 = new Serija("Pink Panter", "Ruzicasta pantera.", "animirani", 15, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani10);
-            Serija animirani11 = new Serija("Mr Bean", "Luckasti Mr Bean i njegov medo.", "animirani", 15, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani11);
+            Serija animirani11 = new Serija("Mr Bean", "Luckasti Mr Bean i njegov medo.", "animirani", 30, 3, 0, "R.E", "1", 1, "R-------"); UnosSerija(animirani11);
 
-            Serija serija5 = new Serija("Puna kuca", "Svakodnevica jedne obitelji", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija5);
-            Serija serija6 = new Serija("Pod istim krovom", "Svakodnevica dviju susjednih obitelji", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija6);
-            Serija serija7 = new Serija("Naši i vaši", "Hrvatska humoristicna emisija", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija7);
+            Serija serija5 = new Serija("Puna kuca", "Svakodnevica jedne obitelji", "obiteljska", 30, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija5);
+            Serija serija6 = new Serija("Pod istim krovom", "Svakodnevica dviju susjednih obitelji", "obiteljska", 30, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija6);
+            Serija serija7 = new Serija("Nasi i vasi", "Hrvatska humoristicna emisija", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija7);
             Serija serija8 = new Serija("Odmori se, zasluzio si", "Hrvatska humoristicna emisija", "obiteljska", 60, 3, 12, "R.E", "1", 1, "RXXXXX--"); UnosSerija(serija8);
 
             LivePrijenos liveprijenos5 = new LivePrijenos("Glazba", "Prekid programa", "", 360, 2, 0, "live prijenos", "R------X"); UnosLivePrijenos(liveprijenos5);
@@ -1056,7 +1053,7 @@ namespace tvmanager
                         }
                     }
                     monitor.pictureBox1.Image = image;
-                    await Task.Delay(5000);
+                    await Task.Delay(50000);
                 }
 
 
@@ -1175,17 +1172,10 @@ namespace tvmanager
         {
             if (lvTvProgram.SelectedItems.Count > 0)
             {
-                txbOpis.Text = "hej";
-                string cenzuriraj = lvTvProgram.SelectedItems[0].Name;
-                txbOpis.Text = cenzuriraj;
                 if (lvTvProgram.SelectedItems.Count == 0)
                     return;
+
                 int odabrani = lvTvProgram.Items.IndexOf(lvTvProgram.SelectedItems[0]);
-                //txbOpis.Text = odabrani.ToString();
-
-                //txbOpis.Text += lvTvProgram.Items[odabrani].Text;
-                //txbOpis.Text += lvTvProgram.Items[odabrani].SubItems[1].Text;
-
                 string pocetak = lvTvProgram.Items[odabrani].Text;
                 string imeSadrzaja = lvTvProgram.Items[odabrani].SubItems[1].Text;
 
@@ -1201,81 +1191,74 @@ namespace tvmanager
                         if (lp == null)
                         {
                             Serija serija = DohvatiIzBazeSerije(imeSadrzaja);
-                            trajanje = serija.Duljina;
+                            if(serija == null)
+                            {
+                                Reklama reklama = DohvatiIzBazeReklamu(imeSadrzaja);
+                                trajanje = reklama.Duljina;
+                            }
+                            else trajanje = serija.Duljina;
                         }
                         else trajanje = lp.Duljina;
                     }
                     else trajanje = film.Duljina;
                 }
                 else trajanje = dspk.Duljina;
-                //txbOpis.Text += trajanje.ToString();
-
-                DialogResult result1 = MessageBox.Show("Zelite li cenzurirati ovaj TV sadrzaj?", "Upozorenje",
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-
-                if (result1 == DialogResult.Yes)
+              
+                List<string> nazivi = new List<string>();
+                foreach (ListViewItem lv in lvTvProgram.Items)
+                nazivi.Add(lv.SubItems[1].Text);
+                int trajanjeCenzure = 0;
+                if (trajanje == 90 || trajanje == 120)
                 {
-                    List<string> nazivi = new List<string>();
-                    foreach (ListViewItem lv in lvTvProgram.Items)
-                        nazivi.Add(lv.SubItems[1].Text);
-
-                    int trajanjeCenzure = 0;
-                    if (trajanje == 90 || trajanje == 120)
+                    List<Film> filmoviR = new List<Film>();
+                    filmoviR = DohvatiIzBazeFilmoveR();
+                    List<Film> filmoviShuffle = ShuffleList(filmoviR);
+                    foreach (Film f in filmoviShuffle)
                     {
-                        List<Film> filmoviR = new List<Film>();
-                        filmoviR = DohvatiIzBazeFilmoveR();
-                        List<Film> filmoviShuffle = ShuffleList(filmoviR);
-                        foreach (Film f in filmoviShuffle)
+                        if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))))
                         {
-                            if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))) && f.Prikazivanje[0] == 'R')
-                            {
-                                trajanjeCenzure = f.Duljina;
-                                //txbOpis.Text = "cenzurirat cemo s " + f.Ime + " koji traje " + f.Duljina;
-                                lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
-                                break;
-                            }
+                            trajanjeCenzure = f.Duljina;
+                            lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                            break;
                         }
                     }
-                    else if (trajanje == 60 || trajanje == 15)
+                }
+                else if (trajanje == 60 || trajanje == 30 || trajanje == 15)
+                {
+                    List<Serija> serijeR = new List<Serija>();
+                    serijeR = DohvatiIzBazeSerijeR();
+                    List<Serija> serijeShuffle = ShuffleList(serijeR);
+                    foreach (Serija f in serijeShuffle)
                     {
-                        List<Serija> serijeR = new List<Serija>();
-                        serijeR = DohvatiIzBazeSerijeR();
-                        List<Serija> serijeShuffle = ShuffleList(serijeR);
-                        //txbOpis.Text = serijeR.Count.ToString();
-                        foreach (Serija f in serijeShuffle)
+                        if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))))
                         {
-                            if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))) && f.Prikazivanje[0] == 'R')
-                            {
-                                trajanjeCenzure = f.Duljina;
-                                //txbOpis.Text = "cenzurirat cemo s " + f.Ime + " koji traje " + f.Duljina;
-                                lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
-                                break;
-                            }
+                            trajanjeCenzure = f.Duljina;
+                            lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                            break;
                         }
                     }
-                    else if (trajanje == 360)
+                }
+                else if (trajanje == 360)
+                {
+                    List<LivePrijenos> liveR = new List<LivePrijenos>();
+                    liveR = DohvatiIzBazeLivePrijenoseR();
+                    List<LivePrijenos> liveShuffle = ShuffleList(liveR);
+                    foreach (LivePrijenos f in liveShuffle)
                     {
-                        List<LivePrijenos> liveR = new List<LivePrijenos>();
-                        liveR = DohvatiIzBazeLivePrijenoseR();
-                        List<LivePrijenos> liveShuffle = ShuffleList(liveR);
-                        //txbOpis.Text = liveR.Count.ToString();
-                        foreach (LivePrijenos f in liveShuffle)
+                        if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))))
                         {
-                            if (f.Duljina == trajanje && (!(nazivi.Contains(f.Ime))) && f.Prikazivanje[0] == 'R')
-                            {
-                                trajanjeCenzure = f.Duljina;
-                                //txbOpis.Text = "cenzurirat cemo s " + f.Ime + " koji traje " + f.Duljina;
-                                lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
-                                break;
-                            }
+                            trajanjeCenzure = f.Duljina;
+                            lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                            break;
                         }
                     }
                 }
             }
+
+            Promjena();
         }
 
-
-        private void lvTvProgram_SelectedIndexChanged(object sender, EventArgs e)
+        private void Promjena()
         {
             if (lvTvProgram.SelectedItems.Count == 0)
                 return;
@@ -1335,7 +1318,7 @@ namespace tvmanager
             {
                 image = Image.FromFile(@"..\..\slike\izvanredna_situacija.jpg");
             }
-      
+
             DateTime pocetak = Convert.ToDateTime(lvTvProgram.Items[var2].SubItems[0].Text);
             DateTime kraj = Convert.ToDateTime("00:00");
             try
@@ -1350,8 +1333,11 @@ namespace tvmanager
             PrikaziNaMonitor(image, pocetak, kraj, Convert.ToInt32(program[1]));
 
             monitor.pictureBox1.Image = image;
-            
+        }
 
+        private void lvTvProgram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Promjena();
         }
 
 
