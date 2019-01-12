@@ -1058,6 +1058,10 @@ namespace tvmanager
 
 
             }
+            else
+            {
+                monitor.pictureBox1.Image = image;
+            }
             
         }
 
@@ -1332,7 +1336,7 @@ namespace tvmanager
 
             PrikaziNaMonitor(image, pocetak, kraj, Convert.ToInt32(program[1]));
 
-            monitor.pictureBox1.Image = image;
+            //monitor.pictureBox1.Image = image;
         }
 
         private void lvTvProgram_SelectedIndexChanged(object sender, EventArgs e)
