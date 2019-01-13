@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace tvmanager
 {
@@ -37,8 +31,13 @@ namespace tvmanager
             if (omoguciUnos1 && omuguciUnos2)
             {
                 string s = listView1.SelectedItems[0].Text.Substring(0, 5);
-                this.ParentForm1.UpadateListBox(s, textBox1.Text);
-                
+                this.ParentForm1.UpadateListBox(s, "IS->"+textBox1.Text);
+                IzvanrednaSituacija izv = new IzvanrednaSituacija();
+                izv.ime = "IS->" + textBox1.Text;
+                izv.pocetak = s;
+                izv.dan =this.ParentForm1.dan;
+                this.ParentForm1.IS.Add(izv);
+
                 this.Close();
 
             }

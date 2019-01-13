@@ -11,14 +11,24 @@ using System.Threading.Tasks;
 
 namespace tvmanager
 {
+    public struct IzvanrednaSituacija
+    {
+        public string dan;
+        public string pocetak;
+        public string ime;
+    }
     public partial class TVProgram : Form
     {
+       
+
         SqlConnection connection;
 
         string connectionString;
 
         Monitor monitor = new Monitor();
+        public string dan;
 
+        public List<IzvanrednaSituacija> IS = new List<IzvanrednaSituacija>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -34,6 +44,14 @@ namespace tvmanager
             connectionString = ConfigurationManager.ConnectionStrings["tvmanager.Properties.Settings.TVSadrzajConnectionString"].ConnectionString;
 
 
+        }
+
+        private void DodavanjeURasporedIS(string dan)
+        {
+            for(int i = 0; i < IS.Count(); i++)
+                if (IS[i].dan == dan)
+                    UpadateListBox(IS[i].pocetak, IS[i].ime);
+       
         }
 
         private void Raspored(string dan)
@@ -161,6 +179,7 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem19);
                 listitem19.SubItems.Add(hp.Ime);
 
+                DodavanjeURasporedIS("Pon");
             }
 
             if (dan == "Uto")
@@ -224,6 +243,8 @@ namespace tvmanager
                 ListViewItem listitem19 = new ListViewItem("22:00");
                 lvTvProgram.Items.Add(listitem19);
                 listitem19.SubItems.Add(brz.Ime);
+
+                DodavanjeURasporedIS("Uto");
             }
 
             if (dan == "Sri")
@@ -287,6 +308,8 @@ namespace tvmanager
                 ListViewItem listitem19 = new ListViewItem("22:00");
                 lvTvProgram.Items.Add(listitem19);
                 listitem19.SubItems.Add(brz.Ime);
+
+                DodavanjeURasporedIS("Sri");
             }
 
             if (dan == "Cet")
@@ -350,6 +373,8 @@ namespace tvmanager
                 ListViewItem listitem19 = new ListViewItem("22:00");
                 lvTvProgram.Items.Add(listitem19);
                 listitem19.SubItems.Add(kru.Ime);
+
+                DodavanjeURasporedIS("Cet");
             }
 
             if (dan == "Pet")
@@ -413,6 +438,8 @@ namespace tvmanager
                 ListViewItem listitem19 = new ListViewItem("22:00");
                 lvTvProgram.Items.Add(listitem19);
                 listitem19.SubItems.Add(tek.Ime);
+
+                DodavanjeURasporedIS("Pet");
             }
 
             if (dan == "Sub")
@@ -470,6 +497,8 @@ namespace tvmanager
                 ListViewItem listitem18 = new ListViewItem("22:00");
                 lvTvProgram.Items.Add(listitem18);
                 listitem18.SubItems.Add(bum.Ime);
+
+                DodavanjeURasporedIS("Sub");
             }
 
             if (dan == "Ned")
@@ -527,6 +556,8 @@ namespace tvmanager
                 ListViewItem listitem18 = new ListViewItem("22:00");
                 lvTvProgram.Items.Add(listitem18);
                 listitem18.SubItems.Add(sk3.Ime);
+
+                DodavanjeURasporedIS("Ned");
             }
 
         }
@@ -547,6 +578,7 @@ namespace tvmanager
             Raspored("Pon");
             lvTvProgram.FocusedItem = lvTvProgram.Items[0];
             lvTvProgram.Items[0].Selected = true;
+            dan = "Pon";
         }
 
         private void tsslUto_Click(object sender, EventArgs e)
@@ -554,6 +586,7 @@ namespace tvmanager
             Raspored("Uto");
             lvTvProgram.FocusedItem = lvTvProgram.Items[0];
             lvTvProgram.Items[0].Selected = true;
+            dan = "Uto";
         }
 
         private void tsslSri_Click(object sender, EventArgs e)
@@ -561,6 +594,7 @@ namespace tvmanager
             Raspored("Sri");
             lvTvProgram.FocusedItem = lvTvProgram.Items[0];
             lvTvProgram.Items[0].Selected = true;
+            dan = "Sri";
         }
 
         private void tsslCet_Click(object sender, EventArgs e)
@@ -568,6 +602,7 @@ namespace tvmanager
             Raspored("Cet");
             lvTvProgram.FocusedItem = lvTvProgram.Items[0];
             lvTvProgram.Items[0].Selected = true;
+            dan = "Cet";
         }
 
         private void tsslPet_Click(object sender, EventArgs e)
@@ -575,6 +610,7 @@ namespace tvmanager
             Raspored("Pet");
             lvTvProgram.FocusedItem = lvTvProgram.Items[0];
             lvTvProgram.Items[0].Selected = true;
+            dan = "Pet";
         }
 
         private void tsslSub_Click(object sender, EventArgs e)
@@ -582,6 +618,7 @@ namespace tvmanager
             Raspored("Sub");
             lvTvProgram.FocusedItem = lvTvProgram.Items[0];
             lvTvProgram.Items[0].Selected = true;
+            dan = "Sub";
         }
 
         private void tsslNed_Click(object sender, EventArgs e)
@@ -589,6 +626,7 @@ namespace tvmanager
             Raspored("Ned");
             lvTvProgram.FocusedItem = lvTvProgram.Items[0];
             lvTvProgram.Items[0].Selected = true;
+            dan = "Ned";
         }
 
         #endregion
@@ -1344,11 +1382,6 @@ namespace tvmanager
             Promjena();
         }
 
-
-        void izv_FormClosing(object sender, FormClosingEventArgs e)
-        {
-        }
-
         public void UpadateListBox(string data1, string data2)
         {
             string satNaKojiMjenjamSadrzaj = data1;
@@ -1361,6 +1394,7 @@ namespace tvmanager
                 }
             }
         }
+
         private void btnIzvanrednaSituacija_Click(object sender, EventArgs e)
         {
             if (lvTvProgram.Items.Count < 1)
