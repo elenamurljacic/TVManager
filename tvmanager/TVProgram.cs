@@ -29,6 +29,7 @@ namespace tvmanager
         public string dan;
 
         public List<IzvanrednaSituacija> IS = new List<IzvanrednaSituacija>();
+        public List<string[]> Cenzure = new List<string[]>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -52,6 +53,13 @@ namespace tvmanager
                 if (IS[i].dan == dan)
                     UpadateListBox(IS[i].pocetak, IS[i].ime);
        
+        }
+
+        private void DodavanjeURasporedCenzure(string dan)
+        {
+            foreach (string[] s in Cenzure)
+                if (s[0] == dan)
+                    UpadateListBox(s[1], s[2]);
         }
 
         private void Raspored(string dan)
@@ -180,6 +188,7 @@ namespace tvmanager
                 listitem19.SubItems.Add(hp.Ime);
 
                 DodavanjeURasporedIS("Pon");
+                DodavanjeURasporedCenzure("Pon");
             }
 
             if (dan == "Uto")
@@ -245,6 +254,7 @@ namespace tvmanager
                 listitem19.SubItems.Add(brz.Ime);
 
                 DodavanjeURasporedIS("Uto");
+                DodavanjeURasporedCenzure("Uto");
             }
 
             if (dan == "Sri")
@@ -310,6 +320,7 @@ namespace tvmanager
                 listitem19.SubItems.Add(brz.Ime);
 
                 DodavanjeURasporedIS("Sri");
+                DodavanjeURasporedCenzure("Sri");
             }
 
             if (dan == "Cet")
@@ -375,6 +386,7 @@ namespace tvmanager
                 listitem19.SubItems.Add(kru.Ime);
 
                 DodavanjeURasporedIS("Cet");
+                DodavanjeURasporedCenzure("Cet");
             }
 
             if (dan == "Pet")
@@ -440,6 +452,7 @@ namespace tvmanager
                 listitem19.SubItems.Add(tek.Ime);
 
                 DodavanjeURasporedIS("Pet");
+                DodavanjeURasporedCenzure("Pet");
             }
 
             if (dan == "Sub")
@@ -499,6 +512,7 @@ namespace tvmanager
                 listitem18.SubItems.Add(bum.Ime);
 
                 DodavanjeURasporedIS("Sub");
+                DodavanjeURasporedCenzure("Sub");
             }
 
             if (dan == "Ned")
@@ -558,6 +572,7 @@ namespace tvmanager
                 listitem18.SubItems.Add(sk3.Ime);
 
                 DodavanjeURasporedIS("Ned");
+                DodavanjeURasporedCenzure("Ned");
             }
 
         }
@@ -1246,9 +1261,12 @@ namespace tvmanager
                 }
                 else trajanje = dspk.Duljina;
               
-                List<string> nazivi = new List<string>();
+                List<string> nazivi = new List<string>(); //nazivi tv sadrzaja tog dana
                 foreach (ListViewItem lv in lvTvProgram.Items)
-                nazivi.Add(lv.SubItems[1].Text);
+                    nazivi.Add(lv.SubItems[1].Text);
+
+                string[] program = new string[3];  //podaci o cenzuri za update
+
                 int trajanjeCenzure = 0;
                 if (trajanje == 90 || trajanje == 120)
                 {
@@ -1261,6 +1279,10 @@ namespace tvmanager
                         {
                             trajanjeCenzure = f.Duljina;
                             lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                            program[0] = this.dan;
+                            program[1] = pocetak;
+                            program[2] = f.Ime;
+                            Cenzure.Add(program);
                             break;
                         }
                     }
@@ -1276,6 +1298,10 @@ namespace tvmanager
                         {
                             trajanjeCenzure = f.Duljina;
                             lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                            program[0] = this.dan;
+                            program[1] = pocetak;
+                            program[2] = f.Ime;
+                            Cenzure.Add(program);
                             break;
                         }
                     }
@@ -1291,12 +1317,20 @@ namespace tvmanager
                         {
                             trajanjeCenzure = f.Duljina;
                             lvTvProgram.Items[odabrani].SubItems[1].Text = f.Ime;
+                            program[0] = this.dan;
+                            program[1] = pocetak;
+                            program[2] = f.Ime;
+                            Cenzure.Add(program);
                             break;
                         }
                     }
                 }
-            }
 
+                
+            }
+            
+            
+            
             Promjena();
         }
 
