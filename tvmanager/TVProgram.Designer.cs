@@ -150,7 +150,7 @@
             // 
             this.tsslCet.Name = "tsslCet";
             this.tsslCet.Size = new System.Drawing.Size(41, 24);
-            this.tsslCet.Text = "Cet";
+            this.tsslCet.Text = "Čet";
             this.tsslCet.Click += new System.EventHandler(this.tsslCet_Click);
             // 
             // tsslPet

@@ -323,7 +323,7 @@ namespace tvmanager
                 DodavanjeURasporedCenzure("Sri");
             }
 
-            if (dan == "Cet")
+            if (dan == "Čet")
             {
                 BrisiListView();
                 ListViewItem listitem1 = new ListViewItem("00:00");
@@ -385,8 +385,8 @@ namespace tvmanager
                 lvTvProgram.Items.Add(listitem19);
                 listitem19.SubItems.Add(kru.Ime);
 
-                DodavanjeURasporedIS("Cet");
-                DodavanjeURasporedCenzure("Cet");
+                DodavanjeURasporedIS("Čet");
+                DodavanjeURasporedCenzure("Čet");
             }
 
             if (dan == "Pet")
@@ -614,10 +614,10 @@ namespace tvmanager
 
         private void tsslCet_Click(object sender, EventArgs e)
         {
-            Raspored("Cet");
+            Raspored("Čet");
             lvTvProgram.FocusedItem = lvTvProgram.Items[0];
             lvTvProgram.Items[0].Selected = true;
-            dan = "Cet";
+            dan = "Čet";
         }
 
         private void tsslPet_Click(object sender, EventArgs e)
