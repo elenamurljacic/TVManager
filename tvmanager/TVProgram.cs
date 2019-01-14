@@ -1496,7 +1496,8 @@ namespace tvmanager
                     
                 novaLista.Add(program);
                 }
-                
+                novaLista = novaLista.OrderBy(arr => arr[1]).ToList();
+
                 for (int i = 0; i < novaLista.Count; i++)
                 {
                     if (int.Parse(novaLista[i][2]) > 2)

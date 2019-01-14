@@ -78,11 +78,13 @@
             // 
             // listView1
             // 
+            this.listView1.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listView1.Location = new System.Drawing.Point(384, 18);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(340, 335);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             // 
             // label5
             // 
