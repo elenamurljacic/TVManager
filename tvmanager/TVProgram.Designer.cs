@@ -88,7 +88,7 @@
             this.btnIzvanrednaSituacija.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnIzvanrednaSituacija.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnIzvanrednaSituacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnIzvanrednaSituacija.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnIzvanrednaSituacija.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnIzvanrednaSituacija.Location = new System.Drawing.Point(425, 396);
             this.btnIzvanrednaSituacija.Name = "btnIzvanrednaSituacija";
             this.btnIzvanrednaSituacija.Size = new System.Drawing.Size(233, 77);

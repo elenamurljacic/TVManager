@@ -64,64 +64,41 @@ namespace tvmanager
 
         private void Raspored(string dan)
         {
-            Dictionary<string, ITVSadrzaj> pon = new Dictionary<string, ITVSadrzaj>();
-            LivePrijenos vatrica = DohvatiIzBazeLivePrijenose("vatrica"); pon.Add("00:00", vatrica);
-            DSPK dbh = DohvatiIzBazeDSPK("Dobro jutro hrvatska"); pon.Add("06:00", dbh);
-            Serija tel = DohvatiIzBazeSerije("Teletabisi"); pon.Add("08:00", tel);
-            Serija pok = DohvatiIzBazeSerije("Digimoni"); pon.Add("09:00", pok);
-            Serija osv = DohvatiIzBazeSerije("Osveta Ljubavi"); pon.Add("10:00", osv);
-            Serija ist = DohvatiIzBazeSerije("Istanbulska nevjesta"); pon.Add("11:00", ist);
-            DSPK vij = DohvatiIzBazeDSPK("Vijesti"); pon.Add("12:00", vij);
-            DSPK pro = DohvatiIzBazeDSPK("Prognoza"); pon.Add("13:00", pro);
-            Serija cob = DohvatiIzBazeSerije("Kobra"); pon.Add("13:15", cob);
-            Serija dad = DohvatiIzBazeSerije("Dadilja"); pon.Add("14:15", dad);
-            DSPK droz = DohvatiIzBazeDSPK("DrOz"); pon.Add("15:00", droz);
+            LivePrijenos vatrica = DohvatiIzBazeLivePrijenose("vatrica");
+            DSPK dbh = DohvatiIzBazeDSPK("Dobro jutro hrvatska");
+            Serija tel = DohvatiIzBazeSerije("Teletabisi");
+            Serija pok = DohvatiIzBazeSerije("Digimoni");
+            Serija osv = DohvatiIzBazeSerije("Osveta Ljubavi");
+            Serija ist = DohvatiIzBazeSerije("Istanbulska nevjesta");
+            DSPK vij = DohvatiIzBazeDSPK("Vijesti");
+            DSPK pro = DohvatiIzBazeDSPK("Prognoza");
+            Serija cob = DohvatiIzBazeSerije("Kobra");
+            Serija dad = DohvatiIzBazeSerije("Dadilja");
+            DSPK droz = DohvatiIzBazeDSPK("DrOz");
             Reklama tps = DohvatiIzBazeReklamu("TopShop");
-            DSPK pot = DohvatiIzBazeDSPK("Potjera"); pon.Add("16:30", pot);
-            DSPK dne = DohvatiIzBazeDSPK("Dnevnik"); pon.Add("18:00", dne);
-            pon.Add("19:00", pro);
-            DSPK spo = DohvatiIzBazeDSPK("Sport"); pon.Add("19:15", spo);
-            DSPK inm = DohvatiIzBazeDSPK("InMagazin"); pon.Add("19:30", inm);
-            Film sup = DohvatiIzBazeFilmove("SuperMan1"); pon.Add("20:00", sup);
-            Film hp = DohvatiIzBazeFilmove("Harry Potter i kamen mudraca"); pon.Add("22:00", hp);
-
-            Dictionary<string, ITVSadrzaj> uto = new Dictionary<string, ITVSadrzaj>(pon);
-            uto.Remove("08:00"); uto.Remove("09:00"); uto.Remove("20:00"); uto.Remove("22:00");
-            Serija pce = DohvatiIzBazeSerije("Bob graditelj"); uto.Add("08:00", pce);
-            Serija tra = DohvatiIzBazeSerije("Traktor Tom"); uto.Add("09:00", tra);
-            Film the = DohvatiIzBazeFilmove("The Help"); uto.Add("20:00", the);
-            Film brz = DohvatiIzBazeFilmove("Brzi i žestoki"); uto.Add("22:00", brz);
-
-            Dictionary<string, ITVSadrzaj> sri = new Dictionary<string, ITVSadrzaj>(pon);
-            sri.Remove("20:00"); sri.Remove("22:00");
-            Film ig1 = DohvatiIzBazeFilmove("Igre gladi 1"); sri.Add("20:00", ig1);
-            Film ss = DohvatiIzBazeFilmove("Slagalica strave"); sri.Add("22:00", ss);
-
-            Dictionary<string, ITVSadrzaj> cet = new Dictionary<string, ITVSadrzaj>(uto);
-            cet.Remove("20:00"); cet.Remove("22:00");
-            Film ig2 = DohvatiIzBazeFilmove("Igre gladi 2"); cet.Add("20:00", ig2);
-            Film kru = DohvatiIzBazeFilmove("Krug"); cet.Add("22:00", kru);
-
-            Dictionary<string, ITVSadrzaj> pet = new Dictionary<string, ITVSadrzaj>(pon);
-            pet.Remove("20:00"); pet.Remove("22:00");
-            Film ig3 = DohvatiIzBazeFilmove("Igre gladi 3"); pet.Add("20:00", ig3);
-            Film tek = DohvatiIzBazeFilmove("Teksaški masakr motornom pilom"); pet.Add("22:00", tek);
-
-            Dictionary<string, ITVSadrzaj> sub = new Dictionary<string, ITVSadrzaj>(pon);
-            sub.Remove("08:00"); sub.Remove("09:00"); sub.Remove("10:00"); sub.Remove("11:00"); sub.Remove("13:15"); sub.Remove("14:15"); sub.Remove("15:00"); sub.Remove("16:30"); sub.Remove("20:00"); sub.Remove("22:00");
-            Serija zek = DohvatiIzBazeSerije("Zekoslav Mrkva"); sub.Add("08:00", zek); sub.Add("09:00", zek); sub.Add("10:00", zek); sub.Add("11:00", zek);
-            LivePrijenos uta = DohvatiIzBazeLivePrijenose("Utakmica"); sub.Add("13:15", uta);
-            LivePrijenos kon = DohvatiIzBazeLivePrijenose("Koncert"); sub.Add("15:30", kon);
-            Film sk1 = DohvatiIzBazeFilmove("Sam u kući 1"); sub.Add("20:00", sk1);
-            Film bum = DohvatiIzBazeFilmove("Bumbleblee"); sub.Add("22:00", bum);
-
-            Dictionary<string, ITVSadrzaj> ned = new Dictionary<string, ITVSadrzaj>(sub);
-            ned.Remove("20:00"); ned.Remove("22:00");
-            LivePrijenos voi = DohvatiIzBazeLivePrijenose("The Voice"); ned.Add("20:00", voi);
-            Film sk3 = DohvatiIzBazeFilmove("Sam u kući 3"); ned.Add("22:00", sk3);
-
-            List<Dictionary<string, ITVSadrzaj>> list = new List<Dictionary<string, ITVSadrzaj>>();
-            list.Add(pon); list.Add(uto); list.Add(sri); list.Add(cet); list.Add(pet); list.Add(sub); list.Add(ned);
+            DSPK pot = DohvatiIzBazeDSPK("Potjera");
+            DSPK dne = DohvatiIzBazeDSPK("Dnevnik");
+            DSPK spo = DohvatiIzBazeDSPK("Sport");
+            DSPK inm = DohvatiIzBazeDSPK("InMagazin");
+            Film sup = DohvatiIzBazeFilmove("SuperMan1");
+            Film hp = DohvatiIzBazeFilmove("Harry Potter i kamen mudraca");
+            Serija pce = DohvatiIzBazeSerije("Bob graditelj");
+            Serija tra = DohvatiIzBazeSerije("Traktor Tom");
+            Film the = DohvatiIzBazeFilmove("The Help");
+            Film brz = DohvatiIzBazeFilmove("Brzi i žestoki");
+            Film ig1 = DohvatiIzBazeFilmove("Igre gladi 1");
+            Film ss = DohvatiIzBazeFilmove("Slagalica strave");
+            Film ig2 = DohvatiIzBazeFilmove("Igre gladi 2");
+            Film kru = DohvatiIzBazeFilmove("Krug");
+            Film ig3 = DohvatiIzBazeFilmove("Igre gladi 3");
+            Film tek = DohvatiIzBazeFilmove("Teksaški masakr motornom pilom");
+            Serija zek = DohvatiIzBazeSerije("Zekoslav Mrkva");
+            LivePrijenos uta = DohvatiIzBazeLivePrijenose("Utakmica");
+            LivePrijenos kon = DohvatiIzBazeLivePrijenose("Koncert");
+            Film sk1 = DohvatiIzBazeFilmove("Sam u kući 1");
+            Film bum = DohvatiIzBazeFilmove("Bumbleblee");
+            LivePrijenos voi = DohvatiIzBazeLivePrijenose("The Voice"); 
+            Film sk3 = DohvatiIzBazeFilmove("Sam u kući 3"); 
 
 
             if (dan == "Pon")
@@ -1251,7 +1228,11 @@ namespace tvmanager
                             if(serija == null)
                             {
                                 Reklama reklama = DohvatiIzBazeReklamu(imeSadrzaja);
-                                trajanje = reklama.Duljina;
+                                try
+                                {
+                                    trajanje = reklama.Duljina;
+                                }
+                                catch { }
                             }
                             else trajanje = serija.Duljina;
                         }
@@ -1500,11 +1481,15 @@ namespace tvmanager
 
                 for (int i = 0; i < novaLista.Count; i++)
                 {
-                    if (int.Parse(novaLista[i][2]) > 2)
+                    try
                     {
-                        ListViewItem listitem1 = new ListViewItem(novaLista[i][3]+"-"+novaLista[i][0]);
-                        izv.listView1.Items.Add(listitem1);
+                        if (int.Parse(novaLista[i][2]) > 2)
+                        {
+                            ListViewItem listitem1 = new ListViewItem(novaLista[i][3] + "-" + novaLista[i][0]);
+                            izv.listView1.Items.Add(listitem1);
+                        }
                     }
+                    catch { }
                 }
                 
             }
